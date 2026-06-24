@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo Kiểm tra Tài liệu Tham khảo</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 20px; color: #333; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .summary { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 5px solid #3498db; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #3498db; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+        .status-verified { color: #27ae60; font-weight: bold; }
+        .status-suspicious { color: #f39c12; font-weight: bold; }
+        .status-fake { color: #c0392b; font-weight: bold; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; color: white; font-size: 12px; font-weight: bold; }
+        .bg-green { background-color: #27ae60; }
+        .bg-yellow { background-color: #f39c12; }
+        .bg-red { background-color: #c0392b; }
+        .ref-original { font-size: 0.9em; color: #555; font-style: italic; margin-bottom: 5px; border-left: 3px solid #ccc; padding-left: 10px; }
+        .ref-details { font-size: 0.95em; }
+        .score { font-size: 0.8em; color: #888; }
+    </style>
+</head>
+<body>
+
+    <h1>Báo cáo Kiểm tra Tài liệu Tham khảo (Reference Check)</h1>
+    
+    <div class="summary">
+        <p><strong>Tổng số tài liệu tham khảo:</strong> <span id="total-count">{{TOTAL_COUNT}}</span></p>
+        <p>✅ <strong>Xác thực (Verified):</strong> <span class="status-verified">{{VERIFIED_COUNT}}</span></p>
+        <p>⚠️ <strong>Đáng ngờ (Suspicious):</strong> <span class="status-suspicious">{{SUSPICIOUS_COUNT}}</span></p>
+        <p>❌ <strong>Không tìm thấy / Khả năng giả mạo (Fake):</strong> <span class="status-fake">{{FAKE_COUNT}}</span></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="5%">STT</th>
+                <th width="10%">Trạng thái</th>
+                <th width="45%">Tài liệu trong bản thảo</th>
+                <th width="40%">Kết quả đối chiếu trên Internet (Crossref/Scholar)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Agent sẽ thay thế phần này bằng các dòng <tr> -->
+            {{TABLE_ROWS}}
+            <!-- Ví dụ thay thế:
+            <tr>
+                <td>1</td>
+                <td><span class="badge bg-green">Verified</span></td>
+                <td><div class="ref-original">Nguyễn Văn A (2023). Tên bài báo trên bản thảo...</div></td>
+                <td><div class="ref-details"><strong>Tiêu đề:</strong> Tên bài báo tìm được<br><strong>Tác giả:</strong> Nguyễn Văn A<br><strong>Năm:</strong> 2023<br><strong>DOI:</strong> 10.xxxx/yyyy</div></td>
+            </tr>
+            -->
+        </tbody>
+    </table>
+
+</body>
+</html>
