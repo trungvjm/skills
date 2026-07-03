@@ -37,7 +37,7 @@ Từ mỗi file `.tex` trong `04-Papers`, trích xuất 3 thông tin:
 
 ### Quy tắc trích xuất:
 
-- **Title**: Lấy nội dung trong `\title{...}`, loại bỏ `\\` (line break), viết thành 1 dòng. Viết hoa chữ cái đầu tiên (sentence case) trừ tên riêng/viết tắt
+- **Title**: Lấy nội dung trong `\title{...}`, loại bỏ `\\` (line break), viết thành 1 dòng. **BẮT BUỘC** chuyển về dạng Normal Case / Sentence Case: Chỉ viết hoa chữ cái đầu tiên của câu và chữ cái đầu tiên sau dấu hai chấm (`:`). Giữ nguyên in hoa đối với các từ viết tắt (VD: CFD, WIPAS, AI) hoặc tên riêng. **LƯU Ý QUAN TRỌNG:** Phải giữ nguyên cả các từ viết tắt có chứa chữ số (VD: A3, B2B) - cẩn thận khi dùng regex lược bỏ ký tự đặc biệt kẻo làm mất chữ số và biến chúng thành chữ thường. Nếu tiêu đề gốc đang in hoa toàn bộ, phải chuyển về chữ thường và tự phục hồi từ viết tắt.
 - **Authors**: Lấy tất cả `\author[...]{Tên}` (bỏ dòng comment `%\author`), loại bỏ `\orcidlink{...}`, `\corref{cor}`, `\\` ở đầu tên. Nối tên bằng dấu `,`
 - **Firstpage**: Lấy số trong `\firstpage{N}`
 - **Thứ tự bài**: theo prefix số ở tên file (`01_`, `02_`, ..., `08_`, ...)

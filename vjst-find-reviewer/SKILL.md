@@ -81,19 +81,23 @@ Dựa trên tổng điểm và các phân tích trên, hãy đưa ra đề xuấ
 
 LƯU Ý: Chỉ tạo sẵn email gửi đến tác giả NẾU Khuyến nghị là Từ chối (Reject/Unsubmit), nêu rõ lí do dựa trên phần Đánh giá Chi tiết, phong cách hàn lâm, lịch sự, ngắn gọn súc tích. Nếu bài được Proceed to Review, KHÔNG tạo mục Thư từ chối này.
 
-* Giai đoạn 2: Nếu tôi quyết định yêu cầu tìm kiếm phản biện thì hãy tạo câu lệnh tìm kiếm
-Hãy xuất trực tiếp câu lệnh tìm kiếm và 3 đóng góp chính ra khung chat để tôi dễ dàng copy. Đồng thời, tạo một báo cáo bằng định dạng Markdown tên là ID-[2]-Keywords.md để lưu trữ nội dung này.
+* Giai đoạn 2: Tạo câu lệnh tìm kiếm và tự động xuất dữ liệu từ Scopus
+Thay vì dùng API (do không hiệu quả), bạn BẮT BUỘC phải sử dụng trình duyệt (`browser` subagent) để tự động thực hiện thao tác trên web Scopus do tài khoản người dùng đã được đăng nhập sẵn.
 
 a) Tóm tắt 3 đóng góp chính về mặt khoa học của bài báo một cách ngắn gọn, súc tích.
 
-b) Lên dự thảo một số câu lệnh tìm kiếm nâng cao dành cho Scopus (sử dụng TITLE-ABS-KEY, AND, OR, v.v.). TRƯỚC KHI gửi cho người dùng, BẮT BUỘC phải viết một Python script nhỏ và dùng công cụ `run_command` để gọi Scopus API (Endpoint: `https://api.elsevier.com/content/search/scopus`) nhằm kiểm tra số lượng kết quả (`opensearch:totalResults`). 
-- Sử dụng API Key sau: `2ee0495d3a662a3c81437d30ece7ac1f`
-- Hãy tự động tinh chỉnh câu lệnh (mở rộng hoặc thu hẹp) và test lại bằng script cho đến khi tìm được câu lệnh tối ưu nhất cho ra **khoảng trên dưới 100 kết quả**.
+b) Lập câu lệnh tìm kiếm nâng cao (Advanced Search String) cho Scopus (sử dụng TITLE-ABS-KEY, AND, OR...) dựa trên chuyên môn của bản thảo. Xuất câu lệnh này và lưu vào file Markdown mang tên `ID-[2]-Keywords.md` tại thư mục của bài báo.
 
-c) Sau khi đã chốt được câu lệnh tối ưu, hãy xuất trực tiếp câu lệnh tìm kiếm đó ra khung chat để tôi dễ dàng copy, đồng thời lưu vào file định dạng Markdown tên là ID-[2]-Keywords.md. Yêu cầu người dùng thực hiện tìm kiếm trên web Scopus với câu lệnh đó và tải lên tệp kết quả (.csv) để chuyển sang Giai đoạn 3.
+c) Điều khiển `browser` subagent thực hiện chuỗi thao tác:
+1. Truy cập trang: `https://www.scopus.com/pages/search/publications?type=advanced`
+2. Điền câu lệnh tìm kiếm vừa tạo vào ô nhập liệu và thực hiện tìm kiếm.
+3. Kiểm tra số lượng kết quả. Nếu quá ít (<20) hoặc quá nhiều (>500), hãy tự động tinh chỉnh lệnh tìm kiếm (mở rộng/thu hẹp) và tìm lại cho đến khi đạt khoảng trên dưới 100 kết quả.
+4. Tiến hành xuất (Export) dữ liệu.
+5. **RẤT QUAN TRỌNG:** Khi xuất, BẮT BUỘC chọn định dạng file **CSV** và phải tích chọn xuất thông tin địa chỉ/liên hệ (Affiliations, Correspondence Address) để lấy được dữ liệu Email.
+6. Tải tệp CSV về, đặt tên dạng `ID.csv` và lưu vào thư mục bài báo trên Google Drive theo đúng quy tắc File Storage Protocol.
 
 * Giai đoạn 3: Đề xuất người phản biện từ tệp Scopus
-Sau khi người dùng tải lên tệp CSV (tên tệp dạng ID.csv) từ Scopus về workspace:
+Sau khi tệp CSV đã được tự động tải về thư mục bài báo:
 
 a) Đọc dữ liệu từ file CSV và đối chiếu với nội dung bản thảo ban đầu
 

@@ -32,8 +32,8 @@ Từ mỗi file `.tex` trong `04-Papers`, trích xuất các thông tin sau:
 
 | Thông tin | Nguồn trích xuất | Lưu ý |
 |-----------|------------|-------|
-| **Title (VN)** | Từ lệnh `\title{...}`. | Loại bỏ `\\`, viết dạng normal case/sentence case (chỉ viết hoa chữ cái đầu và danh từ riêng). |
-| **Title (EN)** | Từ sau lệnh `\TD` trong block `\begin{keyword}`. | Loại bỏ `\\`, viết dạng sentence case. |
+| **Title (VN)** | Từ lệnh `\title{...}`. | Loại bỏ `\\`, **BẮT BUỘC** viết dạng Normal Case / Sentence Case: Chỉ viết hoa chữ cái đầu tiên của câu và chữ cái đầu tiên sau dấu hai chấm (`:`). Giữ nguyên in hoa đối với các từ viết tắt hoặc tên riêng. **LƯU Ý:** Phải giữ nguyên cả từ viết tắt chứa chữ số (VD: A3, B2B), cẩn thận khi dùng regex lược bỏ ký tự đặc biệt. Nếu in hoa toàn bộ thì phải chuyển về chữ thường và tự phục hồi từ viết tắt. |
+| **Title (EN)** | Từ sau lệnh `\TD` trong block `\begin{keyword}`. | Loại bỏ `\\`, **BẮT BUỘC** chuyển về dạng Normal Case / Sentence Case (áp dụng quy tắc y hệt như Title (VN): xử lý dấu hai chấm, từ viết tắt có chứa số, in hoa toàn bộ). |
 | **Authors** | Tất cả các lệnh `\author[x]{Tên}` | Loại bỏ `\orcidlink`, `\corref`, `\\`. Nối các tên bằng dấu `, `. Dùng chung danh sách này cho cả bản Việt và Anh. |
 | **First page** | Từ lệnh `\firstpage{N}` | |
 

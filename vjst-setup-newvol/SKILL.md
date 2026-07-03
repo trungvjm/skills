@@ -1,9 +1,9 @@
 ---
-name: setup-newvol
+name: vjst-setup-newvol
 description: Tự động hóa việc tạo thư mục con cho Volume mới của VJST và sao chép/đổi tên file mẫu VJST.docx.
 ---
 
-# Kỹ năng `setup-newvol`
+# Kỹ năng `vjst-setup-newvol`
 
 Kỹ năng này được sử dụng để tự động hóa quy trình thiết lập cấu trúc thư mục cho một tập san (Volume/Issue) mới của tạp chí VJST.
 
