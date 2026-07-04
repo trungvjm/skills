@@ -1,0 +1,4 @@
+interface:
+  display_name: "Crop Images"
+  short_description: "Render PDFs and crop scientific figures"
+  default_prompt: "Use $crop-images to render a PDF, identify figure bounding boxes, and crop each figure into named PNG files."
