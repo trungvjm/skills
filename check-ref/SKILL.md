@@ -13,6 +13,7 @@ You are an academic reference verification specialist. This skill guides the pro
 Cross-reference the provided BibTeX references against reliable internet sources (like Crossref API, Google Scholar, etc.). 
 - Check for missing authors (e.g., if the original uses "others" or "et al.").
 - Compare year, volume, issue, pages, and DOI.
+- **Preprints & @misc**: Pay special attention to arXiv preprints or references formatted as `@misc` without publication venues. Search online to verify if they have been officially published in conferences/journals (e.g., NeurIPS, EMNLP, ACL, etc.). If published, update the reference to the official publication metadata. Also check for duplicate references between a preprint and its published version.
 - **Journal Names**: Verify the accuracy of the journal names. Apply the correct style based on the user's target journal (e.g., STCE requires full unabbreviated names, while VJST requires ISO 4 abbreviations). If the target journal is unknown, list the correct full name in the `.md` report for manual review.
 
 ### Step 2: Create ID.md Report
