@@ -1,0 +1,4 @@
+interface:
+  display_name: "VJST Contract Issue"
+  short_description: "Generate VJST issue contracts and payments"
+  default_prompt: "Use $vjst-contract-issue to create contracts and payment paperwork for VJST Vol. 64 No. 3."
