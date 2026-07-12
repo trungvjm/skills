@@ -38,7 +38,7 @@ Convert the raw references into valid BibTeX, apply specific VJST formatting rul
 - Convert article titles to sentence case. Always capitalize the first letter of the title and the first letter immediately following a colon (`:`). Do not wrap the whole title in extra braces just to preserve capitalization.
 - Preserve required capitalization only for proper nouns, places, acronyms, gene/protein names, chemical symbols, and model names.
 - **Species Names**: Identify scientific species names (e.g., *Escherichia coli*) and enclose them in `\textit{}` tags (e.g., `\textit{Escherichia coli}`).
-- **Chemical/Mathematical Formulas**: Convert HTML tags (`<i>`, `<sub>`, `<sup>`) into LaTeX markup and apply proper LaTeX math mode for chemical formulas (e.g., H$_2$O, CO$_2$, Cu$^{2+}$). Do not use HTML in BibTeX titles.
+- **Chemical/Mathematical Formulas**: Convert HTML tags (`<i>`, `<sub>`, `<sup>`) into LaTeX markup and apply proper LaTeX math mode for chemical formulas (e.g., H$_2$O, CO$_2$, Cu$^{2+}$). Do not use HTML in BibTeX titles. **WARNING:** Carefully check for chemical formulas that have been broken up by spaces or newlines during text extraction or API retrieval (e.g., `mnfe 2 o 4` or `γ-fe 2 o 3 @sio 2`) and fix them back into proper LaTeX format (e.g., `MnFe$_2$O$_4$`, `$\gamma$-Fe$_2$O$_3$@SiO$_2$`).
 
 ### 5. Pages
 - Use BibTeX page ranges with double hyphen: `pages = {1--10}`
@@ -56,7 +56,7 @@ Convert the raw references into valid BibTeX, apply specific VJST formatting rul
 
 ### 7. Final Quality Control & Self-Review
 Before finalizing the output, perform a rigorous self-review acting as a strict proofreader to ensure all rules are met:
-- **Title Formatting**: Are all titles truly in sentence case? Is the first letter after a colon capitalized? Are species italicized? Are chemical formulas using LaTeX math mode?
+- **Title Formatting**: Are all titles truly in sentence case? Is the first letter after a colon capitalized? Are species italicized? Are chemical formulas using LaTeX math mode? Did you carefully verify that no chemical formulas were accidentally split by spaces or corrupted during processing?
 - **Journal ISO 4**: Are all `journal` fields fully abbreviated according to ISO 4? Did you mistakenly leave any in Title Case?
 - **Booktitle**: Are `booktitle` fields left unabbreviated?
 - **HTML Tags**: Are there any lingering HTML tags (`<i>`, `<sub>`, etc.) in the BibTeX?

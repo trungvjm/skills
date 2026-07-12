@@ -19,3 +19,18 @@ ml-best-practices/
 notebook-guidance/
 skill-repair/
 .datacloud_skills_manifest
+
+# Symlinked skills from other AI ecosystems
+caveman
+caveman-commit
+caveman-compress
+caveman-help
+caveman-review
+caveman-stats
+cavecrew
+ponytail
+ponytail-audit
+ponytail-debt
+ponytail-gain
+ponytail-help
+ponytail-review
