@@ -14,6 +14,8 @@ Cross-reference the provided BibTeX references against reliable internet sources
 - Check for missing authors (e.g., if the original uses "others" or "et al.").
 - **Fallback Search**: For sources that cannot be verified via Crossref (e.g. no match found or API errors), you MUST search further on the internet (e.g. using web search, Google Scholar, Semantic Scholar) to find the correct publication metadata.
 - Compare year, volume, issue, pages, and DOI.
+- **Missing DOIs**: If a valid DOI is found via Crossref but is missing in the original reference, you MUST explicitly extract the DOI and add the `doi = {...}` field to the corresponding entry in the `.bib` file.
+- **Technical Requirement for Scripts**: If you write a Python script to query the Crossref API, do NOT use Python's default `urllib` library, as it often fails with HTTP/2 (Cloudflare) errors (e.g. `BadStatusLine: HTTP/2.0`). Instead, you MUST use `curl` via `subprocess.run` to execute the API calls safely.
 - **Preprints & @misc**: Pay special attention to arXiv preprints, Research Square, or references formatted as `@misc` without publication venues.
   - **CRITICAL**: For preprints, you MUST explicitly check the Crossref metadata for the `relation.is-preprint-of` field. If this field exists, it points to the official published DOI. You must fetch the metadata for that published DOI and use it instead.
   - Search online to verify if they have been officially published in conferences/journals if the `relation` field is missing. Also check for duplicate references between a preprint and its published version.
