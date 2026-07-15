@@ -8,7 +8,7 @@ description: Chuẩn hóa file LaTeX theo template STCE tiếng Việt (Tạp ch
 Skill chuẩn hóa file LaTeX theo đúng template của tạp chí **STCE — Tạp chí Khoa học Công nghệ Xây dựng** (bản tiếng Việt), Đại học Xây dựng Hà Nội — HUCE.
 
 > [!IMPORTANT]
-> Skill này dành cho **bài báo tiếng Việt**. Đối với bài báo tiếng Anh, sử dụng skill **latex-huce**.
+> Skill này dành cho **bài báo tiếng Việt**. Đối với bài báo tiếng Anh, sử dụng skill **latex-stce-en**.
 
 Template chuẩn được lấy từ file `01_3330_Dinh Van Thuat.tex`.
 
@@ -251,7 +251,7 @@ keyword1; keyword2; keyword3; keyword4.
 
 ### 3.2. Tên section tiếng Việt phổ biến
 
-| Tiếng Anh (latex-huce) | Tiếng Việt (latex-stce) |
+| Tiếng Anh (latex-stce-en) | Tiếng Việt (latex-stce-vn) |
 |---|---|
 | Introduction | Giới thiệu |
 | Conclusions | Kết luận |
@@ -474,7 +474,7 @@ Dòng 3 & giá trị & giá trị \\
 > [!IMPORTANT]
 > **Đây là điểm khác biệt quan trọng so với bản tiếng Anh.** Tất cả tham chiếu phải viết bằng tiếng Việt.
 
-| Loại | Tiếng Anh (latex-huce) | Tiếng Việt (latex-stce) |
+| Loại | Tiếng Anh (latex-stce-en) | Tiếng Việt (latex-stce-vn) |
 |---|---|---|
 | Hình | `Fig.~\ref{fN}` | `Hình~\ref{fN}` |
 | Bảng | `Table~\ref{tN}` | `Bảng~\ref{tN}` |
@@ -506,9 +506,9 @@ Khi được yêu cầu chuẩn hóa file LaTeX theo STCE tiếng Việt, thực
 
 ---
 
-## 10. Tổng hợp khác biệt latex-stce vs latex-huce
+## 10. Tổng hợp khác biệt latex-stce-vn và latex-stce-en
 
-| Đặc điểm | latex-stce (Tiếng Việt) | latex-huce (Tiếng Anh) |
+| Đặc điểm | latex-stce-vn (Tiếng Việt) | latex-stce-en (Tiếng Anh) |
 |---|---|---|
 | Package / Proof status | Giống nhau | Giống nhau |
 | Title | **VIẾT HOA** toàn bộ | Title case |
