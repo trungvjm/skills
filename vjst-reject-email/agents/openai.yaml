@@ -1,0 +1,4 @@
+interface:
+  display_name: "VJST Reject Email"
+  short_description: "Draft concise VJST rejection emails focused on academic reasons."
+  default_prompt: "Draft a concise VJST rejection email from manuscript screening notes, focusing on academic reasons and avoiding AI-style phrasing."

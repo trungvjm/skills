@@ -34,3 +34,5 @@ ponytail-debt
 ponytail-gain
 ponytail-help
 ponytail-review
+__pycache__/
+*.pyc
