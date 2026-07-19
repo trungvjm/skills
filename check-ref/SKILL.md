@@ -9,12 +9,18 @@ You are an academic reference verification specialist. This skill guides the pro
 
 ## Workflow
 
+### 0. Core Principle: NO GUESSING
+- **CRITICAL**: You MUST NOT guess or hallucinate any information. When cross-referencing, if a matching result is highly questionable or fuzzy (e.g., completely different DOI, unrelated title), do NOT blindly accept and replace the original data. You must report discrepancies and wait for user approval.
+
 ### Step 1: Verification (Cross-referencing)
-Cross-reference the provided BibTeX references against reliable internet sources (like Crossref API, Google Scholar, etc.). 
+**CRITICAL WORKFLOW**: You must perform verification in two distinct stages:
+1. **Google Scholar Verification (For ALL references)**: First, you MUST cross-check the information for ALL provided references (e.g. using the `search_web` tool targeting Google Scholar). Verify the title, authors, year, and venue match what Google Scholar reports.
+2. **Crossref Verification (For references with DOIs)**: After verifying with Google Scholar, you MUST then cross-check against the Crossref API ONLY for the articles that have a valid DOI.
+  - **CRITICAL - DOI Sources**: Not all DOIs are registered on Crossref (e.g., arXiv DOIs starting with `10.48550/arXiv...` belong to DataCite). If Crossref fails to find a DOI or returns a completely mismatched title (fuzzy match error), do NOT blindly accept it. You MUST verify the DOI via other sources like DataCite API, `dx.doi.org`, or Google Scholar.
+
+During these checks, pay attention to the following:
 - Check for missing authors (e.g., if the original uses "others" or "et al.").
-- **Fallback Search**: For sources that cannot be verified via Crossref (e.g. no match found or API errors), you MUST search further on the internet (e.g. using web search, Google Scholar, Semantic Scholar) to find the correct publication metadata.
 - Compare year, volume, issue, pages, and DOI.
-- **Missing DOIs**: If a valid DOI is found via Crossref but is missing in the original reference, you MUST explicitly extract the DOI and add the `doi = {...}` field to the corresponding entry in the `.bib` file.
 - **Technical Requirement for Scripts**: If you write a Python script to query the Crossref API, do NOT use Python's default `urllib` library, as it often fails with HTTP/2 (Cloudflare) errors (e.g. `BadStatusLine: HTTP/2.0`). Instead, you MUST use `curl` via `subprocess.run` to execute the API calls safely.
 - **Preprints & @misc**: Pay special attention to arXiv preprints, Research Square, or references formatted as `@misc` without publication venues.
   - **CRITICAL**: For preprints, you MUST explicitly check the Crossref metadata for the `relation.is-preprint-of` field. If this field exists, it points to the official published DOI. You must fetch the metadata for that published DOI and use it instead.
@@ -40,5 +46,8 @@ The report MUST include:
 - List any references that cannot be verified or lack sufficient metadata (e.g., remained as `@misc`, missing DOI/author/year).
 - **CRITICAL:** If Crossref or online searches return NO journal name or booktitle (e.g. for preprints like Research Square), you MUST explicitly report this here so the Editor is notified.
 - **CRITICAL ANOMALY CHECK:** You MUST warn the user about ANY unusual signs in a reference (e.g., completely missing fields, suspicious DOIs, URLs that don't match the DOI, unusually short/long titles, or data that seems corrupted). If it looks abnormal, flag it here.
+
+**E. Google Scholar Cross-Check Results**
+- Document the results of your Google Scholar searches for ALL references. Clearly list any differences Scholar indicates about the authors, year, and venue compared to the original input. If any references could not be found on Google Scholar, state that explicitly.
 
 Wait for user confirmation before applying the changes from Sections B and C to the final `ID.bib` file.
