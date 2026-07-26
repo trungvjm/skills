@@ -23,8 +23,8 @@ Main agent chuẩn hóa dữ liệu từ người dùng theo định dạng chu�
 
 ### B. Địa chỉ (Affiliation)
 - **Đánh số**: Các chỉ số đánh dấu địa chỉ phải được viết dưới dạng superscript của LaTeX để OJS render đúng: `\(^1\)`, `\(^2\)`, `\(^3\)`... (không dùng dạng ngoặc tròn `(1)`, `(2)`).
-- **Ngắt dòng**: Nếu một tác giả có từ 2 địa chỉ trở lên, phân tách các địa chỉ bằng thẻ `<br>`.
-  - *Ví dụ*: `\(^1\) Institute of Physics...<br>\n\(^2\) VNU School...`
+- **Ngắt dòng**: Nếu một tác giả có từ 2 địa chỉ trở lên, phân tách các địa chỉ bằng thẻ `<br>`. Tuyệt đối không thêm ký tự xuống dòng (như `\n`) vào chuỗi.
+  - *Ví dụ*: `\(^1\) Institute of Physics...<br>\(^2\) VNU School...`
 
 ## 3. THỰC THI (ỦY QUYỀN CHO BROWSER SUBAGENT)
 Sau khi người dùng đã xác nhận, sử dụng tool `invoke_subagent` để gọi `browser` subagent (với `TypeName: "browser"`). Gửi một `Prompt` thật chi tiết và nghiêm ngặt với các yêu cầu sau:
