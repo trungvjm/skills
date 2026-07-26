@@ -34,6 +34,7 @@ Sau khi người dùng đã xác nhận, sử dụng tool `invoke_subagent` đ�
 3. **Thao tác trên giao diện (CỰC KỲ QUAN TRỌNG)**:
    - Mở cửa sổ chỉnh sửa của từng tác giả (click vào nút mở rộng cạnh tên -> Edit) hoặc thêm mới (Add Contributor).
    - Xác minh/sửa đúng **Given Name** và **Family Name**.
+   - **Preferred Public Name**: Nếu trường này có dữ liệu, hãy **xóa sạch toàn bộ** (để trống).
    - **Email**: 
      - Bỏ trống nếu tác giả chưa có email trên hệ thống và người dùng cũng không cung cấp.
      - **QUAN TRỌNG**: Nếu tác giả đã có sẵn email trên hệ thống OJS thì **TUYỆT ĐỐI KHÔNG ĐƯỢC XÓA**. Nếu email trên hệ thống có sự sai khác với email do người dùng cung cấp, subagent phải tạm dừng cập nhật trường email của người đó, giữ nguyên hiện trạng và báo cáo lại ngay lập tức để hỏi ý kiến người dùng.
@@ -47,6 +48,4 @@ Sau khi người dùng đã xác nhận, sử dụng tool `invoke_subagent` đ�
 
 ## 4. BÁO CÁO VÀ DỌN DẸP
 1. Sau khi `browser` subagent báo cáo thành công, kill subagent đó.
-2. Thông báo cho người dùng biết công việc đã hoàn thành, đồng thời **gửi kèm link file video quay màn hình `recording.webm`** của subagent để người dùng tự kiểm tra bằng mắt (visual QA).
-3. **Hỏi ý kiến xóa video**: Yêu cầu người dùng xem xét video. Hỏi rõ người dùng: *"Bạn đã kiểm tra xong chưa? Tôi có thể xóa file video recording này để giải phóng dung lượng không?"*
-4. Nếu người dùng đồng ý, sử dụng tool `run_command` để chạy lệnh `rm` xóa file video đó đi nhằm làm nhẹ ổ cứng.
+2. Thông báo cho người dùng biết công việc đã hoàn tất thành công. (Không yêu cầu quay video màn hình hay gửi file recording).
