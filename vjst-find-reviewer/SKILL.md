@@ -115,23 +115,24 @@ e) 5 phản biện đã gợi ý ở phase 1 (phải tìm kiếm email nhé). Kh
 
 f) Nêu các ứng viên tại Việt Nam (ở mục riêng)
 
-g) ĐỐI CHIẾU CHÉO (CROSS-CHECK) TRÊN INTERNET: Trước khi đưa danh sách Top 20 phản biện xuất sắc nhất (và các ứng viên Việt Nam) vào file báo cáo HTML, BẮT BUỘC dùng công cụ `search_web` để tìm kiếm và cập nhật thông tin thực tế của họ hiện nay (vì dữ liệu Scopus có thể đã cũ). Các thông tin cần tra cứu và cập nhật vào báo cáo HTML bao gồm:
+g) ĐỐI CHIẾU CHÉO (CROSS-CHECK) TRÊN INTERNET: Trước khi đưa danh sách phản biện xuất sắc nhất (và các ứng viên Việt Nam) vào file CSV, BẮT BUỘC dùng công cụ `search_web` để tìm kiếm và cập nhật thông tin thực tế của họ hiện nay (vì dữ liệu Scopus có thể đã cũ). Các thông tin cần tra cứu và cập nhật vào file CSV bao gồm:
 - Cơ quan công tác hiện tại.
 - Học hàm, học vị (Ví dụ: GS.TS., PGS.TS., Prof., Dr., v.v.).
-- Địa chỉ email mới nhất đang hoạt động. LƯU Ý: Tuyệt đối KHÔNG xóa/thay thế email gốc từ file CSV. Nếu tìm được email mới, hiển thị cả hai (ví dụ: `[Email mới] (Verified) / [Email cũ] (Scopus)`). Nếu không tìm được email mới, PHẢI giữ nguyên email gốc từ Scopus.
+- Địa chỉ email mới nhất đang hoạt động. LƯU Ý: Tuyệt đối KHÔNG xóa/thay thế email gốc từ dữ liệu Scopus. Nếu tìm được email mới, hiển thị cả hai (ví dụ: `[Email mới] (Verified) / [Email cũ] (Scopus)`). Nếu không tìm được email mới, PHẢI giữ nguyên email gốc từ Scopus.
 
-i) ĐỀ XUẤT THÀNH VIÊN HỘI ĐỒNG BIÊN TẬP (EDITORIAL BOARD): Đọc thông tin từ trang `https://vjs.ac.vn/jst/about/editorialTeam` để rà soát các thành viên Hội đồng Biên tập. BẮT BUỘC phải sử dụng dữ liệu từ Scopus API để tra cứu các công bố khoa học của những thành viên này nhằm đánh giá CHUYÊN MÔN SÂU (deep expertise). Chỉ khi các bài báo trên Scopus của họ thực sự khớp với từ khóa/lĩnh vực hẹp của bản thảo (chứ không chỉ khớp tên phân hệ chung chung) thì mới được lựa chọn. Nếu có chuyên gia vượt qua vòng đánh giá Scopus này, BẮT BUỘC phải tạo một danh mục riêng biệt nằm ở vị trí trang trọng trong báo cáo HTML (VD: "🏛️ Editorial Board Match (Internal Review)") để hiển thị thông tin tên, cơ quan, minh chứng chuyên môn sâu (từ Scopus) và lý do đề xuất.
+i) ĐỀ XUẤT THÀNH VIÊN HỘI ĐỒNG BIÊN TẬP (EDITORIAL BOARD): Đọc thông tin từ trang `https://vjs.ac.vn/jst/about/editorialTeam` để rà soát các thành viên Hội đồng Biên tập. BẮT BUỘC phải sử dụng dữ liệu từ Scopus API để tra cứu các công bố khoa học của những thành viên này nhằm đánh giá CHUYÊN MÔN SÂU (deep expertise). Chỉ khi các bài báo trên Scopus của họ thực sự khớp với từ khóa/lĩnh vực hẹp của bản thảo (chứ không chỉ khớp tên phân hệ chung chung) thì mới được lựa chọn. Nếu có chuyên gia vượt qua vòng đánh giá này, đưa họ lên đầu danh sách CSV và ghi chú rõ trong cột Lý do lựa chọn.
 
-Tạo report dạng HTML tên là ID-[3]-Reviewer-suggestion.html (để tóm tắt nhanh danh sách top 20 đã được đối chiếu chéo cập nhật mới nhất, các tác giả Việt Nam và 5 tác giả từ Phase 1) và file `ID-[3]-Reviewer-suggestion.csv` chứa đầy đủ 50 phản biện.
+Chỉ tạo duy nhất file `ID-[3]-Reviewer-suggestion.csv` chứa đầy đủ 50 phản biện (đã bao gồm các phản biện từ Phase 1, ứng viên Việt Nam, và Editorial Board). Tuyệt đối KHÔNG tạo file HTML cho danh sách phản biện này. Danh sách CSV cần được sắp xếp theo mức độ ưu tiên từ trên xuống dưới để phục vụ tự động hóa sau này.
 
 
 Phong thái và Quy tắc:
 * Sử dụng ngôn ngữ chuyên nghiệp, học thuật phù hợp với vai trò biên tập viên tạp chí khoa học.
 * Chính xác và khách quan trong việc đánh giá sự tương đồng về chuyên môn.
-* Luôn tuân thủ nghiêm ngặt quy trình hai giai đoạn, không thực hiện giai đoạn 3 khi chưa có dữ liệu CSV.
-* Mẫu UI (HTML/CSS) cho Giai đoạn 1 và Giai đoạn 3: Phải nhúng trực tiếp đoạn mã CSS và cấu trúc HTML chuẩn dưới đây vào file kết quả để báo cáo có giao diện đẹp và đồng nhất (Riêng giai đoạn 2 dùng file .md).
+* Luôn tuân thủ nghiêm ngặt quy trình hai giai đoạn, không thực hiện giai đoạn 3 khi chưa có dữ liệu đầu vào.
+* KHÔNG quay video màn hình trong quá trình làm việc với trình duyệt.
+* Mẫu UI (HTML/CSS) cho Giai đoạn 1: Phải nhúng trực tiếp đoạn mã CSS và cấu trúc HTML chuẩn dưới đây vào file kết quả Screening để báo cáo có giao diện đẹp và đồng nhất.
 
-### Mẫu cấu trúc HTML & CSS chuẩn (Dành cho Giai đoạn 1 & 3):
+### Mẫu cấu trúc HTML & CSS chuẩn (Dành cho Giai đoạn 1):
 
 ```html
 <!DOCTYPE html>
@@ -172,13 +173,7 @@ Phong thái và Quy tắc:
         .badge-danger { background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%); color: white; }
         .badge-warning { background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%); color: white; }
         
-        /* Giao diện list reviewer (Cho Giai đoạn 3) */
-        .reviewer-item { background: #f8fafc; border-radius: 8px; padding: 16px; margin-bottom: 12px; border-left: 4px solid var(--accent-color); }
-        .reviewer-name { font-weight: bold; color: var(--secondary-color); font-size: 1.1rem; }
-        .reviewer-score { float: right; background: var(--success-color); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85rem; }
-        .reviewer-detail { font-size: 0.9rem; margin-top: 5px; }
-        .email-box { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
-        
+
         /* Giao diện phân chia song ngữ, bảng điểm (Cho Giai đoạn 1) */
         .bilingual { background: #f8fafc; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
         .bilingual .en { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed var(--border-color); }

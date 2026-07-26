@@ -5,13 +5,14 @@ description: Tự động hóa quy trình thêm và gửi lời mời phản bi�
 
 # Thêm Phản biện trên Hệ thống OJS (VJST)
 
-Kỹ năng này điều khiển `browser` subagent (thông qua lệnh `/browser` hoặc công cụ tương đương) để tự động hóa việc đưa chuyên gia vào hệ thống OJS của Vietnam Journal of Science and Technology (VJST) từ danh sách phản biện đã có (ví dụ: từ báo cáo HTML/CSV).
+Kỹ năng này điều khiển `browser` subagent (thông qua lệnh `/browser` hoặc công cụ tương đương) để tự động hóa việc đưa chuyên gia vào hệ thống OJS của Vietnam Journal of Science and Technology (VJST) từ danh sách phản biện đã có (file CSV). LƯU Ý: Tuyệt đối KHÔNG quay video màn hình trong suốt quá trình.
 
 ## Quy trình thực hiện (Dành cho Agent)
 
-Khi người dùng yêu cầu mời một phản biện (Reviewer) trên hệ thống OJS, họ sẽ cung cấp 2 thông tin đầu vào: Link (URL) của trang phản biện và Thư mục chứa file báo cáo danh sách phản biện (HTML).
+Khi người dùng yêu cầu mời phản biện (Reviewer) trên hệ thống OJS, họ sẽ cung cấp các thông tin đầu vào: Link (URL) của trang phản biện, số lượng phản biện cần mời, và Thư mục chứa file danh sách phản biện (CSV).
 
-1. **Chuẩn bị thông tin:** Agent sẽ tìm và đọc file báo cáo danh sách phản biện (`ID-[3]-Reviewer-suggestion.html` hoặc tương tự) trong thư mục được cung cấp để trích xuất thông tin chuyên gia cần mời (Tên, Email, Cơ quan công tác - Affiliation).
+1. **Chuẩn bị thông tin:** Agent sẽ tìm và đọc file dữ liệu danh sách phản biện (`ID-[3]-Reviewer-suggestion.csv` hoặc tương tự) trong thư mục được cung cấp để trích xuất thông tin chuyên gia cần mời (Tên, Email, Cơ quan công tác - Affiliation). Agent sẽ chọn chuyên gia theo thứ tự ưu tiên từ trên xuống dưới trong file CSV.
+   - **LƯU Ý VỀ EMAIL:** Nếu chuyên gia được chọn không có địa chỉ email trong danh sách, BẮT BUỘC sử dụng công cụ `search_web` để tìm kiếm email của họ trên mạng. Nếu vẫn không tìm được email, HÃY BỎ QUA chuyên gia đó (không thực hiện mời) và tiếp tục chọn chuyên gia tiếp theo trong danh sách cho đến khi đủ số lượng người dùng yêu cầu.
 2. **Truy cập trang OJS:** Điều khiển trình duyệt truy cập vào đúng đường link URL mà người dùng đã cung cấp. Đợi trang tải hoàn tất phần giao diện của vòng phản biện.
 3. **Mở Form Thêm Phản biện:**
    - Click vào nút **"Add Reviewer"**.
