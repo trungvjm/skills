@@ -193,9 +193,11 @@ Ví dụ:
 
 ### 2.6. Received dates
 ```latex
-\received{DD/MM/YYYY}{DD/MM/YYYY}{DD/MM/YYYY}
+\received{DD/M/YYYY}{DD/M/YYYY}{DD/M/YYYY}
 ```
 - 3 ngày: received / revised / accepted
+- **Quy tắc ghi tháng trong văn bản tiếng Việt:** tháng 1 và tháng 2 phải ghi lần lượt là `01` và `02`; tháng 3 đến tháng 9 ghi `3` đến `9`, không thêm số `0` ở phía trước; tháng 10 đến tháng 12 ghi đủ hai chữ số (`10`, `11`, `12`).
+- Ví dụ đúng: `\received{04/01/2026}{12/7/2026}{12/8/2026}`.
 
 ### 2.7. Abstract (Tiếng Việt)
 ```latex
@@ -297,15 +299,16 @@ Ví dụ:
 > **Khác biệt so với bản tiếng Anh:** Bài tiếng Việt **KHÔNG** bắt buộc dùng dòng `%` trước/sau `\begin{equation}` và `\end{equation}`. Tuy nhiên nếu bài gốc có thì giữ nguyên.
 
 ### 4.2. Inline math
+- **Bắt buộc**: Tất cả ký hiệu toán học, biến, toán tử, hàm số học, số mũ/chỉ số, ký hiệu Hy Lạp, và các đơn vị dạng toán học phải được đặt trong môi trường math mode (ví dụ `$ ... $`) ngay cả khi chúng đứng độc lập trong câu (ví dụ `$x$`, `$L$`, `$C_p$`, `$t$`).
 - Dùng `$...$` cho biến đơn hoặc biểu thức ngắn
 - Mô tả biến ngay sau equation: `trong đó $X$ là ...; $Y$ là ...; $Z$ là ...`
 
 ### 4.3. Ký hiệu đặc biệt
 - Dấu ngang dài (en-dash) trong text: `--` (ví dụ: `load--settlement`)
 - Khoảng `~` dùng trước `\cite`, `\ref`, `(\ref{...})`
-- **Đơn vị nhiệt độ**: theo chuẩn SI, giữa số và đơn vị phải có khoảng trắng không ngắt dòng `~`
-  - Đúng: `37~$^\circ$C`, `60~$^\circ$C`
-  - Sai: `37$^\circ$C`, `60$^\circ$C` (thiếu `~`)
+- **Đơn vị đo lường**: vì template đã nạp `siunitx`, ưu tiên cú pháp gọn `giá trị~\si{đơn vị}`; dùng `\SI{giá trị}{đơn vị}` khi cần siunitx định dạng cả giá trị. Ví dụ: `55,0~\si{\milli\metre}`, `140~\si{\micro\metre}`, `\SI{55,0}{\milli\metre}`, `\si{\kilogram\per\metre\cubed}`, `\si{\ohm}`.
+  - Với `\si` đứng sau một số, dùng `~` trước `\si` để tạo khoảng trắng không ngắt dòng; `\SI` tự xử lý khoảng cách.
+  - Chỉ dùng dạng thủ công có `~` (ví dụ `55~mm`, `37~$^\circ$C`) khi không thể dùng `siunitx` hoặc khi tương thích đặc biệt với macro/template; tuyệt đối không viết dính `55mm` hoặc dùng khoảng trắng thường giữa số và đơn vị.
 - **Công thức hóa học**: LUÔN dùng `\ce{}` (package `mhchem`), KHÔNG dùng subscript/superscript thủ công
   - Ví dụ: `\ce{H2SO4}`, `\ce{CO2}`, `\ce{NaOH}`
   - Sai: `H$_2$SO$_4$`, `CO$_2$`
