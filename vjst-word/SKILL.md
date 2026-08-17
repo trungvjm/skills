@@ -1,6 +1,6 @@
 ---
 name: vjst-word
-description: Tự động hóa quy trình chuyển đổi và định dạng toàn diện bản thảo gốc (.docx) vào file template Word chuẩn của tạp chí VJST (Vietnam Journal of Science and Technology) với các style sẵn có. Không làm thay đổi nội dung, chuẩn hóa các mục Front matter, Headings, Text, Figures, Tables, Back matter và References, đồng thời tạo 2 báo cáo kiểm tra (Proofreading & References). Alias: /vjst-word
+description: "Tự động hóa quy trình chuyển đổi và định dạng toàn diện bản thảo gốc (.docx) vào file template Word chuẩn của tạp chí VJST (Vietnam Journal of Science and Technology) với các style sẵn có. Không làm thay đổi nội dung, chuẩn hóa các mục Front matter, Headings, Text, Figures, Tables, Back matter và References, đồng thời tạo 2 báo cáo kiểm tra (Proofreading & References). Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa bản thảo Word và Tạo Báo cáo Kiểm tra cho VJST
