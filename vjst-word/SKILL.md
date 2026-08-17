@@ -23,8 +23,8 @@ Kỹ năng này thực hiện 2 nhiệm vụ chính:
 | :--- | :--- | :--- |
 | **Loại bài báo** | `008_Section 1.` | `REVIEW PAPER`, `RESEARCH PAPER`, `SHORT COMMUNICATION` (chữ in hoa) |
 | **Tiêu đề bài báo** | `002_Title` | 18pt Bold. **BẮT BUỘC DẠNG NORMAL CASE (Sentence case)**: Chỉ viết hoa chữ cái đầu tiên của tiêu đề, chữ cái đầu tiên ngay sau dấu hai chấm (`:`), các từ viết tắt/acronym bắt buộc (COVID-19, SARS-CoV-2, DNA, RNA...) và danh từ riêng |
-| **Tác giả (Authors)** | `003_Author` | 12pt Bold, danh sách tác giả, đánh dấu `*` cho tác giả liên hệ |
-| **Địa chỉ (Affiliation)**| `004_Affiliation` | 11pt Italic, mỗi affiliation có thể ngắt dòng `\n` |
+| **Tác giả (Authors)** | `003_Author` | 12pt Bold. Danh sách tác giả, **các chỉ số địa chỉ (affiliation numbers) và dấu sao `*` liên hệ BẮT BUỘC Ở DẠNG SUPERSCRIPT** (chỉ số trên). |
+| **Địa chỉ (Affiliation)**| `004_Affiliation` | 11pt Italic. **Các chỉ số địa chỉ ở đầu dòng (`1`, `2`, `1, 2`...) BẮT BUỘC Ở DẠNG SUPERSCRIPT** (chỉ số trên), theo sau là tên đơn vị/địa chỉ. |
 | **Email liên hệ** | `005_Email` | 10pt, dạng `*Email: ...` hoặc `*E-mail: ...` |
 | **Lịch sử bài báo** | `006_History` | 10pt, `Received: ...; Accepted for publication: ...` |
 | **Tóm tắt (Abstract)** | `007_Abstract` | 11pt, Run đầu `Abstract. ` in đậm, nội dung sau viết thường |
