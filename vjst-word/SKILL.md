@@ -49,6 +49,7 @@ Kỹ năng này thực hiện 2 nhiệm vụ chính:
 
 - **Định dạng chung**: Đánh số với tiền tố `{i}. \t`.
 - **Dấu phân cách Tác giả và Tiêu đề**: Sử dụng dấu gạch ngang en-dash có khoảng trắng hai bên ` – ` (Unicode `\u2013`).
+- **Quy tắc danh sách tác giả (Tối đa 10 tác giả)**: Với tài liệu tham khảo có từ 10 tác giả trở lên, chỉ liệt kê 10 tác giả đầu tiên, theo sau là `, et al. – ` (ví dụ: `Author 1, Author 2, ..., Author 10, et al. – `).
 - **Tiêu đề bài báo**: Viết dạng sentence case, kết thúc bằng dấu chấm `. `. Tên loài sinh học, từ Latin (*in vitro*, *in vivo*, *Terminalia catappa*...) phải được in nghiêng.
 - **Tạp chí (Journal Article)**:
   - Tên tạp chí viết tắt chuẩn ISO 4 (chữ thẳng, không in nghiêng), theo sau là dấu phẩy `, `.
