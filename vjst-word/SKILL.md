@@ -95,7 +95,7 @@ Rà soát toàn văn bản thảo theo các quy tắc biên tập khoa học c�
 - **Kiểm tra trích dẫn nội văn (In-text citations)**:
   - **Hình ảnh (Figures)**: Kiểm tra từng hình (Figure 1, Figure 2...) đã được dẫn chiếu trong nội văn hay chưa.
   - **Bảng biểu (Tables)**: Kiểm tra từng bảng (Table 1, Table 2...) đã được dẫn chiếu trong nội văn hay chưa.
-  - **Tài liệu tham khảo (References)**: Kiểm tra từng số tài liệu `[1]` đến `[N]` trong nội văn (bao gồm dải trích dẫn `[1-3]`, `[5, 9–11]`). **BẮT BUỘC liệt kê rõ ràng các tài liệu chưa được trích dẫn (Uncited References)** và chỉ ra vị trí nghi vấn tác giả quên đặt mã trích dẫn.
+  - **Tài liệu tham khảo (References)**: Kiểm tra từng số tài liệu `[1]` đến `[N]` trong nội văn (bao gồm dải trích dẫn `[1–3]`, `[5, 9–11]`). **BẮT BUỘC kiểm tra thứ tự trích dẫn (Sequential Order)**: Các tài liệu xuất hiện lần đầu phải theo thứ tự tăng dần ($[1], [2], [3], [4]\dots$); chỉ rõ bất kỳ tài liệu nào xuất hiện sai thứ tự (out of order), nhảy cóc (gaps) hoặc chưa được trích dẫn (Uncited References).
 - **Hệ đơn vị đo lường chuẩn SI**: Đơn vị phải cách số đứng trước 1 khoảng trắng / option space (ví dụ: `10 mg`, `50 mL`, `37 °C`, `24 h`, `100 kDa`, `5.5 inches`...).
 - **Ký hiệu phần trăm (%)**: Bắt buộc phải cách số đứng trước 1 khoảng trắng (ví dụ: `10 %`, `95.5 %`, `0.5 %`...).
 - **Chuẩn hóa địa danh Việt Nam**:
