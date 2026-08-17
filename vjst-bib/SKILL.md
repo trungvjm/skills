@@ -57,7 +57,6 @@ Convert the raw references into valid BibTeX, apply specific VJST formatting rul
 
 ### 6. BibTeX field rules
 - Output valid BibTeX using common fields: `author, title, journal, year, volume, number, pages, doi, url, publisher`.
-- **Author rule (Max 10 authors)**: Khi bài báo có từ 10 tác giả trở lên, chỉ ghi 10 tác giả đầu tiên và thêm `and others` (hoặc `et al.`).
 - Use `journal`, not `journaltitle`.
 - Do not fabricate missing data.
 
