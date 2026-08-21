@@ -210,10 +210,15 @@ Nội dung paragraph...
 - Khi chuẩn hóa: nếu bài gốc dùng bold/italic thủ công cho tiểu mục (ví dụ `\textbf{a.}` hoặc `\textit{a) Tên mục}`), phải chuyển thành `\subsubsection{Tên mục}` để class tự format
 
 ### 3.3. Spacing
-- Trước `\section` nên có 2 dòng trống
-- Trước `\subsection` nên có 1 dòng trống
-- Trước `\subsubsection` nên có 1 dòng trống
-- Không có dòng trống thừa giữa heading và paragraph đầu tiên
+- Giữa **mọi paragraph trong phần nội dung** phải có **đúng 1 dòng trống** (đây là cách LaTeX nhận biết đoạn mới).
+- Đây là mục kiểm tra bắt buộc trước khi báo hoàn tất: phải rà toàn bộ file từ sau `\end{frontmatter}` đến trước bibliography, không chỉ kiểm tra một vài đoạn đầu.
+- Không được để hai paragraph liên tiếp chỉ cách nhau một ký tự xuống dòng; phải có dòng trống thực sự.
+- Không được gộp hai paragraph độc lập trên cùng một dòng nguồn.
+- Trước `\section` nên có 2 dòng trống.
+- Trước `\subsection` nên có 1 dòng trống.
+- Trước `\subsubsection` nên có 1 dòng trống.
+- Không có dòng trống thừa giữa heading và paragraph đầu tiên.
+- Sau khi chuẩn hóa phải kiểm tra lại bằng cách rà các dòng văn bản liên tiếp và báo cáo riêng trạng thái paragraph spacing.
 
 ---
 
