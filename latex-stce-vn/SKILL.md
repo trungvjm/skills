@@ -311,6 +311,7 @@ Ví dụ:
 - Dấu ngang dài (en-dash) trong text: `--` (ví dụ: `load--settlement`)
 - Khoảng `~` dùng trước `\cite`, `\ref`, `(\ref{...})`
 - **Đơn vị đo lường**: vì template đã nạp `siunitx`, ưu tiên cú pháp gọn `giá trị~\si{đơn vị}`; dùng `\SI{giá trị}{đơn vị}` khi cần siunitx định dạng cả giá trị. Ví dụ: `55,0~\si{\milli\metre}`, `140~\si{\micro\metre}`, `\SI{55,0}{\milli\metre}`, `\si{\kilogram\per\metre\cubed}`, `\si{\ohm}`.
+  - Giữ chuẩn SI nhưng nếu nguồn dùng dấu `/` và cách viết không mơ hồ, ưu tiên giữ dấu này trong output: `400~\si[per-mode=symbol]{\metre\per\second}` → `400~m/s`. Không đặt `per-mode` toàn cục. Với mẫu số không phải đơn vị SI, giữ slash thủ công, ví dụ `33,3~\si{\cubic\centi\metre}/vòng`.
   - Với `\si` đứng sau một số, dùng `~` trước `\si` để tạo khoảng trắng không ngắt dòng; `\SI` tự xử lý khoảng cách.
   - Chỉ dùng dạng thủ công có `~` (ví dụ `55~mm`, `37~$^\circ$C`) khi không thể dùng `siunitx` hoặc khi tương thích đặc biệt với macro/template; tuyệt đối không viết dính `55mm` hoặc dùng khoảng trắng thường giữa số và đơn vị.
 - **Công thức hóa học**: LUÔN dùng `\ce{}` (package `mhchem`), KHÔNG dùng subscript/superscript thủ công
@@ -322,6 +323,15 @@ Ví dụ:
   - Đúng: `$1{,}5$`, `$0{,}12$`, `${{\\gamma}_{I}} = 1{,}0$`
   - Sai: `$1,5$` (sẽ có khoảng trắng thừa giữa `1` và `5`)
 - **Tỷ lệ phần trăm**: viết `\%` sau số, ví dụ: `60\%`, `100\%`
+- **Dấu ngoặc kép trong văn bản**: KHÔNG giữ dấu ngoặc kép ASCII `"` hoặc Unicode `“` / `”` trong source. Phải dùng hai dấu grave accent để mở và hai apostrophe để đóng, theo ví dụ bắt buộc bên dưới.
+
+```latex
+% Đúng
+Hiện tượng ``giật khi dừng xe'' xuất hiện khi xe dừng hẳn.
+
+% Sai
+Hiện tượng "giật khi dừng xe" xuất hiện khi xe dừng hẳn.
+```
 
 ### 4.4. Kiểm tra Unicode — thay bằng lệnh LaTeX
 
@@ -346,8 +356,8 @@ Ví dụ:
 | `α, β, γ, φ, σ, ε, λ, μ, ρ, θ, ω` ... | `$\alpha$`, `$\beta$`, `$\gamma$`, `$\varphi$`, `$\sigma$`, `$\varepsilon$`, `$\lambda$`, `$\mu$`, `$\rho$`, `$\theta$`, `$\omega$` ... |
 | `²`, `³` (superscript) | `$^2$`, `$^3$` |
 | `₁`, `₂` (subscript) | `$_1$`, `$_2$` |
-| `'`, `'` (smart quotes) | `\`{}`, `'` |
-| `"`, `"` (smart double quotes) | ` \`{}\`{} `, `''` |
+| `‘` / `’` (smart single quotes) | một grave accent (mở) / một apostrophe (đóng) |
+| `“` / `”` (smart double quotes), ASCII `"` | hai grave accent (mở) / hai apostrophe (đóng); xem ví dụ trên |
 
 ---
 
@@ -426,7 +436,7 @@ Khi cần 2 hình **cùng hàng** nhưng **mỗi hình** có caption và label r
 Dòng 1 & giá trị & giá trị \\
 Dòng 2 & giá trị & giá trị \\
 Dòng 3 & giá trị & giá trị \\
-		\\\bottomrule\end{tabularx}
+		\bottomrule\end{tabularx}
 	%\vspace*{1mm}\fontsize{10}{12} \selectfont
 \end{table}
 ```
@@ -446,7 +456,7 @@ Dòng 3 & giá trị & giá trị \\
 - **Tham chiếu (tiếng Việt)**: `Bảng~\ref{tN}` (KHÔNG dùng `Table~\ref{tN}`)
 - `\caption` đặt **TRƯỚC** `tabularx`
 - `\tabcolsep` tùy chỉnh khoảng cách cột
-- Dòng cuối KHÔNG có `\\` mà viết `\\\bottomrule\end{tabularx}`
+- Dòng dữ liệu cuối kết thúc bằng `\\`; dòng kế tiếp viết `\bottomrule\end{tabularx}`. KHÔNG thêm `\\` trước `\bottomrule`, vì sẽ tạo một hàng trống.
 - Placement: `[ht!]`
 - **KHÔNG** thêm space/padding thừa để căn cột. Giữ code bảng **compact**, dễ đọc
 - **Cột số**: dùng column type `S` (package `siunitx`) nếu cần **dóng hàng theo dấu**. Header của cột `S` phải wrap trong `{...}`
@@ -502,6 +512,27 @@ Khi được yêu cầu chuẩn hóa file LaTeX theo STCE tiếng Việt, thực
 6. **Chuẩn hóa tables**: tabularx, booktabs/`\ML`, `\rrr`/`\lll`, label, tham chiếu `Bảng~\ref{}`
 7. **Chuẩn hóa citations**: format `\cite`, kiểm tra `~` spacing
 8. **Kiểm tra kết thúc**: bibliography, `\end{document}`
+
+### 9.1. Checklist bắt buộc sau khi chuẩn hóa
+
+Chỉ báo hoàn tất khi đã kiểm tra và ghi nhận kết quả cho toàn bộ các mục sau:
+
+- [ ] **Backup**: file `_original.tex` và `_original.bib` tồn tại; không bị ghi đè.
+- [ ] **Đối chiếu nội dung gốc**: đọc trực tiếp toàn bộ `_original.tex` và file đã chuẩn hóa theo từng khối; đối chiếu frontmatter, từng paragraph, caption, bảng, phương trình, citation và bibliography. Ghi rõ dòng gốc → dòng mới cho mọi nội dung bị thêm, bỏ hoặc đổi nghĩa; chỉ kết luận đạt khi không còn thay đổi chưa được user phê duyệt. Mọi điểm nghi ngờ phải báo tác giả, không tự suy diễn hoặc sửa.
+- [ ] **Preamble/template**: documentclass, package, proof status, `\id`, volume, DOI và bibliography đúng chuẩn.
+- [ ] **Math mode**: không còn biến, chỉ số, số mũ, ký hiệu Hy Lạp, dấu toán học hoặc dấu trừ viết ngoài math mode.
+- [ ] **Đồng nhất ký hiệu**: đối chiếu mọi lần xuất hiện của từng ký hiệu trong văn bản, phương trình, bảng, caption và tham chiếu; kiểm tra chính xác chữ hoa/thường, ký tự Hy Lạp, chỉ số dưới/trên, dấu mũ, gạch trên và đơn vị. Ghi rõ mọi khác biệt; chỉ sửa khi bản gốc hoặc user xác nhận ý nghĩa, không tự đoán ký hiệu thiếu.
+- [ ] **Đơn vị và số**: đơn vị dùng `siunitx`; số thập phân tiếng Việt dùng dấu phẩy đúng cú pháp math mode (`{,}`); không còn đơn vị viết dính hoặc Unicode đặc biệt chưa xử lý.
+- [ ] **Paragraph**: giữa các paragraph có đúng một dòng trống; heading có spacing đúng quy định; không gộp hoặc tách sai paragraph.
+- [ ] **Cách viết tác giả**: thay thống nhất `và cộng sự`/`cùng cộng sự` bằng `và cs.` theo quy định của bài tiếng Việt.
+- [ ] **Khoảng cách quanh phương trình**: không có dòng trống ngay trước phương trình; sau phương trình có đúng một dòng trống nếu đoạn tiếp theo bắt đầu bằng chữ hoa, và không có dòng trống nếu đoạn tiếp theo bắt đầu bằng chữ thường.
+- [ ] **Nhiều biểu thức trong một phương trình**: các biểu thức cùng dòng được ngăn cách bằng `;\quad`, không dùng dấu phẩy thay thế khi không phải dấu phân cách nội bộ của vector/bảng trường hợp.
+- [ ] **Figures/tables**: mọi file hình tồn tại và mở được; đường dẫn, placement, caption, label và tham chiếu `Hình~\ref{}`/`Bảng~\ref{}` đúng; bảng dùng `tabularx` và booktabs.
+- [ ] **Citations/references**: mọi citation có key trong `.bib`, mọi label được tham chiếu đúng; không còn cảnh báo undefined sau khi biên dịch lại.
+- [ ] **Biên dịch**: chạy chu trình LaTeX/BibTeX phù hợp, sau đó chạy LaTeX đủ số lần để ổn định cross-reference; PDF được tạo thành công.
+- [ ] **Kiểm tra chéo AGY**: nếu AGY khả dụng hoặc được yêu cầu, chạy kiểm tra chéo sau cùng và đối chiếu các cảnh báo về nội dung, citation, hình, bảng, phương trình và bố cục với file đã chuẩn hóa.
+- [ ] **Warnings**: rà `overfull/underfull`, missing figure/font, hyperref và BibTeX; sửa nếu thuộc phạm vi format hoặc ghi rõ warning còn lại trong báo cáo cuối.
+- [ ] **Báo cáo**: ghi file đầu ra, số trang, trạng thái compile, lỗi/warning còn lại và các thay đổi format chính; không báo “hoàn tất” nếu còn lỗi biên dịch hoặc undefined reference/citation.
 
 ### Lưu ý quan trọng
 - **LUÔN backup** file trước khi chỉnh sửa

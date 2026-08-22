@@ -387,6 +387,26 @@ Khi được yêu cầu chuẩn hóa file LaTeX theo STCE/HUCE, thực hiện th
 7. **Chuẩn hóa citations**: format `\cite`, kiểm tra `~` spacing
 8. **Kiểm tra kết thúc**: Acknowledgment, bibliography
 
+### 8.1. Mandatory post-normalization checklist
+
+Do not report the file as complete until every item below has been checked and recorded:
+
+- [ ] **Backup**: `_original.tex` and `_original.bib` exist and were not overwritten.
+- [ ] **Content comparison**: compare against the original; scientific content, values, symbols, equations, paragraph order, figure/table captions, and references are unchanged. Report any doubtful case to the author.
+- [ ] **Preamble/template**: document class, packages, proof status, `\id`, volume, DOI, and bibliography are correct.
+- [ ] **Math mode**: variables, subscripts, superscripts, Greek letters, mathematical signs, and minus signs are not left in text mode; notation is consistent throughout the article.
+- [ ] **Units and numbers**: use `siunitx`; decimal points use the English convention and are syntactically correct in math mode; no joined units or unprocessed Unicode symbols remain.
+- [ ] **Paragraphs**: exactly one blank line separates body paragraphs; heading spacing is correct; paragraphs were not accidentally merged or split.
+- [ ] **Author wording**: use `et al.` consistently where the English template requires it; do not leave mixed author-collaboration wording.
+- [ ] **Equation spacing**: no blank line immediately precedes a display equation; add exactly one blank line after an equation when the following paragraph starts with an uppercase letter, and no blank line when it starts with lowercase text.
+- [ ] **Multiple expressions in one equation**: separate same-line expressions with `;\quad`; do not replace it with a comma unless the comma is an internal separator for a vector or cases environment.
+- [ ] **Figures/tables**: every image exists and opens; paths, placement, captions, labels, and `Fig.~\ref{}`/`Table~\ref{}` references are correct; tables use `tabularx` and booktabs.
+- [ ] **Citations/references**: every citation key exists in `.bib`, every label resolves, and no undefined citation/reference remains after recompilation.
+- [ ] **Compilation**: run the appropriate LaTeX/BibTeX cycle, then rerun LaTeX enough times to stabilize cross-references; confirm that the PDF is generated.
+- [ ] **AGY cross-check**: if AGY is available or requested, run it after normalization and reconcile warnings about content, citations, figures, tables, equations, and layout with the normalized file.
+- [ ] **Warnings**: review `overfull/underfull`, missing figure/font, hyperref, and BibTeX warnings; fix format issues or list remaining warnings in the final report.
+- [ ] **Report**: record output files, page count, compilation status, remaining errors/warnings, and the main format changes; never report completion while compilation or undefined-reference/citation errors remain.
+
 ### Lưu ý quan trọng
 - **LUÔN backup** file trước khi chỉnh sửa
 - Thực hiện **từng bước**, commit sau mỗi nhóm thay đổi

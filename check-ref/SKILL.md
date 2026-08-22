@@ -30,24 +30,20 @@ During these checks, pay attention to the following:
 ### Step 2: Create ID.md Report
 Create a new file named `[ID].md` in the same directory to report your findings from Step 1. Do NOT apply these content changes to the `.bib` file yet. Let the user review this report first.
 
-The report MUST include:
-**A. Processing Summary**
-- Total references processed.
-- Total discrepancies found.
-- Number of journal names standardized.
+The report MUST be a single ordered list, following the exact reference order `[1]`, `[2]`, `[3]`, etc. Do NOT group findings into separate sections by problem type.
 
-**B. Missing Authors (Requires Review)**
-- List any references where the author field was incomplete (e.g., uses "others" or "et al.") and provide the full author list found online.
+For every reference, write one item containing:
+- A clear status: **Đã đầy đủ**, **Cần kiểm tra**, **Thiếu [field]**, **Sai khác [field]**, or **Chưa xác minh được**.
+- The specific fields checked: title, authors, year, venue, volume, issue, pages, DOI/URL, edition, or publisher, as applicable.
+- The exact discrepancy or missing data. Never guess a correction. If an online result is truncated, fuzzy, or refers to another edition/version, state that explicitly and do not replace the original metadata.
+- A source label identifying what verified the item: **Google Scholar**, **Crossref**, **DataCite**, **DOI resolver**, publisher/official source, or a combination. If a source was unavailable or blocked by CAPTCHA, say so.
 
-**C. Discrepancies (Requires Review)**
-- List any items where the verified metadata (year, volume, issue, pages) differs from the original input.
+Use concise wording, for example:
 
-**D. Anomalies and Missing Data (Unverifiable References)**
-- List any references that cannot be verified or lack sufficient metadata (e.g., remained as `@misc`, missing DOI/author/year).
-- **CRITICAL:** If Crossref or online searches return NO journal name or booktitle (e.g. for preprints like Research Square), you MUST explicitly report this here so the Editor is notified.
-- **CRITICAL ANOMALY CHECK:** You MUST warn the user about ANY unusual signs in a reference (e.g., completely missing fields, suspicious DOIs, URLs that don't match the DOI, unusually short/long titles, or data that seems corrupted). If it looks abnormal, flag it here.
+`[1] Đã đầy đủ. Title, authors, year, venue and DOI match. Nguồn: Google Scholar + Crossref.`
 
-**E. Google Scholar Cross-Check Results**
-- Document the results of your Google Scholar searches for ALL references. Clearly list any differences Scholar indicates about the authors, year, and venue compared to the original input. If any references could not be found on Google Scholar, state that explicitly.
+`[2] Thiếu 1 tác giả: online source lists ...; original lists .... Nguồn: Google Scholar + Crossref. Chờ approval.`
 
-Wait for user confirmation before applying the changes from Sections B and C to the final `ID.bib` file.
+`[3] Chưa xác minh được. Google Scholar returned no result/CAPTCHA; no DOI for Crossref.`
+
+The ordered list must cover **all** references, including references with no discrepancy. At the end, add only one short status line stating that the `.bib` file has not been changed and that approval is required before applying discrepancies or missing-author findings.
