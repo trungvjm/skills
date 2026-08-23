@@ -78,29 +78,29 @@ Kỹ năng này thực hiện các nhiệm vụ chính:
 
 ## 2. Hệ thống Style chuẩn của VJST Word Template
 
-| Phần | Style áp dụng | Quy cách chi tiết & Quy tắc Tô màu Green |
-| :--- | :--- | :--- |
-| **Loại bài báo** | `008_Section 1.` | 11pt Bold (`RESEARCH PAPER` hoặc `REVIEW PAPER`). |
-| **Tiêu đề bài báo** | `002_Title` | 18pt Bold, Sentence case. Tô green các từ được sửa chữ hoa/thường hoặc tên loài in nghiêng. |
-| **Tác giả (Authors)** | `003_Author` | 12pt Bold. **Chỉ số affiliation và dấu `*` BẮT BUỘC SUPERSCRIPT**. Tô green nếu có sửa đổi. |
-| **Địa chỉ (Affiliation)**| `004_Affiliation` | 11pt Italic. **Chỉ số đầu dòng BẮT BUỘC SUPERSCRIPT**. Tô green địa danh `Viet Nam`, `Ha Noi` chuẩn hóa. |
-| **Email liên hệ** | `005_Email` | 10pt; `*Email: ...` hoặc `*Emails: ...`. |
-| **Lịch sử bài báo** | `006_History` | 10pt; `Received: ...; Accepted for publication: ...`. |
-| **Tóm tắt (Abstract)** | `007_Abstract` | 11pt, run đầu **`Abstract. `** in đậm. Tô green các điểm sửa chính tả / đơn vị SI. |
-| **Keywords** | `007_Keyword-Classification` | Run `Keywords` in nghiêng, theo sau là danh sách từ khóa. Tô green các từ chuẩn hóa. |
-| **Classification numbers** | `007_Keyword-Classification` | Run `Classification numbers` in nghiêng, theo sau là các mã số (ví dụ `2.5.2, 2.5.3.`). |
-| **Tiêu đề mục cấp 1** | `008_Section 1.` | 11pt Bold, Sentence case (ví dụ `1. Introduction`, `2. Materials and methods`...). |
-| **Tiêu đề mục cấp 2** | `009_Subsection 1.1.` | 11pt Bold, Sentence case (ví dụ `2.1. Materials`...). |
-| **Tiêu đề mục cấp 3** | `010_Subsubsection 1.1.1.` | 11pt Bold Italic (ví dụ `2.4.1. Characterization...`). |
-| **Đoạn văn nội dung** | `000_Text` | 11pt. In nghiêng danh pháp sinh học (*Kerria lacca*, *E. coli*), chỉ số hóa học. **Tô green toàn bộ các điểm sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị**. |
-| **Ảnh minh họa** | `012_Figure` | Căn giữa, chứa hình ảnh chất lượng cao (~5.5 inches). |
-| **Chú thích hình** | `013_FigCap` | Căn giữa; ví dụ *Figure 1.* Chú thích... |
-| **Chú thích bảng** | `013_TableCap` | Căn trái; ví dụ *Table 1.* Chú thích... |
-| **Nội dung bảng** | `014_Table` | Kẻ viền 3 dòng khoa học (bỏ viền dọc), header in đậm, số liệu căn giữa. |
-| **Lời cảm ơn** | `007_Keyword-Classification` | ***Acknowledgments.*** theo sau là nội dung tài trợ/cảm ơn. |
-| **Đóng góp tác giả** | `007_Keyword-Classification` | ***CRediT authorship contribution statement.*** theo sau là phân công vai trò. |
-| **Xung đột lợi ích** | `007_Keyword-Classification` | ***Declaration of competing interest.*** theo sau là lời tuyên bố. |
-| **Tài liệu tham khảo** | `016_Tailieuthamkhao` | Định dạng theo CSL `vietnam-journal-of-science-and-technology.csl`. **Tô green các thông tin được bổ sung/chuẩn hóa (Volume in đậm, tên viết tắt, DOI link, tác giả)**. |
+| Phần | Style áp dụng | Căn lề (Alignment) | Quy cách chi tiết & Quy tắc Tô màu Green |
+| :--- | :--- | :---: | :--- |
+| **Loại bài báo** | `008_Section 1.` | **Căn giữa (Center)** | 11pt Bold (`RESEARCH PAPER` hoặc `REVIEW PAPER`). |
+| **Tiêu đề bài báo** | `002_Title` | **Căn giữa (Center)** | 18pt Bold, Sentence case. Tô green các từ được sửa chữ hoa/thường hoặc tên loài in nghiêng. |
+| **Tác giả (Authors)** | `003_Author` | **Căn giữa (Center)** | 12pt Bold. **Chỉ số affiliation và dấu `*` BẮT BUỘC SUPERSCRIPT**. Tô green nếu có sửa đổi. |
+| **Địa chỉ (Affiliation)**| `004_Affiliation` | **Căn giữa (Center)** | 11pt Italic. **Chỉ số đầu dòng BẮT BUỘC SUPERSCRIPT**. Tô green địa danh `Viet Nam`, `Ha Noi` chuẩn hóa. |
+| **Email liên hệ** | `005_Email` | **Căn giữa (Center)** | 10pt; `*Email: ...` hoặc `*Emails: ...`. |
+| **Lịch sử bài báo** | `006_History` | **Căn giữa (Center)** | 10pt; `Received: ...; Accepted for publication: ...`. |
+| **Tóm tắt (Abstract)** | `007_Abstract` | **Căn đều 2 bên (Justify)** | 11pt, run đầu **`Abstract. `** in đậm. Tô green các điểm sửa chính tả / đơn vị SI. |
+| **Keywords** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | Run `Keywords:` in nghiêng, theo sau là danh sách từ khóa. Tô green các từ chuẩn hóa. |
+| **Classification numbers** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | Run `Classification numbers:` in nghiêng, theo sau là các mã số (ví dụ `2.5.2, 2.5.3.`). |
+| **Tiêu đề mục cấp 1** | `008_Section 1.` | **Căn giữa (Center)** | 11pt Bold, Sentence case (ví dụ `1. Introduction`, `2. Materials and methods`...). |
+| **Tiêu đề mục cấp 2** | `009_Subsection 1.1.` | **Căn trái (Left)** | 11pt Bold, Sentence case (ví dụ `2.1. Materials`...). |
+| **Tiêu đề mục cấp 3** | `010_Subsubsection 1.1.1.` | **Căn trái (Left)** | 11pt Bold Italic (ví dụ `2.4.1. Characterization...`). |
+| **Đoạn văn nội dung** | `000_Text` | **Căn đều 2 bên (Justify)** | 11pt. In nghiêng danh pháp sinh học (*Kerria lacca*, *E. coli*), chỉ số hóa học. **Tô green toàn bộ các điểm sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị**. |
+| **Ảnh minh họa** | `012_Figure` | **Căn giữa (Center)** | Căn giữa, chứa hình ảnh chất lượng cao (~5.5 inches). |
+| **Chú thích hình** | `013_FigCap` | **Căn giữa (Center)** | Căn giữa; ví dụ *Figure 1.* Chú thích... |
+| **Chú thích bảng** | `013_TableCap` | **Căn giữa (Center)** | Căn giữa; ví dụ *Table 1.* Chú thích... |
+| **Nội dung bảng** | `014_Table` | **Bảng căn giữa trang** | Kẻ viền 3 dòng khoa học (bỏ viền dọc), header in đậm, số liệu căn giữa. |
+| **Lời cảm ơn** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***Acknowledgments.*** theo sau là nội dung tài trợ/cảm ơn. |
+| **Đóng góp tác giả** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***CRediT authorship contribution statement.*** theo sau là phân công vai trò. |
+| **Xung đột lợi ích** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***Declaration of competing interest.*** theo sau là lời tuyên bố. |
+| **Tài liệu tham khảo** | `016_Tailieuthamkhao` | **Căn đều 2 bên (Justify)** | Định dạng theo CSL `vietnam-journal-of-science-and-technology.csl`. **Tô green các thông tin được bổ sung/chuẩn hóa (Volume in đậm, tên viết tắt, DOI link, tác giả)**. |
 
 ---
 
