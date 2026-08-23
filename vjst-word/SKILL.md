@@ -49,10 +49,12 @@ Kỹ năng này thực hiện các nhiệm vụ chính:
 ### 0.3. Bảo toàn Header & Footer, chỉ thay thế nội dung và cập nhật DOI
 - **Giữ nguyên Header & Footer**: BẮT BUỘC giữ nguyên cấu trúc phân trang, lề trang (`w:sectPr`), First Page Header, First Page Footer, Running Header và Running Footer có sẵn trong file template `VJST-[ID].docx`.
 - **Chỉ thay thế nội dung**: Chỉ xóa hoặc thay thế các đoạn văn/bảng biểu mẫu trong phần thân bài (`doc._body`), tuyệt đối không xóa bỏ `sectPr` hay can thiệp phá vỡ cấu trúc header/footer.
-- **Cập nhật DOI phù hợp với mã bài**: Trong Header trang đầu (First Page Header), dòng DOI mặc định (ví dụ `DOI: https://doi.org/10.15625/2525-2518/xx` hoặc `2525-2518/xxxx`) **BẮT BUỘC phải được thay thế chính xác bằng mã số bài báo `[ID]`**:
-  - Cấu trúc: `DOI: https://doi.org/10.15625/2525-2518/[ID]`
-  - Ví dụ bài `19326`: `DOI: https://doi.org/10.15625/2525-2518/19326`
-  - Ví dụ bài `19436`: `DOI: https://doi.org/10.15625/2525-2518/19436`
+- **Cập nhật DOI (Chỉ thay thế mã bài vào 'xx')**:
+  - Trong Header trang đầu (First Page Header), đoạn DOI mẫu chứa style `001Journalname`, run `DOI: ` và thẻ `<w:hyperlink>` màu xanh dương `0000FF` (`https://doi.org/10.15625/2525-2518/xx`).
+  - **CHỈ THAY THẾ MÃ BÀI BÁO `[ID]` VÀO KÝ TỰ `xx`**:
+    - Thay thế text hiển thị: `https://doi.org/10.15625/2525-2518/[ID]` (chỉ đổi `xx` thành `[ID]`).
+    - Cập nhật target URL trong relationship `rId1` của header: `https://doi.org/10.15625/2525-2518/[ID]`.
+    - **TUYỆT ĐỐI KHÔNG** gán `p.text = ...` vì sẽ làm mất thẻ `<w:hyperlink>` và làm mất màu xanh hyperlink chuẩn của template.
 
 ### 0.4. Quy tắc bắt buộc: Tô chữ màu GREEN (Xanh lá) cho MỌI điểm thay đổi nội dung
 - **Khi chuẩn hóa hoặc có bất kỳ thay đổi nào về nội dung** (dù nhỏ nhất như sửa chính tả, chuẩn hóa địa danh, in nghiêng danh pháp Latin, thêm khoảng trắng đơn vị SI/%, sửa affiliation, chuẩn hóa metadata tài liệu tham khảo theo CSL, chuẩn hóa tiêu đề/tác giả/email/lịch sử...):
@@ -128,7 +130,18 @@ Khi người dùng yêu cầu chuẩn hóa bản thảo vào template trong thư
 
 ### Bước 3: Khởi tạo và ghi nội dung vào file Template
 1. Mở file template `VJST-[ID].docx`, bảo toàn nguyên vẹn `sectPr`, First Page Header/Footer và Running Header.
-2. **Cập nhật DOI trong First Page Header**: Tìm đoạn chứa DOI trong `doc.sections[0].first_page_header` (hoặc header trang đầu) và thay thế thành `DOI: https://doi.org/10.15625/2525-2518/[ID]` với `[ID]` là mã bài chính xác (ví dụ `19326`, `18585`, `19436`...).
+2. **Cập nhật DOI trong First Page Header (Chỉ thay `xx` thành mã bài `[ID]`)**:
+   ```python
+   def update_header_doi(doc, article_id):
+       header = doc.sections[0].first_page_header
+       for p in header.paragraphs:
+           for t in p._p.xpath('.//w:t'):
+               if "2525-2518" in t.text or "doi.org" in t.text:
+                   t.text = re.sub(r'(2525-2518/)(xx|\d+)', rf'\g<1>{article_id}', t.text)
+       for rel_id, rel in list(header.part.rels.items()):
+           if "2525-2518" in rel.target_ref:
+               rel._target = re.sub(r'(2525-2518/)(xx|\d+)', rf'\g<1>{article_id}', rel.target_ref)
+   ```
 3. Xóa các phần tử body mẫu cũ (giữ lại `sectPr`).
 4. Ghi lần lượt các khối nội dung với đúng style VJST.
 5. **Áp dụng tô màu green (`RGBColor(0, 128, 0)`) cho toàn bộ các run có nội dung được chuẩn hóa, sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị SI, hoặc bổ sung metadata tài liệu tham khảo**.
