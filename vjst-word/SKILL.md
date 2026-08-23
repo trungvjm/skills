@@ -1,21 +1,31 @@
 ---
 name: vjst-word
-description: "Chuyển bản thảo gốc (.docx) sang một file Word mới dùng template VJST có sẵn style. Khi có chuẩn hóa/thay đổi về nội dung, BẮT BUỘC tô chữ màu green (xanh lá) cho các điểm thay đổi. Tạo 2 file báo cáo kiểm tra độc lập. Alias: /vjst-word"
+description: "Chuyển bản thảo gốc (.docx) sang một file Word mới dùng template VJST có sẵn style. Giữ nguyên header và footer trong file, chỉ thay thế nội dung, cập nhật DOI theo đúng mã bài. Khi có chuẩn hóa/thay đổi về nội dung, BẮT BUỘC tô chữ màu green (xanh lá) cho các điểm thay đổi. Tạo 2 file báo cáo kiểm tra độc lập. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa bản thảo Word và Tạo Báo cáo Kiểm tra cho VJST
 
 Kỹ năng này thực hiện 2 nhiệm vụ chính:
-1. Đưa nguyên văn toàn bộ nội dung bản thảo gốc (`.docx`) vào **một file Word mới** dựa trên template VJST (`VJST-[ID].docx` hoặc `VJST.docx`), chỉ áp dụng style và bố cục có sẵn.
+1. Đưa nội dung bản thảo gốc (`.docx`) vào **một file Word mới** dựa trên template VJST (`VJST-[ID].docx` hoặc `VJST.docx`), áp dụng hệ thống style và bố cục chuẩn, giữ nguyên header/footer và cập nhật DOI theo mã bài.
 2. Tạo **2 file báo cáo kiểm tra độc lập** (`REPORT-PROOFREADING-[ID].md` và `REPORT-REFERENCES-[ID].md`) trong thư mục bài báo.
 
-## 0. Quy tắc cốt lõi: Bảo toàn nội dung & Tô chữ màu Green cho các điểm thay đổi
+---
 
-### 0.1. Mặc định bảo toàn nội dung (FORMAT-ONLY)
+## 0. Quy tắc cốt lõi: Bảo toàn Header/Footer, Cập nhật DOI & Tô chữ màu Green cho các điểm thay đổi
+
+### 0.1. Mặc định bảo toàn nội dung (Content Integrity)
 - Khi chỉ thực hiện định dạng (Format-only): Không tự ý viết lại, diễn giải, dịch hoặc thay đổi cấu trúc câu văn học thuật.
 - Không được xóa thân bài mẫu bằng thao tác có thể làm mất đối tượng Word. Tạo file đích mới từ template rồi chèn/copy nguyên cấu trúc nội dung, hình, bảng, công thức OMML và hyperlink.
 
-### 0.2. Quy tắc bắt buộc: Tô chữ màu GREEN cho toàn bộ các điểm thay đổi nội dung
+### 0.2. Bảo toàn Header & Footer, chỉ thay thế nội dung và cập nhật DOI
+- **Giữ nguyên Header & Footer**: BẮT BUỘC giữ nguyên cấu trúc phân trang, lề trang (`w:sectPr`), First Page Header, First Page Footer, Running Header và Running Footer có sẵn trong file template `VJST-[ID].docx`.
+- **Chỉ thay thế nội dung**: Chỉ xóa hoặc thay thế các đoạn văn/bảng biểu mẫu trong phần thân bài (`doc._body`), tuyệt đối không xóa bỏ `sectPr` hay can thiệp phá vỡ cấu trúc header/footer.
+- **Cập nhật DOI phù hợp với mã bài**: Trong Header trang đầu (First Page Header), dòng DOI mặc định (ví dụ `DOI: https://doi.org/10.15625/2525-2518/xx` hoặc `2525-2518/xxxx`) **BẮT BUỘC phải được thay thế chính xác bằng mã số bài báo `[ID]`**:
+  - Cấu trúc: `DOI: https://doi.org/10.15625/2525-2518/[ID]`
+  - Ví dụ bài `19326`: `DOI: https://doi.org/10.15625/2525-2518/19326`
+  - Ví dụ bài `18585`: `DOI: https://doi.org/10.15625/2525-2518/18585`
+
+### 0.3. Quy tắc bắt buộc: Tô chữ màu GREEN (Xanh lá) cho MỌI điểm thay đổi nội dung
 - **Khi chuẩn hóa hoặc có bất kỳ thay đổi nào về nội dung** (dù nhỏ nhất như sửa chính tả, chuẩn hóa địa danh, in nghiêng danh pháp Latin, thêm khoảng trắng đơn vị SI/%, sửa affiliation, chuẩn hóa metadata tài liệu tham khảo theo CSL, chuẩn hóa tiêu đề/tác giả/email/lịch sử...):
   - **BẮT BUỘC ĐỔI MÀU CHỮ CỦA PHẦN THAY ĐỔI SANG MÀU XANH LÁ (Green color)**.
   - Mã màu chuẩn: `#008000` (hoặc `#00B050`), RGB: `(0, 128, 0)`.
@@ -88,10 +98,11 @@ Khi người dùng yêu cầu chuẩn hóa bản thảo vào template trong thư
 
 ### Bước 3: Khởi tạo và ghi nội dung vào file Template
 1. Mở file template `VJST-[ID].docx`, bảo toàn nguyên vẹn `sectPr`, First Page Header/Footer và Running Header.
-2. Xóa các phần tử body mẫu cũ (giữ lại `sectPr`).
-3. Ghi lần lượt các khối nội dung với đúng style VJST.
-4. **Áp dụng tô màu green (`RGBColor(0, 128, 0)`) cho toàn bộ các run có nội dung được chuẩn hóa, sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị SI, hoặc bổ sung metadata tài liệu tham khảo**.
-5. Lưu file đích `VJST-[ID].docx`.
+2. **Cập nhật DOI trong First Page Header**: Tìm đoạn chứa DOI trong `doc.sections[0].first_page_header` (hoặc header trang đầu) và thay thế thành `DOI: https://doi.org/10.15625/2525-2518/[ID]` với `[ID]` là mã bài chính xác (ví dụ `19326`, `18585`...).
+3. Xóa các phần tử body mẫu cũ (giữ lại `sectPr`).
+4. Ghi lần lượt các khối nội dung với đúng style VJST.
+5. **Áp dụng tô màu green (`RGBColor(0, 128, 0)`) cho toàn bộ các run có nội dung được chuẩn hóa, sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị SI, hoặc bổ sung metadata tài liệu tham khảo**.
+6. Lưu file đích `VJST-[ID].docx`.
 
 ---
 
