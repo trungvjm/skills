@@ -14,12 +14,12 @@ Kỹ năng này thực hiện các nhiệm vụ chính:
 
 ## 0. Quy tắc cốt lõi: Backup An toàn, Bảo toàn Header/Footer, Cập nhật DOI & Tô chữ màu Green
 
-### 0.1. Tự động tạo file Backup tăng dần trước khi chuẩn hóa & sửa đổi (Bắt buộc)
-- Trước khi thực hiện bất kỳ thao tác ghi đè, chuẩn hóa hoặc sửa đổi nào vào file Word đích (`VJST-[ID].docx` hoặc file cần sửa), **BẮT BUỘC phải tạo một bản sao lưu (Backup copy)** ngay trong cùng thư mục bài báo.
+### 0.1. Tự động tạo đúng 1 file Backup ở đầu mỗi lượt chat trước khi sửa đổi (Bắt buộc)
+- **Tần suất**: **Chỉ tạo đúng 1 bản backup ở đầu mỗi lượt yêu cầu của người dùng (sau mỗi lần chat thêm)** trước khi sửa đổi file Word đích (`VJST-[ID].docx` hoặc file cần sửa). Tuyệt đối **không tạo nhiều bản backup trung gian** trong cùng 1 lần chat nếu phải chạy nhiều bước thử nghiệm nội bộ.
 - **Quy cách đặt tên file Backup**:
   $$\text{<Tên file cần chuẩn hóa (bỏ đuôi .docx)>-backup(N).docx}$$
   - Lần chuẩn hóa đầu tiên: `[Tên file]-backup(1).docx` (ví dụ: `VJST-1-NAT-19436-backup(1).docx`)
-  - Lần sửa đổi/bổ sung tiếp theo: Tự động tăng dần chỉ số `N` lên thành `[Tên file]-backup(2).docx`, `[Tên file]-backup(3).docx`...
+  - Lần sửa đổi/bổ sung ở các lượt chat tiếp theo: Tự động tăng dần chỉ số `N` lên thành `[Tên file]-backup(2).docx`, `[Tên file]-backup(3).docx`...
   - **Cơ chế xác định chỉ số N trong Python**:
     ```python
     import os, re, shutil
