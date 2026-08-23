@@ -1,31 +1,60 @@
 ---
 name: vjst-word
-description: "Chuyển bản thảo gốc (.docx) sang một file Word mới dùng template VJST có sẵn style. Giữ nguyên header và footer trong file, chỉ thay thế nội dung, cập nhật DOI theo đúng mã bài. Khi có chuẩn hóa/thay đổi về nội dung, BẮT BUỘC tô chữ màu green (xanh lá) cho các điểm thay đổi. Tạo 2 file báo cáo kiểm tra độc lập. Alias: /vjst-word"
+description: "Chuyển bản thảo gốc (.docx) sang một file Word mới dùng template VJST có sẵn style. Tự động tạo file backup tăng dần [Tên file]-backup(N).docx trước khi chuẩn hóa. Giữ nguyên header và footer trong file, chỉ thay thế nội dung, cập nhật DOI theo đúng mã bài. Khi có chuẩn hóa/thay đổi về nội dung, BẮT BUỘC tô chữ màu green (xanh lá) cho các điểm thay đổi. Tạo 2 file báo cáo kiểm tra độc lập. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa bản thảo Word và Tạo Báo cáo Kiểm tra cho VJST
 
-Kỹ năng này thực hiện 2 nhiệm vụ chính:
-1. Đưa nội dung bản thảo gốc (`.docx`) vào **một file Word mới** dựa trên template VJST (`VJST-[ID].docx` hoặc `VJST.docx`), áp dụng hệ thống style và bố cục chuẩn, giữ nguyên header/footer và cập nhật DOI theo mã bài.
-2. Tạo **2 file báo cáo kiểm tra độc lập** (`REPORT-PROOFREADING-[ID].md` và `REPORT-REFERENCES-[ID].md`) trong thư mục bài báo.
+Kỹ năng này thực hiện các nhiệm vụ chính:
+1. **Tự động sao lưu file backup** theo quy tắc tăng dần `[Tên file]-backup(N).docx` trước khi thực hiện chuẩn hóa hoặc sửa chữa.
+2. Đưa nội dung bản thảo gốc (`.docx`) vào **một file Word mới** dựa trên template VJST (`VJST-[ID].docx` hoặc `VJST.docx`), áp dụng hệ thống style và bố cục chuẩn, giữ nguyên header/footer và cập nhật DOI theo mã bài.
+3. Tạo **2 file báo cáo kiểm tra độc lập** (`REPORT-PROOFREADING-[ID].md` và `REPORT-REFERENCES-[ID].md`) trong thư mục bài báo.
 
 ---
 
-## 0. Quy tắc cốt lõi: Bảo toàn Header/Footer, Cập nhật DOI & Tô chữ màu Green cho các điểm thay đổi
+## 0. Quy tắc cốt lõi: Backup An toàn, Bảo toàn Header/Footer, Cập nhật DOI & Tô chữ màu Green
 
-### 0.1. Mặc định bảo toàn nội dung (Content Integrity)
-- Khi chỉ thực hiện định dạng (Format-only): Không tự ý viết lại, diễn giải, dịch hoặc thay đổi cấu trúc câu văn học thuật.
-- Không được xóa thân bài mẫu bằng thao tác có thể làm mất đối tượng Word. Tạo file đích mới từ template rồi chèn/copy nguyên cấu trúc nội dung, hình, bảng, công thức OMML và hyperlink.
+### 0.1. Tự động tạo file Backup tăng dần trước khi chuẩn hóa & sửa đổi (Bắt buộc)
+- Trước khi thực hiện bất kỳ thao tác ghi đè, chuẩn hóa hoặc sửa đổi nào vào file Word đích (`VJST-[ID].docx` hoặc file cần sửa), **BẮT BUỘC phải tạo một bản sao lưu (Backup copy)** ngay trong cùng thư mục bài báo.
+- **Quy cách đặt tên file Backup**:
+  $$\text{<Tên file cần chuẩn hóa (bỏ đuôi .docx)>-backup(N).docx}$$
+  - Lần chuẩn hóa đầu tiên: `[Tên file]-backup(1).docx` (ví dụ: `VJST-1-NAT-19436-backup(1).docx`)
+  - Lần sửa đổi/bổ sung tiếp theo: Tự động tăng dần chỉ số `N` lên thành `[Tên file]-backup(2).docx`, `[Tên file]-backup(3).docx`...
+  - **Cơ chế xác định chỉ số N trong Python**:
+    ```python
+    import os, re, shutil
 
-### 0.2. Bảo toàn Header & Footer, chỉ thay thế nội dung và cập nhật DOI
+    def create_incremental_backup(target_path):
+        base_dir = os.path.dirname(target_path)
+        base_name = os.path.splitext(os.path.basename(target_path))[0]
+        pattern = re.compile(rf"^{re.escape(base_name)}-backup\((\d+)\)\.docx$")
+        existing_indices = [0]
+        for fname in os.listdir(base_dir):
+            m = pattern.match(fname)
+            if m:
+                existing_indices.append(int(m.group(1)))
+        next_idx = max(existing_indices) + 1
+        backup_path = os.path.join(base_dir, f"{base_name}-backup({next_idx}).docx")
+        if os.path.exists(target_path):
+            shutil.copy2(target_path, backup_path)
+            print(f"Created backup: {backup_path}")
+        return backup_path
+    ```
+
+### 0.2. Mặc định bảo toàn nội dung (Content Integrity)
+- Khi chỉ thực hiện định dạng (Format-only): Không tự ý viết lại, diễn giải, dịch hoặc thay đổi cấu trúc câu văn học thuật của tác giả khi không có yêu cầu.
+- Không được xóa thân bài mẫu bằng thao tác làm mất đối tượng Word (sectPr, header, footer, margins).
+- Bảo đảm 100% đối tượng khoa học (bảng, hình ảnh độ phân giải cao, công thức OMML, liên kết hyperlink) được giữ trọn vẹn.
+
+### 0.3. Bảo toàn Header & Footer, chỉ thay thế nội dung và cập nhật DOI
 - **Giữ nguyên Header & Footer**: BẮT BUỘC giữ nguyên cấu trúc phân trang, lề trang (`w:sectPr`), First Page Header, First Page Footer, Running Header và Running Footer có sẵn trong file template `VJST-[ID].docx`.
 - **Chỉ thay thế nội dung**: Chỉ xóa hoặc thay thế các đoạn văn/bảng biểu mẫu trong phần thân bài (`doc._body`), tuyệt đối không xóa bỏ `sectPr` hay can thiệp phá vỡ cấu trúc header/footer.
 - **Cập nhật DOI phù hợp với mã bài**: Trong Header trang đầu (First Page Header), dòng DOI mặc định (ví dụ `DOI: https://doi.org/10.15625/2525-2518/xx` hoặc `2525-2518/xxxx`) **BẮT BUỘC phải được thay thế chính xác bằng mã số bài báo `[ID]`**:
   - Cấu trúc: `DOI: https://doi.org/10.15625/2525-2518/[ID]`
   - Ví dụ bài `19326`: `DOI: https://doi.org/10.15625/2525-2518/19326`
-  - Ví dụ bài `18585`: `DOI: https://doi.org/10.15625/2525-2518/18585`
+  - Ví dụ bài `19436`: `DOI: https://doi.org/10.15625/2525-2518/19436`
 
-### 0.3. Quy tắc bắt buộc: Tô chữ màu GREEN (Xanh lá) cho MỌI điểm thay đổi nội dung
+### 0.4. Quy tắc bắt buộc: Tô chữ màu GREEN (Xanh lá) cho MỌI điểm thay đổi nội dung
 - **Khi chuẩn hóa hoặc có bất kỳ thay đổi nào về nội dung** (dù nhỏ nhất như sửa chính tả, chuẩn hóa địa danh, in nghiêng danh pháp Latin, thêm khoảng trắng đơn vị SI/%, sửa affiliation, chuẩn hóa metadata tài liệu tham khảo theo CSL, chuẩn hóa tiêu đề/tác giả/email/lịch sử...):
   - **BẮT BUỘC ĐỔI MÀU CHỮ CỦA PHẦN THAY ĐỔI SANG MÀU XANH LÁ (Green color)**.
   - Mã màu chuẩn: `#008000` (hoặc `#00B050`), RGB: `(0, 128, 0)`.
@@ -91,6 +120,7 @@ Khi người dùng yêu cầu chuẩn hóa bản thảo vào template trong thư
 ### Bước 1: Khảo sát và chuẩn bị môi trường
 1. Sử dụng `uv run --with python-docx --with pillow python3` để xử lý `.docx` và trích xuất hình ảnh.
 2. Xác định file bản thảo gốc (tác giả gửi) và file template đích (`VJST-[ID].docx` hoặc `VJST.docx`).
+3. **Tự động tạo file sao lưu (Backup copy)**: Luôn tạo file backup theo quy tắc tăng dần `[Tên file]-backup(N).docx` (ví dụ `VJST-1-NAT-19436-backup(1).docx`) trước khi thực hiện bất kỳ chỉnh sửa nào.
 
 ### Bước 2: Trích xuất hình ảnh và phân tích toàn vẹn XML
 1. Mở file `.docx` gốc như một file zip, trích xuất tất cả media trong `word/media/` ra thư mục tạm scratch.
@@ -98,7 +128,7 @@ Khi người dùng yêu cầu chuẩn hóa bản thảo vào template trong thư
 
 ### Bước 3: Khởi tạo và ghi nội dung vào file Template
 1. Mở file template `VJST-[ID].docx`, bảo toàn nguyên vẹn `sectPr`, First Page Header/Footer và Running Header.
-2. **Cập nhật DOI trong First Page Header**: Tìm đoạn chứa DOI trong `doc.sections[0].first_page_header` (hoặc header trang đầu) và thay thế thành `DOI: https://doi.org/10.15625/2525-2518/[ID]` với `[ID]` là mã bài chính xác (ví dụ `19326`, `18585`...).
+2. **Cập nhật DOI trong First Page Header**: Tìm đoạn chứa DOI trong `doc.sections[0].first_page_header` (hoặc header trang đầu) và thay thế thành `DOI: https://doi.org/10.15625/2525-2518/[ID]` với `[ID]` là mã bài chính xác (ví dụ `19326`, `18585`, `19436`...).
 3. Xóa các phần tử body mẫu cũ (giữ lại `sectPr`).
 4. Ghi lần lượt các khối nội dung với đúng style VJST.
 5. **Áp dụng tô màu green (`RGBColor(0, 128, 0)`) cho toàn bộ các run có nội dung được chuẩn hóa, sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị SI, hoặc bổ sung metadata tài liệu tham khảo**.
@@ -133,6 +163,7 @@ Sau khi hoàn tất định dạng file Word, tự động tạo 2 file báo cá
 
 ## 6. Tệp đầu ra bàn giao
 
-1. `VJST-[ID].docx`: File Word chuẩn hóa theo template VJST, **đã tô chữ màu green cho tất cả các điểm thay đổi/chuẩn hóa nội dung**.
-2. `REPORT-PROOFREADING-[ID].md`: Báo cáo hiệu đính và trích dẫn nội văn.
-3. `REPORT-REFERENCES-[ID].md`: Báo cáo đối soát tài liệu tham khảo.
+1. `[Tên file]-backup(N).docx`: Bản sao lưu an toàn được tạo tự động trước khi chỉnh sửa.
+2. `VJST-[ID].docx`: File Word chuẩn hóa theo template VJST, **đã tô chữ màu green cho tất cả các điểm thay đổi/chuẩn hóa nội dung**.
+3. `REPORT-PROOFREADING-[ID].md`: Báo cáo hiệu đính và trích dẫn nội văn.
+4. `REPORT-REFERENCES-[ID].md`: Báo cáo đối soát tài liệu tham khảo.
