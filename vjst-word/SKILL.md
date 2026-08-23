@@ -56,15 +56,15 @@ Kỹ năng này thực hiện các nhiệm vụ chính:
     - Cập nhật target URL trong relationship `rId1` của header: `https://doi.org/10.15625/2525-2518/[ID]`.
     - **TUYỆT ĐỐI KHÔNG** gán `p.text = ...` vì sẽ làm mất thẻ `<w:hyperlink>` và làm mất màu xanh hyperlink chuẩn của template.
 
-### 0.4. Quy tắc bắt buộc: Tô chữ màu GREEN (#29FF07) cho MỌI điểm thay đổi nội dung
+### 0.4. Quy tắc bắt buộc: Tô chữ màu GREEN (#2F6C1B) cho MỌI điểm thay đổi nội dung
 - **Khi chuẩn hóa hoặc có bất kỳ thay đổi nào về nội dung** (dù nhỏ nhất như sửa chính tả, chuẩn hóa địa danh, in nghiêng danh pháp Latin, thêm khoảng trắng đơn vị SI/%, sửa affiliation, chuẩn hóa metadata tài liệu tham khảo theo CSL, chuẩn hóa tiêu đề/tác giả/email/lịch sử...):
-  - **BẮT BUỘC ĐỔI MÀU CHỮ CỦA PHẦN THAY ĐỔI SANG MÀU XANH LÁ (Mã chuẩn `#29FF07`)**.
-  - Mã Hex chuẩn: `#29FF07` (hoặc `29ff07`), RGB: `(41, 255, 7)`.
+  - **BẮT BUỘC ĐỔI MÀU CHỮ CỦA PHẦN THAY ĐỔI SANG MÀU XANH LÁ (Mã chuẩn `#2F6C1B`)**.
+  - Mã Hex chuẩn: `#2F6C1B` (hoặc `2f6c1b`), RGB: `(47, 108, 27)`.
   - Trong `python-docx`:
     ```python
     from docx.shared import RGBColor
-    # Gán màu xanh lá chuẩn #29FF07 cho run có nội dung thay đổi/chuẩn hóa:
-    run.font.color.rgb = RGBColor(0x29, 0xFF, 0x07) # RGBColor(41, 255, 7)
+    # Gán màu xanh lá chuẩn #2F6C1B cho run có nội dung thay đổi/chuẩn hóa:
+    run.font.color.rgb = RGBColor(0x2F, 0x6C, 0x1B) # RGBColor(47, 108, 27)
     ```
   - Mục đích: Giúp tác giả và Ban biên tập nhận diện trực quan, rõ ràng 100% tất cả các vị trí đã được can thiệp hoặc chuẩn hóa trong bản thảo Word.
 
@@ -144,7 +144,7 @@ Khi người dùng yêu cầu chuẩn hóa bản thảo vào template trong thư
    ```
 3. Xóa các phần tử body mẫu cũ (giữ lại `sectPr`).
 4. Ghi lần lượt các khối nội dung với đúng style VJST và căn lề chuẩn (Căn giữa cho Tiêu đề, Tác giả, Địa chỉ, Email, Lịch sử, Section, Table/Fig Captions).
-5. **Áp dụng tô màu green chuẩn `#29FF07` (`RGBColor(0x29, 0xFF, 0x07)`) cho toàn bộ các run có nội dung được chuẩn hóa, sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị SI, hoặc bổ sung metadata tài liệu tham khảo**.
+5. **Áp dụng tô màu green chuẩn `#2F6C1B` (`RGBColor(0x2F, 0x6C, 0x1B)`) cho toàn bộ các run có nội dung được chuẩn hóa, sửa lỗi chính tả, in nghiêng danh pháp, thêm dấu cách `%`/đơn vị SI, hoặc bổ sung metadata tài liệu tham khảo**.
 6. Lưu file đích `VJST-[ID].docx`.
 
 ---
