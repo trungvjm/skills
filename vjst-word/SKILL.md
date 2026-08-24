@@ -1,6 +1,6 @@
 ---
 name: vjst-word
-description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng tên loài sinh học (E. coli), in nghiêng biến số toán học (R², Epc, ipc, x, y, ν, 2θ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ, thừa/thiếu space, lỗi thiếu dấu câu, chuẩn hóa chỉ số trên/dưới cho công thức hóa học/ion (Cu₂MoS₄, Mn²⁺, S²⁻), ưu tiên đơn vị có dấu gạch chéo (mV/s, mol/L) và đảm bảo tính thống nhất của cách dùng trong bài. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
+description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Quy tắc quét sâu và quét chậm từng phần (không vội vàng) theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng tên loài sinh học (E. coli), in nghiêng biến số toán học (R², Epc, ipc, x, y, ν, 2θ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ, thừa/thiếu space, lỗi thiếu dấu câu, chuẩn hóa chỉ số trên/dưới cho công thức hóa học/ion (Cu₂MoS₄, Mn²⁺, S²⁻), ưu tiên đơn vị có dấu gạch chéo (mV/s, mol/L) và đảm bảo tính thống nhất của cách dùng trong bài. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa Định dạng Word Toàn diện cho Tạp chí VJST (Format-Only & Scientific Typography)
@@ -11,7 +11,18 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 2. **QUY TẮC NGHIÊM NGẶT NHẤT — BẢO TOÀN NỘI DUNG TUYỆT ĐỐI (FORMAT-ONLY)**:
    - **TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG**: Không viết lại (rewrite), không diễn giải (paraphrase), không tóm tắt, không tự ý sửa đổi/thêm bớt số liệu thực nghiệm, hóa chất, thông số kỹ thuật, phương trình hay câu chữ của tác giả.
    - **CHỈ THAY ĐỔI FORMAT/STYLE**: Áp dụng hệ thống Style VJST, căn lề chuẩn (Center, Left, Justify), kẻ bảng 3 dòng khoa học, căn giữa hình ảnh/chú thích, chuẩn hóa format tài liệu tham khảo theo VJST CSL, và cập nhật mã bài vào Header DOI.
-3. **CHECKLIST CHUẨN HÓA KHOA HỌC & TYPOGRAPHY (BẮT BUỘC KIỂM TRA & THỰC HIỆN)**:
+3. **QUY TẮC QUÉT SÂU VÀ QUÉT CHẬM TỪNG PHẦN (DEEP & METHODICAL SECTION-BY-SECTION AUDIT — KHÔNG VỘI VÀNG)**:
+   - **Tuyệt đối không quét lướt, không làm qua loa hay vội vàng kết luận**.
+   - **Bắt buộc chia và quét độc lập theo 8 phân đoạn bài báo**:
+     1. *Phần 1: Metadata & Frontmatter*: Tiêu đề bài báo, Danh sách tác giả & Affiliation (kiểm tra chỉ số superscript, email liên hệ, lịch sử nhận bài, địa chỉ `Ha Noi, Viet Nam` vs tên cơ quan).
+     2. *Phần 2: Abstract & Keywords*: Abstract (in đậm `Abstract. `, kiểm tra in nghiêng tên loài, công thức hóa học, số mũ, đơn vị), Keywords & Classification numbers.
+     3. *Phần 3: Introduction*: Dẫn dắt, trích dẫn nội văn `[1]`, `[1–3]`, danh pháp vật liệu, phương pháp, chữ viết tắt, thuật ngữ, dấu câu.
+     4. *Phần 4: Materials and methods / Experimental*: Hóa chất, công thức ngậm nước `·`, nồng độ `mol/L`, `%` có khoảng trắng, thiết bị, thông số đo đạc, nhiệt độ `°C`, góc XRD `°`, scan rate `mV/s`.
+     5. *Phần 5: Results and discussion*: Phân tích phổ XRD/SEM/EDX/CV/SWV/EIS, công thức hóa học & điện tích ion ($	ext{Mn}^{2+}$, $	ext{S}^{2-}$), biến số toán/điện hóa (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *E*$_0$, *K*<sub style="">s</sub>), dấu trừ âm `−`, dải thế, phương trình toán học/điện hóa.
+     6. *Phần 6: Chú thích Hình & Bảng (Figures & Tables)*: Format style `012_Figure`, `013_FigCap` (*Figure X.* in nghiêng, kết thúc bằng dấu chấm `.`), `013_TableCap` (*Table X.*), bảng 3 dòng khoa học `014_Table`, các ký hiệu subfigure (a), (b), (c)...
+     7. *Phần 7: Conclusions & Backmatter*: Kết luận (đúng tên mục `Conclusions`), Lời cảm ơn (*Acknowledgments.*), Đóng góp tác giả (*CRediT authorship contribution statement.*), Xung đột lợi ích (*Declaration of competing interest.*).
+     8. *Phần 8: Tài liệu tham khảo (References)*: Định dạng chuẩn VJST CSL, số lượng tác giả, in đậm Volume, năm (YYYY), dải trang en-dash `–`, link DOI, in nghiêng tên loài hoặc công thức hóa học có chỉ số, dấu chấm kết thúc `.` cho 100% tài liệu.
+4. **CHECKLIST CHUẨN HÓA KHOA HỌC & TYPOGRAPHY (BẮT BUỘC KIỂM TRA & THỰC HIỆN)**:
    - **Tính thống nhất của cách dùng trong bài (Internal Consistency)**:
      - *Thuật ngữ & Tên vật liệu/phương pháp*: Thống nhất 1 cách viết xuyên suốt bài (ví dụ: `Cu-Mo-S` xuyên suốt, không lẫn lộn `Cu−Mo−S` hay `Cu - Mo - S`; `SWCSV` xuyên suốt; `scan rate` xuyên suốt, không lẫn lộn `scanrate` / `scanning speed`).
      - *Quy chuẩn Đơn vị (Ưu tiên dạng có dấu `/`)*: Ưu tiên thống nhất sử dụng đơn vị có dấu gạch chéo `/` (ví dụ: `mV/s`, `V/s`, `mol/L`, `mg/L`, `µg/L`, `g/L`, `J/(mol K)`) cho trực quan và dễ hiểu, thay vì dùng số mũ âm nghịch đảo (`mV s⁻¹`, `mol L⁻¹`). Thống nhất 100% xuyên suốt toàn bài.
@@ -44,10 +55,10 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
    - **Dải số trang & Dải giá trị (En-dash `–`)**: Tất cả dải số trang trong References (`1–4`, `515–533`...) và dải giá trị phải dùng gạch en-dash `–` thay vì gạch ngắn hyphen `-`.
    - **Làm sạch Dấu rác & Unlink EndNote**: Tự động gỡ bỏ (unlink) 100% mã trường EndNote (`ADDIN EN.CITE...`, `EN.REFLIST`) chuyển thành **Static Text sạch**, xóa sạch chuỗi mã trường Word rác (`REF _Ref... \h \* MERGEFORMAT`), xóa dấu nối rác `, -` dính sau tác giả trong References.
    - **Công thức hóa học & Dấu chấm ngậm nước**: Ký hiệu độ góc XRD `16.2°`, dấu chấm giữa cho tinh thể ngậm nước `MnCl2·4H2O`, `Cu(NO3)2·3H2O`.
-4. **MỌI SỬA ĐỔI NỘI DUNG BẮT BUỘC PHẢI BÁO CÁO USER DUYỆT TRƯỚC**:
+5. **MỌI SỬA ĐỔI NỘI DUNG BẮT BUỘC PHẢI BÁO CÁO USER DUYỆT TRƯỚC**:
    - Khi phát hiện lỗi chính tả, sai sót số liệu, lỗi ngữ pháp, sai thứ tự mục hoặc nhầm lẫn của tác giả $\rightarrow$ **BẮT BUỘC liệt kê và báo cáo cho user quyết định trước, TUYỆT ĐỐI KHÔNG TỰ Ý SỬA**.
    - Chỉ khi user đồng ý phê duyệt sửa đổi thì mới thực hiện sửa và tô màu xanh lá chuẩn `#2F6C1B` cho đúng từ/ký tự được sửa đó (quy tắc tô màu vi mô, không tô cả cụm hay cả câu).
-5. Tạo **2 file báo cáo kiểm tra độc lập** (`REPORT-PROOFREADING-[ID].md` và `REPORT-REFERENCES-[ID].md`) trong thư mục bài báo.
+6. Tạo **2 file báo cáo kiểm tra độc lập** (`REPORT-PROOFREADING-[ID].md` và `REPORT-REFERENCES-[ID].md`) trong thư mục bài báo.
 
 ---
 
@@ -152,9 +163,9 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 ### Bước 2: Cập nhật DOI Header
 - Thay thế mã bài `[ID]` vào `xx` trong First Page Header (giữ nguyên hyperlink màu xanh `0000FF`, không tô xanh lá).
 
-### Bước 3: Áp dụng Format/Style chuẩn VJST & Checklist Typography
+### Bước 3: Áp dụng Format/Style chuẩn VJST & Quét sâu từng phân đoạn
 1. Gán đúng Style và Alignment cho từng đoạn văn, tiêu đề, hình ảnh, bảng biểu và tài liệu tham khảo theo bảng Style ở Mục 1.
-2. **Thực hiện Checklist Khoa học & Typography (Mục 3 ở đầu tài liệu)**:
+2. **Thực hiện Quét sâu & Quét chậm 8 phân đoạn (Mục 3 ở đầu tài liệu)**:
    - **Đảm bảo tính thống nhất**: Thống nhất thuật ngữ, tên vật liệu (`Cu-Mo-S`), tên biến (`scan rate`), ưu tiên đơn vị có dấu gạch chéo (`mV/s`, `mol/L`, `µM`, `µA`).
    - Chuẩn hóa `%` có khoảng cách, khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
    - Chuẩn hóa chỉ số trên/dưới cho công thức hóa học ($	ext{Cu}_2	ext{MoS}_4$, $	ext{MoS}_2$) và ion ($	ext{Mn}^{2+}$, $	ext{S}^{2-}$).
