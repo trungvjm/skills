@@ -1,6 +1,6 @@
 ---
 name: vjst-word
-description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ, thừa/thiếu space, lỗi thiếu dấu câu và chuẩn hóa chỉ số trên/dưới cho công thức hóa học/ion (Cu₂MoS₄, Mn²⁺, S²⁻). Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
+description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng tên loài sinh học (E. coli), in nghiêng biến số toán học (R², Epc, ipc, x, y, ν, 2θ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ, thừa/thiếu space, lỗi thiếu dấu câu và chuẩn hóa chỉ số trên/dưới cho công thức hóa học/ion (Cu₂MoS₄, Mn²⁺, S²⁻). Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa Định dạng Word Toàn diện cho Tạp chí VJST (Format-Only & Scientific Typography)
@@ -22,11 +22,21 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
    - **Chỉ số trên/dưới cho Công thức Hóa học & Ion**:
      - *Chỉ số dưới (Subscript)*: Số nguyên tử trong công thức hóa học ở cả thân bài và tiêu đề References (ví dụ: $	ext{Cu}_2	ext{MoS}_4$, $(	ext{NH}_4)_2	ext{MoS}_4$, $	ext{Cu(NO}_3)_2\cdot 3	ext{H}_2	ext{O}$, $	ext{Cu}_2	ext{S}$, $	ext{MoS}_2$, $\delta	ext{-MnO}_2$, $\gamma	ext{-MnO}_2$, $	ext{ZnFe}_2	ext{O}_4$, $	ext{Cu}_2	ext{MX}_4$).
      - *Chỉ số trên (Superscript)*: Điện tích ion ($	ext{Mn}^{2+}$, $	ext{Cu}^{2+}$, $	ext{S}^{2-}$, $	ext{Cu}^+$, $(	ext{S–S})^{2-}$, $	ext{H}^+$, $2	ext{e}^-$, $	ext{MoS}_4^{2-}$).
+   - **Quy chuẩn In nghiêng (Italics) & Chữ đứng (Roman)**:
+     - *In nghiêng Tên loài sinh học*: Toàn bộ danh pháp hai phần (Binomial nomenclature) của vi sinh vật, thực vật, động vật phải in nghiêng cả trong thân bài và tài liệu tham khảo (ví dụ: *Escherichia coli*, *Staphylococcus aureus*, *Bacillus subtilis*, *Panax vietnamensis*, *Oryza sativa*, *E. coli*, *S. aureus*...; các từ viết tắt phân loại `sp.`, `spp.`, `subsp.`, `var.` để chữ đứng).
+     - *In nghiêng Biến số toán học, vật lý, thống kê*:
+       - Biến số và tham số: *$x$*, *$y$*, *$z$*, *$t$*, *$m$*, *$n$*, *$k$*, *$p$*, *$v$*, *$c$*, *$a$*, *$b$*, *$T$*, *$R$*, *$F$*, *$V$*, *$I$*, *$E$*, *$C$*, *$A$*, *$L$*, *$D$*...
+       - Biến số có chỉ số: *$R*$^2, *$E*<sub style="">pc</sub>, *$i$*<sub style="">pc</sub>, $\Delta$*$i$*<sub style="">pc</sub>, *$E$*$_0$, *$K$*<sub style="">s</sub>, *$I$*<sub style="">pa</sub>, *$E$*<sub style="">pa</sub>, *$C$*<sub style="">dl</sub>, *$R$*<sub style="">ct</sub>...
+       - Biến số thống kê: *$p$* < 0.05, *$n$* = 20, *$SD$*, *$SE$*, *$r$* = 0.99...
+       - Ký tự Hy Lạp biểu diễn biến/góc/độ quét: *$\nu$*, *$\lambda$*, *$\theta$* (*$2\theta$*), *$\alpha$*, *$\beta$*, *$\gamma$*, *$\delta$*, *$\mu$*, *$\sigma$*...
+       - Thuật ngữ Latinh: *in situ*, *operando*, *in vitro*, *in vivo*, *et al.*
+       - Tiền tố chú thích hình/bảng: *Figure 1.*, *Figure 2.*, *Table 1.*
+     - *Chữ đứng (Roman)*:
+       - Hàm số và toán tử chuẩn: $\sin$, $\cos$, $\tan$, $\ln$, $\log$, $\exp$, $\max$, $\min$, $\lim$, $\mathrm{d}x$, $\Delta$, $\Sigma$, $\Pi$.
+       - Đơn vị đo lường: $\text{V}$, $\text{A}$, $\text{s}$, $\text{m}$, $\text{g}$, $\text{L}$, $\text{mol}$, $\text{Hz}$, $\text{Pa}$, $\text{J}$, $\text{K}$, $\text{C}$, $\text{pH}$.
+       - Tên phương pháp, thiết bị, vật liệu viết tắt: `SWV`, `CV`, `SWCSV`, `AAS`, `ICP-MS`, `FE-SEM`, `XRD`, `XPS`, `Ag/AgCl`, `Pt`.
    - **Dải số trang & Dải giá trị (En-dash `–`)**: Tất cả dải số trang trong References (`1–4`, `515–533`...) và dải giá trị phải dùng gạch en-dash `–` thay vì gạch ngắn hyphen `-`.
    - **Làm sạch Dấu rác & Unlink EndNote**: Tự động gỡ bỏ (unlink) 100% mã trường EndNote (`ADDIN EN.CITE...`, `EN.REFLIST`) chuyển thành **Static Text sạch**, xóa sạch chuỗi mã trường Word rác (`REF _Ref... \h \* MERGEFORMAT`), xóa dấu nối rác `, -` dính sau tác giả trong References.
-   - **Quy chuẩn In nghiêng (Italics) & Chữ đứng (Roman)**:
-     - *In nghiêng*: Thuật ngữ Latinh (*in situ*, *operando*, *et al.*), Biến số toán/điện hóa (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, $\Delta$*i*<sub style="">pc</sub>, *E*$_0$, *T*, *R*, *F*, *n*, *K*<sub style="">s</sub>, *m/n*, *SD*), Tiền tố chú thích hình (*Figure 1.*, *Figure 2.*), Tiền tố chú thích bảng (*Table 1.*).
-     - *Chữ đứng*: `pH`, `SWV`, `CV`, `SWCSV`, `AAS`, `ICP-MS`, `FE-SEM`, `XRD`, `XPS`, `Ag/AgCl`, `Pt`.
    - **Công thức hóa học & Dấu chấm ngậm nước**: Ký hiệu độ góc XRD `16.2°`, dấu chấm giữa cho tinh thể ngậm nước `MnCl2·4H2O`, `Cu(NO3)2·3H2O`.
 4. **MỌI SỬA ĐỔI NỘI DUNG BẮT BUỘC PHẢI BÁO CÁO USER DUYỆT TRƯỚC**:
    - Khi phát hiện lỗi chính tả, sai sót số liệu, lỗi ngữ pháp, sai thứ tự mục hoặc nhầm lẫn của tác giả $\rightarrow$ **BẮT BUỘC liệt kê và báo cáo cho user quyết định trước, TUYỆT ĐỐI KHÔNG TỰ Ý SỬA**.
@@ -91,13 +101,13 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 | Phần | Style áp dụng | Căn lề (Alignment) | Quy cách định dạng chuẩn |
 | :--- | :--- | :---: | :--- |
 | **Loại bài báo** | `008_Section 1.` | **Căn giữa (Center)** | 11pt Bold (`RESEARCH PAPER` hoặc `REVIEW PAPER`). |
-| **Tiêu đề bài báo** | `002_Title` | **Căn giữa (Center)** | 18pt Bold, Title/Sentence case. |
+| **Tiêu đề bài báo** | `002_Title` | **Căn giữa (Center)** | 18pt Bold, Title/Sentence case. In nghiêng tên loài sinh học nếu có. |
 | **Tác giả (Authors)** | `003_Author` | **Căn giữa (Center)** | 12pt Bold. **Chỉ số affiliation và dấu `*` BẮT BUỘC SUPERSCRIPT**. |
 | **Địa chỉ (Affiliation)**| `004_Affiliation` | **Căn giữa (Center)** | 11pt Italic. **Chỉ số đầu dòng BẮT BUỘC SUPERSCRIPT**. |
 | **Email liên hệ** | `005_Email` | **Căn giữa (Center)** | 10pt; `*Email: ...` hoặc `*Emails: ...`. |
 | **Lịch sử bài báo** | `006_History` | **Căn giữa (Center)** | 10pt; `Received: ...; Accepted for publication: ...`. |
-| **Tóm tắt (Abstract)** | `007_Abstract` | **Căn đều 2 bên (Justify)** | 11pt, run đầu **`Abstract. `** in đậm. Giữ nguyên 100% văn bản tác giả. |
-| **Keywords** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | Run `Keywords:` in nghiêng, theo sau là danh sách từ khóa. |
+| **Tóm tắt (Abstract)** | `007_Abstract` | **Căn đều 2 bên (Justify)** | 11pt, run đầu **`Abstract. `** in đậm. In nghiêng tên loài sinh học. |
+| **Keywords** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | Run `Keywords:` in nghiêng, theo sau là danh sách từ khóa (in nghiêng tên loài). |
 | **Classification numbers** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | Run `Classification numbers:` in nghiêng, theo sau là các mã số (ví dụ `2.2, 5.3.`). |
 | **Tiêu đề mục cấp 1** | `008_Section 1.` | **Căn giữa (Center)** | 11pt Bold, Sentence case (ví dụ `1. Introduction`, `2. Materials and methods`...). |
 | **Tiêu đề mục cấp 2** | `009_Subsection 1.1.` | **Căn trái (Left)** | 11pt Bold, Sentence case (ví dụ `2.1. Materials`...). |
@@ -110,14 +120,14 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 | **Lời cảm ơn** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***Acknowledgments.*** theo sau là nội dung tài trợ/cảm ơn. |
 | **Đóng góp tác giả** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***CRediT authorship contribution statement.*** theo sau là phân công vai trò. |
 | **Xung đột lợi ích** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***Declaration of competing interest.*** theo sau là lời tuyên bố. |
-| **Tài liệu tham khảo** | `016_Tailieuthamkhao` | **Căn đều 2 bên (Justify)** | Định dạng theo CSL `vietnam-journal-of-science-and-technology.csl` (Volume in đậm, dải trang en-dash `–`, link DOI, kết thúc bằng dấu chấm `.`). |
+| **Tài liệu tham khảo** | `016_Tailieuthamkhao` | **Căn đều 2 bên (Justify)** | Định dạng theo CSL `vietnam-journal-of-science-and-technology.csl` (Volume in đậm, dải trang en-dash `–`, link DOI, in nghiêng tên loài sinh học, kết thúc bằng dấu chấm `.`). |
 
 ---
 
 ## 2. Quy chuẩn Trình bày References theo `vietnam-journal-of-science-and-technology.csl`
 
 - **Tác giả**: `Họ Tên_viết_tắt` (ví dụ: `Lucchini R. G., Aschner M., Landrigan P. J., Cranmer J. M.`). Nếu $\le 6$ tác giả thì liệt kê đủ; nếu $\ge 7$ tác giả thì liệt kê 6 tác giả đầu + `et al.`.
-- **Tên bài báo**: Sentence case, in nghiêng tên loài hoặc công thức hóa học nếu có.
+- **Tên bài báo**: Sentence case, **in nghiêng tên loài sinh học** hoặc công thức hóa học có chỉ số nếu có.
 - **Tên tạp chí**: Viết tắt chuẩn ISO 4, có dấu chấm sau mỗi từ viết tắt.
 - **Tập / Số / Trang**: **Volume in đậm**, (Năm) trong ngoặc đơn, dải trang nối bằng gạch en-dash `–` (ví dụ: **64** (2018) 1–4).
 - **DOI**: Dạng URL đầy đủ `https://doi.org/...`.
@@ -141,9 +151,9 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 2. **Thực hiện Checklist Khoa học & Typography (Mục 3 ở đầu tài liệu)**:
    - Chuẩn hóa `%` có khoảng cách, khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
    - Chuẩn hóa chỉ số trên/dưới cho công thức hóa học ($	ext{Cu}_2	ext{MoS}_4$, $	ext{MoS}_2$) và ion ($	ext{Mn}^{2+}$, $	ext{S}^{2-}$).
+   - In nghiêng tên loài sinh học (*E. coli*, *S. aureus*...) và biến số toán học (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *x*, *y*, *ν*, *2θ*).
    - Chuẩn hóa địa danh `Ha Noi`, `Viet Nam` (giữ nguyên tên cơ quan chính thức).
    - Gỡ bỏ sạch sẽ mã trường EndNote (`ADDIN EN.CITE...`), mã trường rác (`REF _Ref...`), xóa dấu nối rác `, -` trong References.
-   - In nghiêng chuẩn thuật ngữ Latinh (*in situ*, *et al.*), biến số (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>), tiền tố chú thích (*Figure X.*).
    - Đảm bảo đầy đủ dấu chấm kết thúc ở caption hình/bảng và references.
 3. Đảm bảo toàn bộ hình ảnh và caption căn giữa (`012_Figure`, `013_FigCap`), bảng căn giữa và kẻ viền 3 dòng (`014_Table`).
 4. Giữ nguyên 100% nội dung chữ, số liệu, phương trình của tác giả.
@@ -179,7 +189,7 @@ Trước khi bàn giao kết quả và tạo file `REPORT-PROOFREADING-[ID].md`,
 | 4 | **Chỉ số Công thức Hóa học & Ion** | Tạo subscript cho số nguyên tử ($	ext{Cu}_2	ext{MoS}_4$, $	ext{MoS}_2$, $	ext{H}_2	ext{O}$); superscript cho điện tích ion ($	ext{Mn}^{2+}$, $	ext{S}^{2-}$, $	ext{Cu}^+$) ở cả thân bài và Ref | Xuất hiện công thức phẳng `Cu2MoS4`, `MoS2`, `Mn2+`, `S2-`, `H2O` |
 | 5 | **Gạch En-dash `–`** | 100% dải trang References (`1–4`, `515–533`...) dùng en-dash `–` (`\u2013`) | Dùng gạch ngắn hyphen `1-4`, `515-533` trong dải trang |
 | 6 | **Làm sạch Mã trường & Dấu rác** | 0 mã trường EndNote (`ADDIN EN.CITE...`), 0 mã rác `REF _Ref...`, 0 dấu rác `,- ` trong Ref | Còn sót mã trường nhúng XML, chuỗi `MERGEFORMAT` hoặc dấu `,- ` |
-| 7 | **In nghiêng / Chữ đứng** | In nghiêng *in situ*, *operando*, *et al.*, *R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *Figure X.*; Chữ đứng `pH`, `SWV` | Biến số hoặc từ Latinh để chữ đứng thường |
+| 7 | **In nghiêng Tên loài & Biến số Toán học** | In nghiêng tên loài sinh học (*E. coli*, *S. aureus*...); in nghiêng biến số toán/lý/thống kê (*x*, *y*, *t*, *R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *p* < 0.05, *SD*, *ν*, *2θ*); in nghiêng từ Latinh (*in situ*, *et al.*); in nghiêng tiền tố *Figure X.*, *Table X.*. Giữ chữ đứng cho hàm số ($\sin$, $\ln$), đơn vị ($	ext{V}$, $	ext{A}$, $	ext{pH}$) và tên viết tắt (CV, SWV) | Tên loài sinh học, biến số toán học hoặc từ Latinh để chữ đứng thường |
 | 8 | **Lỗi dính chữ, thừa/thiếu space** | Ký hiệu `%` có khoảng cách (`99 %`, `95 % confidence`); không dính mã trích dẫn (`concentrations`); không dính đơn vị (`0.1 M`); không thừa space trước dấu câu (`Ha Noi, Viet Nam`) hoặc sau dấu âm (`−0.115`) | Xuất hiện dính chữ `95%`, `concentrati[1]ons`, dính đơn vị `0.1M`, thừa space `Ha Noi , Viet Nam` hoặc `- 0.115` |
 | 9 | **Lỗi thiếu dấu / thừa dấu câu** | Đầy đủ dấu chấm kết thúc ở caption hình/bảng và references; tiền tố dùng `Figure X.` (không dùng `Figure X:`); xóa sạch dấu nối rác `, -` trong References; không lệch ngoặc `()` hay `[]` | Caption thiếu dấu chấm; dùng `Figure X:`; sót dấu rác `,- ` sau tác giả trong Ref; lệch ngoặc |
 | 10 | **Công thức & Dấu ngoặc** | Phát hiện và báo cáo các công thức rỗng dấu ngoặc (như `() ln ()`) | Để sót công thức rỗng mà không báo cáo |
