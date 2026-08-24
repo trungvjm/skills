@@ -1,6 +1,6 @@
 ---
 name: vjst-word
-description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng tên loài sinh học (E. coli), in nghiêng biến số toán học (R², Epc, ipc, x, y, ν, 2θ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ, thừa/thiếu space, lỗi thiếu dấu câu, chuẩn hóa chỉ số trên/dưới cho công thức hóa học/ion (Cu₂MoS₄, Mn²⁺, S²⁻) và đảm bảo tính thống nhất của cách dùng trong bài. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
+description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng tên loài sinh học (E. coli), in nghiêng biến số toán học (R², Epc, ipc, x, y, ν, 2θ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ, thừa/thiếu space, lỗi thiếu dấu câu, chuẩn hóa chỉ số trên/dưới cho công thức hóa học/ion (Cu₂MoS₄, Mn²⁺, S²⁻), ưu tiên đơn vị có dấu gạch chéo (mV/s, mol/L) và đảm bảo tính thống nhất của cách dùng trong bài. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa Định dạng Word Toàn diện cho Tạp chí VJST (Format-Only & Scientific Typography)
@@ -14,7 +14,8 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 3. **CHECKLIST CHUẨN HÓA KHOA HỌC & TYPOGRAPHY (BẮT BUỘC KIỂM TRA & THỰC HIỆN)**:
    - **Tính thống nhất của cách dùng trong bài (Internal Consistency)**:
      - *Thuật ngữ & Tên vật liệu/phương pháp*: Thống nhất 1 cách viết xuyên suốt bài (ví dụ: `Cu-Mo-S` xuyên suốt, không lẫn lộn `Cu−Mo−S` hay `Cu - Mo - S`; `SWCSV` xuyên suốt; `scan rate` xuyên suốt, không lẫn lộn `scanrate` / `scanning speed`).
-     - *Đơn vị đo lường*: Thống nhất 1 kiểu ký hiệu đơn vị xuyên suốt (`mV s⁻¹` vs `mV/s`, `mol L⁻¹` vs `mol/L` vs `M`, `mL` vs `ml`, `µM` vs `uM`, `µA` vs `uA`).
+     - *Quy chuẩn Đơn vị (Ưu tiên dạng có dấu `/`)*: Ưu tiên thống nhất sử dụng đơn vị có dấu gạch chéo `/` (ví dụ: `mV/s`, `V/s`, `mol/L`, `mg/L`, `µg/L`, `g/L`, `J/(mol K)`) cho trực quan và dễ hiểu, thay vì dùng số mũ âm nghịch đảo (`mV s⁻¹`, `mol L⁻¹`). Thống nhất 100% xuyên suốt toàn bài.
+     - *Ký hiệu Micro*: Thống nhất 1 chuẩn ký tự micro (`µM`, `µA`, `µg`).
      - *Tham chiếu hình/bảng*: Thống nhất cách gọi `Figure 1`, `Figure 2(a)`, `Table 1`, `Equation (1)`.
      - *Dải trích dẫn nội văn*: Thống nhất định dạng trích dẫn `[1]`, `[1, 2]`, `[1–3]` (dùng en-dash `–` cho dải số trích dẫn).
    - **Ký hiệu `%` và Đơn vị SI**: Luôn có 1 khoảng trắng giữa số và `%` (ví dụ: `99 %`, `30 %`, `5 %`, `~90 %`, `95 % confidence`).
@@ -23,7 +24,7 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
      - **Tên cơ quan, trường đại học, viện nghiên cứu, đơn vị hành chính thì GIỮ NGUYÊN tên riêng tiếng Anh chính thức** (ví dụ: `University of Science and Technology of Hanoi`, `Vietnam Academy of Science and Technology`, `Phenikaa University`).
    - **Nhiệt độ °C**: Luôn có khoảng trắng trước `°C` (ví dụ: `60 °C`, `25 °C`), dùng ký tự độ chuẩn `°` (Unicode `\u00B0`), cấm dùng chữ cái `o` (`60oC`).
    - **Dấu trừ & Dấu âm toán học `−`**: Dùng dấu trừ Unicode `−` (`\u2212`) cho thế điện hóa âm (`−0.7 V`, `−1.8 V`), hệ số âm trong phương trình (không để khoảng trắng thừa như `- 0.115`), và dải giá trị.
-   - **Số mũ khoa học & Đơn vị SI**: Tạo superscript chuẩn cho lũy thừa ($10^{-9}$, $10^{-4}$), đơn vị diện tích ($	ext{cm}^2$), đơn vị nghịch đảo ($	ext{cm}^{-1}$, $	ext{s}^{-1}$, $	ext{mol L}^{-1}$, $	ext{V pH}^{-1}$), dấu nhân `×` (thay vì chữ cái `x`).
+   - **Số mũ khoa học & Đơn vị SI**: Tạo superscript chuẩn cho lũy thừa ($10^{-9}$, $10^{-4}$), đơn vị diện tích ($	ext{cm}^2$), số sóng ($	ext{cm}^{-1}$), dấu nhân `×` (thay vì chữ cái `x`).
    - **Chỉ số trên/dưới cho Công thức Hóa học & Ion**:
      - *Chỉ số dưới (Subscript)*: Số nguyên tử trong công thức hóa học ở cả thân bài và tiêu đề References (ví dụ: $	ext{Cu}_2	ext{MoS}_4$, $(	ext{NH}_4)_2	ext{MoS}_4$, $	ext{Cu(NO}_3)_2\cdot 3	ext{H}_2	ext{O}$, $	ext{Cu}_2	ext{S}$, $	ext{MoS}_2$, $\delta	ext{-MnO}_2$, $\gamma	ext{-MnO}_2$, $	ext{ZnFe}_2	ext{O}_4$, $	ext{Cu}_2	ext{MX}_4$).
      - *Chỉ số trên (Superscript)*: Điện tích ion ($	ext{Mn}^{2+}$, $	ext{Cu}^{2+}$, $	ext{S}^{2-}$, $	ext{Cu}^+$, $(	ext{S–S})^{2-}$, $	ext{H}^+$, $2	ext{e}^-$, $	ext{MoS}_4^{2-}$).
@@ -154,7 +155,7 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 ### Bước 3: Áp dụng Format/Style chuẩn VJST & Checklist Typography
 1. Gán đúng Style và Alignment cho từng đoạn văn, tiêu đề, hình ảnh, bảng biểu và tài liệu tham khảo theo bảng Style ở Mục 1.
 2. **Thực hiện Checklist Khoa học & Typography (Mục 3 ở đầu tài liệu)**:
-   - **Đảm bảo tính thống nhất**: Thống nhất thuật ngữ, tên vật liệu (`Cu-Mo-S`), tên biến (`scan rate`), ký hiệu đơn vị (`mV s⁻¹`, `µM`, `µA`).
+   - **Đảm bảo tính thống nhất**: Thống nhất thuật ngữ, tên vật liệu (`Cu-Mo-S`), tên biến (`scan rate`), ưu tiên đơn vị có dấu gạch chéo (`mV/s`, `mol/L`, `µM`, `µA`).
    - Chuẩn hóa `%` có khoảng cách, khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
    - Chuẩn hóa chỉ số trên/dưới cho công thức hóa học ($	ext{Cu}_2	ext{MoS}_4$, $	ext{MoS}_2$) và ion ($	ext{Mn}^{2+}$, $	ext{S}^{2-}$).
    - In nghiêng tên loài sinh học (*E. coli*, *S. aureus*...) và biến số toán học (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *x*, *y*, *ν*, *2θ*).
@@ -189,10 +190,10 @@ Trước khi bàn giao kết quả và tạo file `REPORT-PROOFREADING-[ID].md`,
 
 | STT | Hạng mục Hậu kiểm | Tiêu chuẩn Đạt (PASS) | Lỗi Không đạt (FAIL) |
 |:---:|:---|:---|:---|
-| 1 | **Tính thống nhất toàn bài (Consistency)** | Thống nhất 100% cách viết thuật ngữ (`Cu-Mo-S`), biến số (`scan rate`), đơn vị (`mV s⁻¹`, `µM`, `µA`), tham chiếu (`Figure X`, `Table X`, `Equation (X)`), dải trích dẫn `[1–3]` | Bất nhất: lúc viết `Cu-Mo-S` lúc `Cu−Mo−S`, lúc `scanrate` lúc `scanning speed`, lúc `mV s⁻¹` lúc `mV/s` |
+| 1 | **Tính thống nhất toàn bài (Consistency)** | Thống nhất 100% cách viết thuật ngữ (`Cu-Mo-S`), biến số (`scan rate`), ưu tiên đơn vị có dấu gạch chéo (`mV/s`, `V/s`, `mol/L`, `µM`, `µA`), tham chiếu (`Figure X`, `Table X`, `Equation (X)`), dải trích dẫn `[1–3]` | Bất nhất: lúc viết `Cu-Mo-S` lúc `Cu−Mo−S`, lúc `scanrate` lúc `scanning speed`, lúc `mV s⁻¹` lúc `mV/s` |
 | 2 | **Nhiệt độ `°C`** | 100% có ký tự độ chuẩn `°` và khoảng trắng (ví dụ: `60 °C`, `25 °C`) | Xuất hiện `60oC`, `60°C`, `60 oC`, `60 ° C` |
 | 3 | **Dấu trừ / Dấu âm `−`** | Dùng dấu trừ Unicode `−` (`\u2212`) cho thế âm (`−0.7 V`), dải thế, hệ số âm | Xuất hiện `-0.7 V`, `- 0.115` (khoảng trắng thừa) |
-| 4 | **Số mũ SI & Đơn vị** | $10^{-9}$, $10^{-6}$, $10^{-4}$, $	ext{cm}^2$, $	ext{cm}^{-1}$, $	ext{s}^{-1}$, $	ext{mol L}^{-1}$, $	ext{V pH}^{-1}$, dấu nhân `×` | Dính đơn vị `0.1M`, chữ cái `x20k`, số mũ phẳng `10-9`, `cm-1` |
+| 4 | **Số mũ SI & Đơn vị** | $10^{-9}$, $10^{-6}$, $10^{-4}$, $	ext{cm}^2$, $	ext{cm}^{-1}$, $	ext{s}$, $	ext{mol/L}$, $	ext{V/pH}$, dấu nhân `×` | Dính đơn vị `0.1M`, chữ cái `x20k`, số mũ phẳng `10-9`, `cm-1` |
 | 5 | **Chỉ số Công thức Hóa học & Ion** | Tạo subscript cho số nguyên tử ($	ext{Cu}_2	ext{MoS}_4$, $	ext{MoS}_2$, $	ext{H}_2	ext{O}$); superscript cho điện tích ion ($	ext{Mn}^{2+}$, $	ext{S}^{2-}$, $	ext{Cu}^+$) ở cả thân bài và Ref | Xuất hiện công thức phẳng `Cu2MoS4`, `MoS2`, `Mn2+`, `S2-`, `H2O` |
 | 6 | **Gạch En-dash `–`** | 100% dải trang References (`1–4`, `515–533`...) dùng en-dash `–` (`\u2013`) | Dùng gạch ngắn hyphen `1-4`, `515-533` trong dải trang |
 | 7 | **Làm sạch Mã trường & Dấu rác** | 0 mã trường EndNote (`ADDIN EN.CITE...`), 0 mã rác `REF _Ref...`, 0 dấu rác `,- ` trong Ref | Còn sót mã trường nhúng XML, chuỗi `MERGEFORMAT` hoặc dấu `,- ` |
