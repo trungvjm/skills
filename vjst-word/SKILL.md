@@ -1,6 +1,6 @@
 ---
 name: vjst-word
-description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ và thừa/thiếu space. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
+description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ, thừa/thiếu space và lỗi thiếu dấu câu. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa Định dạng Word Toàn diện cho Tạp chí VJST (Format-Only & Scientific Typography)
@@ -20,7 +20,7 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
    - **Dấu trừ & Dấu âm toán học `−`**: Dùng dấu trừ Unicode `−` (`\u2212`) cho thế điện hóa âm (`−0.7 V`, `−1.8 V`), hệ số âm trong phương trình (không để khoảng trắng thừa như `- 0.115`), và dải giá trị.
    - **Số mũ khoa học & Đơn vị SI**: Tạo superscript chuẩn cho lũy thừa ($10^{-9}$, $10^{-4}$), đơn vị diện tích ($	ext{cm}^2$), đơn vị nghịch đảo ($	ext{cm}^{-1}$, $	ext{s}^{-1}$, $	ext{mol L}^{-1}$, $	ext{V pH}^{-1}$), dấu nhân `×` (thay vì chữ cái `x`).
    - **Dải số trang & Dải giá trị (En-dash `–`)**: Tất cả dải số trang trong References (`1–4`, `515–533`...) và dải giá trị phải dùng gạch en-dash `–` thay vì gạch ngắn hyphen `-`.
-   - **Gỡ bỏ mã trường rác & Unlink EndNote**: Tự động gỡ bỏ (unlink) 100% mã trường EndNote (`ADDIN EN.CITE...`, `EN.REFLIST`) chuyển thành **Static Text sạch**, xóa sạch chuỗi mã trường Word rác (`REF _Ref... \h \* MERGEFORMAT`).
+   - **Làm sạch Dấu rác & Unlink EndNote**: Tự động gỡ bỏ (unlink) 100% mã trường EndNote (`ADDIN EN.CITE...`, `EN.REFLIST`) chuyển thành **Static Text sạch**, xóa sạch chuỗi mã trường Word rác (`REF _Ref... \h \* MERGEFORMAT`), xóa dấu nối rác `, -` dính sau tác giả trong References.
    - **Quy chuẩn In nghiêng (Italics) & Chữ đứng (Roman)**:
      - *In nghiêng*: Thuật ngữ Latinh (*in situ*, *operando*, *et al.*), Biến số toán/điện hóa (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, $\Delta$*i*<sub style="">pc</sub>, *E*$_0$, *T*, *R*, *F*, *n*, *K*<sub style="">s</sub>, *m/n*, *SD*), Tiền tố chú thích hình (*Figure 1.*, *Figure 2.*), Tiền tố chú thích bảng (*Table 1.*).
      - *Chữ đứng*: `pH`, `SWV`, `CV`, `SWCSV`, `AAS`, `ICP-MS`, `FE-SEM`, `XRD`, `XPS`, `Ag/AgCl`, `Pt`.
@@ -101,13 +101,13 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 | **Tiêu đề mục cấp 3** | `010_Subsubsection 1.1.1.` | **Căn trái (Left)** | 11pt Bold Italic (ví dụ `2.1.1. Chemicals`...). |
 | **Đoạn văn nội dung** | `000_Text` | **Căn đều 2 bên (Justify)** | 11pt. Giữ nguyên văn bản gốc của tác giả. |
 | **Ảnh minh họa** | `012_Figure` | **Căn giữa (Center)** | Chứa hình ảnh căn giữa trang (~4.5 - 5.5 inches). |
-| **Chú thích hình** | `013_FigCap` | **Căn giữa (Center)** | Căn giữa; ví dụ *Figure 1.* Chú thích... (*Figure X.* in nghiêng). |
-| **Chú thích bảng** | `013_TableCap` | **Căn giữa (Center)** | Căn giữa; ví dụ *Table 1.* Chú thích... (*Table X.* in nghiêng). |
+| **Chú thích hình** | `013_FigCap` | **Căn giữa (Center)** | Căn giữa; ví dụ *Figure 1.* Chú thích... (*Figure X.* in nghiêng, kết thúc bằng dấu chấm `.`). |
+| **Chú thích bảng** | `013_TableCap` | **Căn giữa (Center)** | Căn giữa; ví dụ *Table 1.* Chú thích... (*Table X.* in nghiêng, kết thúc bằng dấu chấm `.`). |
 | **Nội dung bảng** | `014_Table` | **Bảng căn giữa trang** | Kẻ viền 3 dòng khoa học (bỏ viền dọc), header in đậm, số liệu căn giữa/phải. |
 | **Lời cảm ơn** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***Acknowledgments.*** theo sau là nội dung tài trợ/cảm ơn. |
 | **Đóng góp tác giả** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***CRediT authorship contribution statement.*** theo sau là phân công vai trò. |
 | **Xung đột lợi ích** | `007_Keyword-Classification` | **Căn đều 2 bên (Justify)** | ***Declaration of competing interest.*** theo sau là lời tuyên bố. |
-| **Tài liệu tham khảo** | `016_Tailieuthamkhao` | **Căn đều 2 bên (Justify)** | Định dạng theo CSL `vietnam-journal-of-science-and-technology.csl` (Volume in đậm, dải trang en-dash `–`, link DOI). |
+| **Tài liệu tham khảo** | `016_Tailieuthamkhao` | **Căn đều 2 bên (Justify)** | Định dạng theo CSL `vietnam-journal-of-science-and-technology.csl` (Volume in đậm, dải trang en-dash `–`, link DOI, kết thúc bằng dấu chấm `.`). |
 
 ---
 
@@ -118,6 +118,7 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 - **Tên tạp chí**: Viết tắt chuẩn ISO 4, có dấu chấm sau mỗi từ viết tắt.
 - **Tập / Số / Trang**: **Volume in đậm**, (Năm) trong ngoặc đơn, dải trang nối bằng gạch en-dash `–` (ví dụ: **64** (2018) 1–4).
 - **DOI**: Dạng URL đầy đủ `https://doi.org/...`.
+- **Dấu kết thúc**: Mỗi trích dẫn phải kết thúc bằng đúng 1 dấu chấm `.`.
 
 ---
 
@@ -135,10 +136,11 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 ### Bước 3: Áp dụng Format/Style chuẩn VJST & Checklist Typography
 1. Gán đúng Style và Alignment cho từng đoạn văn, tiêu đề, hình ảnh, bảng biểu và tài liệu tham khảo theo bảng Style ở Mục 1.
 2. **Thực hiện Checklist Khoa học & Typography (Mục 3 ở đầu tài liệu)**:
-   - Chuẩn hóa `%` có khoảng trắng, khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
+   - Chuẩn hóa `%` có khoảng cách, khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
    - Chuẩn hóa địa danh `Ha Noi`, `Viet Nam` (giữ nguyên tên cơ quan chính thức).
-   - Gỡ bỏ sạch sẽ mã trường EndNote (`ADDIN EN.CITE...`) và mã trường rác (`REF _Ref...`).
+   - Gỡ bỏ sạch sẽ mã trường EndNote (`ADDIN EN.CITE...`), mã trường rác (`REF _Ref...`), xóa dấu nối rác `, -` trong References.
    - In nghiêng chuẩn thuật ngữ Latinh (*in situ*, *et al.*), biến số (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>), tiền tố chú thích (*Figure X.*).
+   - Đảm bảo đầy đủ dấu chấm kết thúc ở caption hình/bảng và references.
 3. Đảm bảo toàn bộ hình ảnh và caption căn giữa (`012_Figure`, `013_FigCap`), bảng căn giữa và kẻ viền 3 dòng (`014_Table`).
 4. Giữ nguyên 100% nội dung chữ, số liệu, phương trình của tác giả.
 
@@ -163,7 +165,7 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 
 ## 5. Checklist Hậu kiểm Toàn diện (Mandatory Post-processing Quality Audit)
 
-Trước khi bàn giao kết quả và tạo file `REPORT-PROOFREADING-[ID].md`, **BẮT BUỘC** chạy kiểm tra tự động qua 8 hạng mục hậu kiểm sau:
+Trước khi bàn giao kết quả và tạo file `REPORT-PROOFREADING-[ID].md`, **BẮT BUỘC** chạy kiểm tra tự động qua 9 hạng mục hậu kiểm sau:
 
 | STT | Hạng mục Hậu kiểm | Tiêu chuẩn Đạt (PASS) | Lỗi Không đạt (FAIL) |
 |:---:|:---|:---|:---|
@@ -174,4 +176,5 @@ Trước khi bàn giao kết quả và tạo file `REPORT-PROOFREADING-[ID].md`,
 | 5 | **Làm sạch Mã trường** | 0 mã trường EndNote (`ADDIN EN.CITE...`) và 0 mã rác `REF _Ref...` | Còn sót mã trường nhúng XML hoặc chuỗi `MERGEFORMAT` |
 | 6 | **In nghiêng / Chữ đứng** | In nghiêng *in situ*, *operando*, *et al.*, *R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *Figure X.*; Chữ đứng `pH`, `SWV` | Biến số hoặc từ Latinh để chữ đứng thường |
 | 7 | **Lỗi dính chữ, lỗi thừa/thiếu space** | Ký hiệu `%` có khoảng cách (`99 %`, `95 % confidence`); không dính mã trích dẫn (`concentrations`); không dính đơn vị (`0.1 M`); không thừa space trước dấu câu (`Ha Noi, Viet Nam`) hoặc sau dấu âm (`−0.115`) | Xuất hiện dính chữ `95%`, `concentrati[1]ons`, dính đơn vị `0.1M`, thừa space `Ha Noi , Viet Nam` hoặc `- 0.115` |
-| 8 | **Công thức & Dấu ngoặc** | Phát hiện và báo cáo các công thức rỗng dấu ngoặc (như `() ln ()`) | Để sót công thức rỗng mà không báo cáo |
+| 8 | **Lỗi thiếu dấu / thừa dấu câu** | Đầy đủ dấu chấm kết thúc ở caption hình/bảng và references; tiền tố dùng `Figure X.` (không dùng `Figure X:`); xóa sạch dấu nối rác `, -` trong References; không lệch ngoặc `()` hay `[]` | Caption thiếu dấu chấm; dùng `Figure X:`; sót dấu rác `,- ` sau tác giả trong Ref; lệch ngoặc |
+| 9 | **Công thức & Dấu ngoặc** | Phát hiện và báo cáo các công thức rỗng dấu ngoặc (như `() ln ()`) | Để sót công thức rỗng mà không báo cáo |
