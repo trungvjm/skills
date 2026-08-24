@@ -1,6 +1,6 @@
 ---
 name: vjst-word
-description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện: nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
+description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa Định dạng Word Toàn diện cho Tạp chí VJST (Format-Only & Scientific Typography)
@@ -138,11 +138,11 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 4. Giữ nguyên 100% nội dung chữ, số liệu, phương trình của tác giả.
 
 ### Bước 4: Báo cáo các điểm phát hiện cần sửa đổi (nếu có)
-- Nếu phát hiện lỗi chính tả, sai địa danh, nhầm thứ tự mục, thiếu từ, công thức rỗng... $\rightarrow$ **Dừng lại, ghi rõ vào báo cáo/chat để hỏi ý kiến user, KHÔNG tự ý sửa**.
-- Chỉ khi user chỉ đạo sửa $\rightarrow$ thực hiện sửa và tô xanh lá `#2F6C1B` cho đúng điểm được sửa.
+- Nếu phát hiện lỗi chính tả, sai địa danh, nhầm thứ tự mục, thiếu từ, công thức rỗng... $ightarrow$ **Dừng lại, ghi rõ vào báo cáo/chat để hỏi ý kiến user, KHÔNG tự ý sửa**.
+- Chỉ khi user chỉ đạo sửa $ightarrow$ thực hiện sửa và tô xanh lá `#2F6C1B` cho đúng điểm được sửa.
 
-### Bước 5: Tạo 2 File Báo cáo Kiểm tra
-1. `REPORT-PROOFREADING-[ID].md`: Báo cáo chi tiết định dạng, trích dẫn nội văn và danh sách các kiến nghị sửa đổi (nếu có) chờ user duyệt.
+### Bước 5: Thực hiện Hậu kiểm Toàn diện (Chạy Checklist Mục 5) & Tạo 2 File Báo cáo Kiểm tra
+1. `REPORT-PROOFREADING-[ID].md`: Báo cáo chi tiết định dạng, trích dẫn nội văn, kết quả Checklist Hậu kiểm toàn diện và danh sách các kiến nghị sửa đổi (nếu có) chờ user duyệt.
 2. `REPORT-REFERENCES-[ID].md`: Báo cáo đối soát tài liệu tham khảo với file `.bib` và Crossref/Google Scholar.
 
 ---
@@ -151,5 +151,22 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 
 1. `[Tên file]-backup(N).docx`: Bản sao lưu an toàn trước khi chuẩn hóa.
 2. `VJST-[ID].docx`: File Word đã chuẩn hóa Style/Format & Typography, bảo toàn nguyên vẹn nội dung gốc.
-3. `REPORT-PROOFREADING-[ID].md`: Báo cáo kiểm tra định dạng và đề xuất chỉnh sửa (nếu có).
+3. `REPORT-PROOFREADING-[ID].md`: Báo cáo kiểm tra định dạng, kết quả hậu kiểm và đề xuất chỉnh sửa (nếu có).
 4. `REPORT-REFERENCES-[ID].md`: Báo cáo đối soát tài liệu tham khảo.
+
+---
+
+## 5. Checklist Hậu kiểm Toàn diện (Mandatory Post-processing Quality Audit)
+
+Trước khi bàn giao kết quả và tạo file `REPORT-PROOFREADING-[ID].md`, **BẮT BUỘC** chạy kiểm tra tự động qua 8 hạng mục hậu kiểm sau:
+
+| STT | Hạng mục Hậu kiểm | Tiêu chuẩn Đạt (PASS) | Lỗi Không đạt (FAIL) |
+|:---:|:---|:---|:---|
+| 1 | **Nhiệt độ `°C`** | 100% có ký tự độ chuẩn `°` và khoảng trắng (ví dụ: `60 °C`, `25 °C`) | Xuất hiện `60oC`, `60°C`, `60 oC`, `60 ° C` |
+| 2 | **Dấu trừ / Dấu âm `−`** | Dùng dấu trừ Unicode `−` (`\u2212`) cho thế âm (`−0.7 V`), dải thế, hệ số âm | Xuất hiện `-0.7 V`, `- 0.115` (khoảng trắng thừa) |
+| 3 | **Số mũ SI & Đơn vị** | $10^{-9}$, $10^{-6}$, $10^{-4}$, $	ext{cm}^2$, $	ext{cm}^{-1}$, $	ext{s}^{-1}$, $	ext{mol L}^{-1}$, $	ext{V pH}^{-1}$, dấu nhân `×` | Dính đơn vị `0.1M`, chữ cái `x20k`, số mũ phẳng `10-9`, `cm-1` |
+| 4 | **Gạch En-dash `–`** | 100% dải trang References (`1–4`, `515–533`...) dùng en-dash `–` (`\u2013`) | Dùng gạch ngắn hyphen `1-4`, `515-533` trong dải trang |
+| 5 | **Làm sạch Mã trường** | 0 mã trường EndNote (`ADDIN EN.CITE...`) và 0 mã rác `REF _Ref...` | Còn sót mã trường nhúng XML hoặc chuỗi `MERGEFORMAT` |
+| 6 | **In nghiêng / Chữ đứng** | In nghiêng *in situ*, *operando*, *et al.*, *R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *Figure X.*; Chữ đứng `pH`, `SWV` | Biến số hoặc từ Latinh để chữ đứng thường |
+| 7 | **Dính chữ / Trích dẫn** | Không có ký hiệu trích dẫn dính vào giữa từ ngữ | Xuất hiện lỗi như `concentrati[1]ons` |
+| 8 | **Công thức & Dấu ngoặc** | Phát hiện và báo cáo các công thức rỗng dấu ngoặc (như `() ln ()`) | Để sót công thức rỗng mà không báo cáo |
