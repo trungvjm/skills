@@ -1,20 +1,30 @@
 ---
 name: vjst-word
-description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user quyết định trước, không tự ý sửa. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
+description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện: nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
 ---
 
-# vjst-word: Chuẩn hóa Định dạng Word cho Tạp chí VJST (Format-Only & Content Integrity)
+# vjst-word: Chuẩn hóa Định dạng Word Toàn diện cho Tạp chí VJST (Format-Only & Scientific Typography)
 
 Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực tiếp trên file Word đã có sẵn nội dung (người dùng tự copy nội dung vào file Word/template VJST), tuân thủ các nguyên tắc nghiêm ngặt sau:
 
 1. **Tự động sao lưu file backup** theo quy tắc tăng dần `[Tên file]-backup(N).docx` duy nhất 1 lần ở đầu mỗi lượt chat trước khi sửa đổi.
 2. **QUY TẮC NGHIÊM NGẶT NHẤT — BẢO TOÀN NỘI DUNG TUYỆT ĐỐI (FORMAT-ONLY)**:
    - **TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG**: Không viết lại (rewrite), không diễn giải (paraphrase), không tóm tắt, không tự ý sửa đổi/thêm bớt số liệu thực nghiệm, hóa chất, thông số kỹ thuật, phương trình hay câu chữ của tác giả.
-   - **CHỈ THAY ĐỔI FORMAT/STYLE**: Áp dụng hệ thống Style VJST có sẵn, căn lề chuẩn (Center, Left, Justify), kẻ bảng 3 dòng khoa học, căn giữa hình ảnh/chú thích, chuẩn hóa format tài liệu tham khảo theo VJST CSL, và cập nhật mã bài vào Header DOI.
-3. **MỌI SỬA ĐỔI NỘI DUNG BẮT BUỘC PHẢI BÁO CÁO USER DUYỆT TRƯỚC**:
+   - **CHỈ THAY ĐỔI FORMAT/STYLE**: Áp dụng hệ thống Style VJST, căn lề chuẩn (Center, Left, Justify), kẻ bảng 3 dòng khoa học, căn giữa hình ảnh/chú thích, chuẩn hóa format tài liệu tham khảo theo VJST CSL, và cập nhật mã bài vào Header DOI.
+3. **CHECKLIST CHUẨN HÓA KHOA HỌC & TYPOGRAPHY (BẮT BUỘC KIỂM TRA & THỰC HIỆN)**:
+   - **Nhiệt độ °C**: Luôn có khoảng trắng trước `°C` (ví dụ: `60 °C`, `25 °C`), dùng ký tự độ chuẩn `°` (Unicode `\u00B0`), cấm dùng chữ cái `o` (`60oC`).
+   - **Dấu trừ & Dấu âm toán học `−`**: Dùng dấu trừ Unicode `−` (`\u2212`) cho thế điện hóa âm (`−0.7 V`, `−1.8 V`), hệ số âm trong phương trình (không để khoảng trắng thừa như `- 0.115`), và dải giá trị.
+   - **Số mũ khoa học & Đơn vị SI**: Tạo superscript chuẩn cho lũy thừa ($10^{-9}$, $10^{-4}$), đơn vị diện tích ($	ext{cm}^2$), đơn vị nghịch đảo ($	ext{cm}^{-1}$, $	ext{s}^{-1}$, $	ext{mol L}^{-1}$, $	ext{V pH}^{-1}$), dấu nhân `×` (thay vì chữ cái `x`).
+   - **Dải số trang & Dải giá trị (En-dash `–`)**: Tất cả dải số trang trong References (`1–4`, `515–533`...) và dải giá trị phải dùng gạch en-dash `–` thay vì gạch ngắn hyphen `-`.
+   - **Gỡ bỏ mã trường rác & Unlink EndNote**: Tự động gỡ bỏ (unlink) 100% mã trường EndNote (`ADDIN EN.CITE...`, `EN.REFLIST`) chuyển thành **Static Text sạch**, xóa sạch chuỗi mã trường Word rác (`REF _Ref... \h \* MERGEFORMAT`).
+   - **Quy chuẩn In nghiêng (Italics) & Chữ đứng (Roman)**:
+     - *In nghiêng*: Thuật ngữ Latinh (*in situ*, *operando*, *et al.*), Biến số toán/điện hóa (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, $\Delta$*i*<sub style="">pc</sub>, *E*$_0$, *T*, *R*, *F*, *n*, *K*<sub style="">s</sub>, *m/n*, *SD*), Tiền tố chú thích hình (*Figure 1.*, *Figure 2.*), Tiền tố chú thích bảng (*Table 1.*).
+     - *Chữ đứng*: `pH`, `SWV`, `CV`, `SWCSV`, `AAS`, `ICP-MS`, `FE-SEM`, `XRD`, `XPS`, `Ag/AgCl`, `Pt`.
+   - **Công thức hóa học & Dấu chấm ngậm nước**: Ký hiệu độ góc XRD `16.2°`, dấu chấm giữa cho tinh thể ngậm nước `MnCl2·4H2O`, `Cu(NO3)2·3H2O`.
+4. **MỌI SỬA ĐỔI NỘI DUNG BẮT BUỘC PHẢI BÁO CÁO USER DUYỆT TRƯỚC**:
    - Khi phát hiện lỗi chính tả, sai sót số liệu, lỗi ngữ pháp, sai thứ tự mục hoặc nhầm lẫn của tác giả $\rightarrow$ **BẮT BUỘC liệt kê và báo cáo cho user quyết định trước, TUYỆT ĐỐI KHÔNG TỰ Ý SỬA**.
    - Chỉ khi user đồng ý phê duyệt sửa đổi thì mới thực hiện sửa và tô màu xanh lá chuẩn `#2F6C1B` cho đúng từ/ký tự được sửa đó.
-4. Tạo **2 file báo cáo kiểm tra độc lập** (`REPORT-PROOFREADING-[ID].md` và `REPORT-REFERENCES-[ID].md`) trong thư mục bài báo.
+5. Tạo **2 file báo cáo kiểm tra độc lập** (`REPORT-PROOFREADING-[ID].md` và `REPORT-REFERENCES-[ID].md`) trong thư mục bài báo.
 
 ---
 
@@ -23,8 +33,8 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 ### 0.1. Tự động tạo đúng 1 file Backup ở đầu mỗi lượt chat (Bắt buộc)
 - **Tần suất**: **Chỉ tạo đúng 1 bản backup ở đầu mỗi lượt yêu cầu của người dùng (sau mỗi lần chat thêm)** trước khi sửa đổi file Word đích (`VJST-[ID].docx` hoặc file cần sửa). Tuyệt đối **không tạo nhiều bản backup trung gian** trong cùng 1 lần chat.
 - **Quy cách đặt tên file Backup**:
-  54759\text{<Tên file cần chuẩn hóa (bỏ đuôi .docx)>-backup(N).docx}54759
-  - Lần chuẩn hóa đầu tiên: `[Tên file]-backup(1).docx` (ví dụ: `VJST-2-MAT-19112-backup(1).docx`)
+  $$\text{<Tên file cần chuẩn hóa (bỏ đuôi .docx)>-backup(N).docx}$$
+  - Lần chuẩn hóa đầu tiên: `[Tên file]-backup(1).docx` (ví dụ: `VJST-2-MAT-19150-backup(1).docx`)
   - Lần sửa đổi/bổ sung ở các lượt chat tiếp theo: Tự động tăng dần chỉ số `N` lên thành `[Tên file]-backup(2).docx`, `[Tên file]-backup(3).docx`...
   - **Hàm Python tạo Backup tăng dần**:
     ```python
@@ -109,7 +119,7 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
 
 ## 3. Quy trình Thực hiện Chuẩn hóa
 
-Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-19112.docx` hoặc file trong folder bài báo):
+Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-19150.docx` hoặc file trong folder bài báo):
 
 ### Bước 1: Khởi tạo và Backup
 1. **Tạo đúng 1 bản backup tăng dần**: `[Tên file]-backup(N).docx` trước khi thực hiện bất kỳ thao tác chỉnh sửa nào.
@@ -118,13 +128,17 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 ### Bước 2: Cập nhật DOI Header
 - Thay thế mã bài `[ID]` vào `xx` trong First Page Header (giữ nguyên hyperlink màu xanh `0000FF`, không tô xanh lá).
 
-### Bước 3: Áp dụng Format/Style chuẩn VJST (Tuyệt đối không sửa nội dung)
+### Bước 3: Áp dụng Format/Style chuẩn VJST & Checklist Typography
 1. Gán đúng Style và Alignment cho từng đoạn văn, tiêu đề, hình ảnh, bảng biểu và tài liệu tham khảo theo bảng Style ở Mục 1.
-2. Đảm bảo toàn bộ hình ảnh và caption căn giữa (`012_Figure`, `013_FigCap`), bảng căn giữa và kẻ viền 3 dòng (`014_Table`).
-3. Giữ nguyên 100% nội dung chữ, số liệu, phương trình của tác giả.
+2. **Thực hiện Checklist Khoa học & Typography (Mục 3 ở đầu tài liệu)**:
+   - Chuẩn hóa khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
+   - Gỡ bỏ sạch sẽ mã trường EndNote (`ADDIN EN.CITE...`) và mã trường rác (`REF _Ref...`).
+   - In nghiêng chuẩn thuật ngữ Latinh (*in situ*, *et al.*), biến số (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>), tiền tố chú thích (*Figure X.*).
+3. Đảm bảo toàn bộ hình ảnh và caption căn giữa (`012_Figure`, `013_FigCap`), bảng căn giữa và kẻ viền 3 dòng (`014_Table`).
+4. Giữ nguyên 100% nội dung chữ, số liệu, phương trình của tác giả.
 
 ### Bước 4: Báo cáo các điểm phát hiện cần sửa đổi (nếu có)
-- Nếu phát hiện lỗi chính tả, sai địa danh, nhầm thứ tự mục, thiếu từ... $\rightarrow$ **Dừng lại, ghi rõ vào báo cáo/chat để hỏi ý kiến user, KHÔNG tự ý sửa**.
+- Nếu phát hiện lỗi chính tả, sai địa danh, nhầm thứ tự mục, thiếu từ, công thức rỗng... $\rightarrow$ **Dừng lại, ghi rõ vào báo cáo/chat để hỏi ý kiến user, KHÔNG tự ý sửa**.
 - Chỉ khi user chỉ đạo sửa $\rightarrow$ thực hiện sửa và tô xanh lá `#2F6C1B` cho đúng điểm được sửa.
 
 ### Bước 5: Tạo 2 File Báo cáo Kiểm tra
@@ -136,6 +150,6 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 ## 4. Tệp Đầu ra Bàn giao
 
 1. `[Tên file]-backup(N).docx`: Bản sao lưu an toàn trước khi chuẩn hóa.
-2. `VJST-[ID].docx`: File Word đã chuẩn hóa Style/Format, bảo toàn nguyên vẹn nội dung gốc.
+2. `VJST-[ID].docx`: File Word đã chuẩn hóa Style/Format & Typography, bảo toàn nguyên vẹn nội dung gốc.
 3. `REPORT-PROOFREADING-[ID].md`: Báo cáo kiểm tra định dạng và đề xuất chỉnh sửa (nếu có).
 4. `REPORT-REFERENCES-[ID].md`: Báo cáo đối soát tài liệu tham khảo.
