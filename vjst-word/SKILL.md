@@ -1,6 +1,6 @@
 ---
 name: vjst-word
-description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
+description: "Chuẩn hóa định dạng file Word VJST dựa trên nội dung đã được copy sẵn vào file. Áp dụng quy tắc nghiêm ngặt nhất: TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG, CHỈ THAY ĐỔI FORMAT/STYLE. Tự động kiểm tra và chuẩn hóa toàn diện theo Checklist Hậu kiểm: % có khoảng cách, địa danh Ha Noi/Viet Nam (giữ nguyên tên cơ quan), nhiệt độ °C, dấu âm −, số mũ SI (10⁻⁹, cm⁻¹), gạch en-dash –, in nghiêng biến số (R², Epc, ipc, in situ), làm sạch mã trường EndNote/REF, xử lý lỗi dính chữ và thừa/thiếu space. Mọi sửa đổi nội dung (chính tả, nhầm lẫn tác giả) BẮT BUỘC báo cáo user duyệt trước. Tự động backup 1 lần [Tên file]-backup(N).docx ở đầu lượt chat. Cập nhật DOI header và tạo 2 file báo cáo kiểm tra. Alias: /vjst-word"
 ---
 
 # vjst-word: Chuẩn hóa Định dạng Word Toàn diện cho Tạp chí VJST (Format-Only & Scientific Typography)
@@ -12,6 +12,10 @@ Kỹ năng này thực hiện chuẩn hóa định dạng (format/style) trực 
    - **TUYỆT ĐỐI KHÔNG THAY ĐỔI NỘI DUNG**: Không viết lại (rewrite), không diễn giải (paraphrase), không tóm tắt, không tự ý sửa đổi/thêm bớt số liệu thực nghiệm, hóa chất, thông số kỹ thuật, phương trình hay câu chữ của tác giả.
    - **CHỈ THAY ĐỔI FORMAT/STYLE**: Áp dụng hệ thống Style VJST, căn lề chuẩn (Center, Left, Justify), kẻ bảng 3 dòng khoa học, căn giữa hình ảnh/chú thích, chuẩn hóa format tài liệu tham khảo theo VJST CSL, và cập nhật mã bài vào Header DOI.
 3. **CHECKLIST CHUẨN HÓA KHOA HỌC & TYPOGRAPHY (BẮT BUỘC KIỂM TRA & THỰC HIỆN)**:
+   - **Ký hiệu `%` và Đơn vị SI**: Luôn có 1 khoảng trắng giữa số và `%` (ví dụ: `99 %`, `30 %`, `5 %`, `~90 %`, `95 % confidence`).
+   - **Quy chuẩn Địa danh vs Tên cơ quan**:
+     - `Hanoi` $\rightarrow$ `Ha Noi`, `Vietnam` $\rightarrow$ `Viet Nam` **trong phần mô tả địa điểm** (địa chỉ hành chính, thành phố, quốc gia, ví dụ: `..., 18 Hoang Quoc Viet, Ha Noi, Viet Nam`).
+     - **Tên cơ quan, trường đại học, viện nghiên cứu, đơn vị hành chính thì GIỮ NGUYÊN tên riêng tiếng Anh chính thức** (ví dụ: `University of Science and Technology of Hanoi`, `Vietnam Academy of Science and Technology`, `Phenikaa University`).
    - **Nhiệt độ °C**: Luôn có khoảng trắng trước `°C` (ví dụ: `60 °C`, `25 °C`), dùng ký tự độ chuẩn `°` (Unicode `\u00B0`), cấm dùng chữ cái `o` (`60oC`).
    - **Dấu trừ & Dấu âm toán học `−`**: Dùng dấu trừ Unicode `−` (`\u2212`) cho thế điện hóa âm (`−0.7 V`, `−1.8 V`), hệ số âm trong phương trình (không để khoảng trắng thừa như `- 0.115`), và dải giá trị.
    - **Số mũ khoa học & Đơn vị SI**: Tạo superscript chuẩn cho lũy thừa ($10^{-9}$, $10^{-4}$), đơn vị diện tích ($	ext{cm}^2$), đơn vị nghịch đảo ($	ext{cm}^{-1}$, $	ext{s}^{-1}$, $	ext{mol L}^{-1}$, $	ext{V pH}^{-1}$), dấu nhân `×` (thay vì chữ cái `x`).
@@ -131,15 +135,16 @@ Khi nhận yêu cầu `/vjst-word` cho một bài báo (ví dụ `VJST-2-MAT-191
 ### Bước 3: Áp dụng Format/Style chuẩn VJST & Checklist Typography
 1. Gán đúng Style và Alignment cho từng đoạn văn, tiêu đề, hình ảnh, bảng biểu và tài liệu tham khảo theo bảng Style ở Mục 1.
 2. **Thực hiện Checklist Khoa học & Typography (Mục 3 ở đầu tài liệu)**:
-   - Chuẩn hóa khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
+   - Chuẩn hóa `%` có khoảng trắng, khoảng trắng `°C`, dấu âm `−`, số mũ SI, dải trang en-dash `–`, dấu nhân `×`.
+   - Chuẩn hóa địa danh `Ha Noi`, `Viet Nam` (giữ nguyên tên cơ quan chính thức).
    - Gỡ bỏ sạch sẽ mã trường EndNote (`ADDIN EN.CITE...`) và mã trường rác (`REF _Ref...`).
    - In nghiêng chuẩn thuật ngữ Latinh (*in situ*, *et al.*), biến số (*R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>), tiền tố chú thích (*Figure X.*).
 3. Đảm bảo toàn bộ hình ảnh và caption căn giữa (`012_Figure`, `013_FigCap`), bảng căn giữa và kẻ viền 3 dòng (`014_Table`).
 4. Giữ nguyên 100% nội dung chữ, số liệu, phương trình của tác giả.
 
 ### Bước 4: Báo cáo các điểm phát hiện cần sửa đổi (nếu có)
-- Nếu phát hiện lỗi chính tả, sai địa danh, nhầm thứ tự mục, thiếu từ, công thức rỗng... $ightarrow$ **Dừng lại, ghi rõ vào báo cáo/chat để hỏi ý kiến user, KHÔNG tự ý sửa**.
-- Chỉ khi user chỉ đạo sửa $ightarrow$ thực hiện sửa và tô xanh lá `#2F6C1B` cho đúng điểm được sửa.
+- Nếu phát hiện lỗi chính tả, sai địa danh, nhầm thứ tự mục, thiếu từ, công thức rỗng... $\rightarrow$ **Dừng lại, ghi rõ vào báo cáo/chat để hỏi ý kiến user, KHÔNG tự ý sửa**.
+- Chỉ khi user chỉ đạo sửa $\rightarrow$ thực hiện sửa và tô xanh lá `#2F6C1B` cho đúng điểm được sửa.
 
 ### Bước 5: Thực hiện Hậu kiểm Toàn diện (Chạy Checklist Mục 5) & Tạo 2 File Báo cáo Kiểm tra
 1. `REPORT-PROOFREADING-[ID].md`: Báo cáo chi tiết định dạng, trích dẫn nội văn, kết quả Checklist Hậu kiểm toàn diện và danh sách các kiến nghị sửa đổi (nếu có) chờ user duyệt.
@@ -168,5 +173,5 @@ Trước khi bàn giao kết quả và tạo file `REPORT-PROOFREADING-[ID].md`,
 | 4 | **Gạch En-dash `–`** | 100% dải trang References (`1–4`, `515–533`...) dùng en-dash `–` (`\u2013`) | Dùng gạch ngắn hyphen `1-4`, `515-533` trong dải trang |
 | 5 | **Làm sạch Mã trường** | 0 mã trường EndNote (`ADDIN EN.CITE...`) và 0 mã rác `REF _Ref...` | Còn sót mã trường nhúng XML hoặc chuỗi `MERGEFORMAT` |
 | 6 | **In nghiêng / Chữ đứng** | In nghiêng *in situ*, *operando*, *et al.*, *R*$^2$, *E*<sub style="">pc</sub>, *i*<sub style="">pc</sub>, *Figure X.*; Chữ đứng `pH`, `SWV` | Biến số hoặc từ Latinh để chữ đứng thường |
-| 7 | **Dính chữ / Trích dẫn** | Không có ký hiệu trích dẫn dính vào giữa từ ngữ | Xuất hiện lỗi như `concentrati[1]ons` |
+| 7 | **Lỗi dính chữ, lỗi thừa/thiếu space** | Ký hiệu `%` có khoảng cách (`99 %`, `95 % confidence`); không dính mã trích dẫn (`concentrations`); không dính đơn vị (`0.1 M`); không thừa space trước dấu câu (`Ha Noi, Viet Nam`) hoặc sau dấu âm (`−0.115`) | Xuất hiện dính chữ `95%`, `concentrati[1]ons`, dính đơn vị `0.1M`, thừa space `Ha Noi , Viet Nam` hoặc `- 0.115` |
 | 8 | **Công thức & Dấu ngoặc** | Phát hiện và báo cáo các công thức rỗng dấu ngoặc (như `() ln ()`) | Để sót công thức rỗng mà không báo cáo |
