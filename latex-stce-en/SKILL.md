@@ -352,6 +352,41 @@ Dòng 2 & giá trị & giá trị
 - **Cột số**: dùng column type `S` (package `siunitx`) thay vì `c` để **dóng hàng theo dấu `.`**. Header của cột `S` phải wrap trong `{...}` (ví dụ `{0} & {2} & {5}`). Ví dụ: `\begin{tabularx}{\textwidth}{XSSSS}` thay vì `\begin{tabularx}{\textwidth}{Xcccc}`
 - **Caption KHÔNG kết thúc bằng dấu `.`**
 
+
+### 6.3. Cấu trúc bảng dài nhiều trang (xltabular / xltable)
+Khi bảng có quá nhiều dòng cần ngắt qua nhiều trang, sử dụng package `xltabular` để giữ nguyên tính chất co giãn theo `\textwidth` của `tabularx` kết hợp ngắt trang tự động của `longtable`:
+
+```latex
+%\tabcolsep = 3.5mm
+%\fontsize{9}{11} \selectfont
+%\renewcommand*\arraystretch{1.2}
+\begin{xltabular}{\textwidth}{cccccccccccccccccc}
+\caption{Mô tả bảng dài}\label{tN}\\
+\toprule
+\lll{1}{Cột đầu tiên} & \lll{1}{Cột 2} & \lll{1}{Cột 3} \\\midrule
+\endfirsthead
+% Header trang sau: KHÔNG lặp lại caption, chỉ lặp lại header cột
+\toprule
+\lll{1}{Cột đầu tiên} & \lll{1}{Cột 2} & \lll{1}{Cột 3} \\\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+Dòng 1 & giá trị & giá trị \\
+Dòng 2 & giá trị & giá trị \\
+...
+Dòng cuối & giá trị & giá trị
+\end{xltabular}
+%\vspace*{1mm}\fontsize{10}{12} \selectfont
+```
+
+**Quy tắc bảng dài:**
+- Dùng `\begin{xltabular}{\textwidth}{...}` trực tiếp (KHÔNG bọc trong môi trường float `table`).
+- `\caption` và `\label` đặt ngay sau `\begin{xltabular}` và kết thúc bằng `\\`.
+- Phải có `\endfirsthead` cho trang đầu tiên và `\endhead` cho các trang tiếp theo.
+- **Trang sau: TUYỆT ĐỐI KHÔNG lặp lại caption** (không dùng `\caption*` hay caption tiếp nối), chỉ lặp lại header các cột giữa `\toprule` và `\midrule` trước `\endhead`.
+- `\bottomrule` trước `\endfoot` (chân bảng các trang giữa) và `\bottomrule` trước `\endlastfoot` (chân bảng trang cuối cùng).
 ---
 
 ## 7. Citations & Bibliography
