@@ -170,11 +170,16 @@ Ví dụ:
 > - `\headershort`: dùng `và cs.` thay vì `\textit{et al.}`
 > - `\corref{cor1}` thay vì `\corref{cor}`
 
-**Quy tắc `\headershort`:**
-- **1 tác giả**: ghi tên viết tắt tác giả đó, ví dụ: `\headershort{Thuật, Đ. V.}`
-- **2 tác giả**: ghi đủ tên viết tắt cả 2, ví dụ: `\headershort{Thuật, Đ. V., Đức, H. N.}`
-- **Từ 3 tác giả trở lên**: ghi tên tác giả liên hệ + `và cs.`, ví dụ: `\headershort{Thuật, Đ. V., và cs.}`
+> [!CAUTION]
+> ## PHÂN BIỆT BẮT BUỘC GIỮA \shortauth VÀ \headershort
+> - `\shortauth`: LUÔN là **TÁC GIẢ LIÊN HỆ** (tác giả có `\corref{cor1}`). Dùng cho thông tin liên hệ ở chân trang đầu.
+> - `\headershort`: LUÔN là **TÁC GIẢ ĐẦU TIÊN** (tác giả thứ nhất trong danh sách). Dùng cho tiêu đề chạy đầu trang (running header).
+> **TUYỆT ĐỐI KHÔNG** nhầm lẫn hai macro này khi tác giả liên hệ không phải là tác giả đầu tiên.
 
+**Quy tắc `\headershort` (LUÔN lấy theo TÁC GIẢ ĐẦU TIÊN):**
+- **1 tác giả**: ghi tên viết tắt của tác giả đầu tiên, ví dụ: `\headershort{Đạt, N. T.}`
+- **2 tác giả**: ghi đủ tên viết tắt cả 2 tác giả, ví dụ: `\headershort{Đạt, N. T., Đức, H. N.}`
+- **Từ 3 tác giả trở lên**: ghi tên TÁC GIẢ ĐẦU TIÊN + `và cs.`, ví dụ: `\headershort{Đạt, N. T., và cs.}`
 **Quy tắc viết tắt tên tác giả Việt Nam:**
 - Format: `Tên, Họ viết tắt. Đệm viết tắt.`
 - Ví dụ:
@@ -464,6 +469,51 @@ Dòng 3 & giá trị & giá trị \\
 - **LUÔN** giữ các dòng comment sẵn (`%\tabcolsep`, `%\fontsize`, `%\renewcommand*\arraystretch`, `%\vspace`) trong mỗi table — để có thể bỏ comment khi cần tùy chỉnh
 - **Caption KHÔNG kết thúc bằng dấu `.`**
 
+### 6.4. Bảng dài nhiều trang chuẩn (xltabular)
+Khi bảng có quá nhiều dòng cần ngắt qua nhiều trang, **bắt buộc sử dụng package `xltabular`** để kết hợp hoàn hảo tính chất co giãn theo `\textwidth` của `tabularx` và khả năng ngắt trang tự động của `longtable`:
+
+**1. Khai báo Preamble:**
+```latex
+\usepackage{xltabular}
+```
+
+**2. Template chuẩn cho bảng dài (`xltabular`):**
+```latex
+\begin{xltabular}{\textwidth}{*8{>{\centering\arraybackslash}X}}
+\caption{Mô tả bảng dài}\label{tN} \\
+\toprule
+\lll{1}{Cột 1} & \lll{1}{Cột 2} & \lll{1}{Cột 3} & \lll{1}{Cột 4} & \lll{1}{Cột 5} & \lll{1}{Cột 6} & \lll{1}{Cột 7} & \lll{1}{Cột 8} \\
+\midrule
+\endfirsthead
+
+% Header trang sau: BẮT BUỘC KHÔNG lặp lại caption, bắt đầu ngay bằng \toprule
+\toprule
+\lll{1}{Cột 1} & \lll{1}{Cột 2} & \lll{1}{Cột 3} & \lll{1}{Cột 4} & \lll{1}{Cột 5} & \lll{1}{Cột 6} & \lll{1}{Cột 7} & \lll{1}{Cột 8} \\
+\midrule
+\endhead
+
+% Chân bảng các trang đầu / trang giữa: dùng \midrule
+\midrule
+\endfoot
+
+% Chân bảng trang cuối cùng: dùng \bottomrule
+\bottomrule
+\endlastfoot
+
+Dòng 1 & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị \\
+Dòng 2 & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị \\
+...
+Dòng cuối & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị \\
+\end{xltabular}
+```
+
+**Quy tắc cốt lõi cho bảng dài:**
+- Dùng trực tiếp `\begin{xltabular}{\textwidth}{...}` (TUYỆT ĐỐI KHÔNG bọc trong môi trường float `table`).
+- `\caption` và `\label` đặt ngay đầu `\begin{xltabular}` và kết thúc bằng `\\`.
+- **Trang sau: TUYỆT ĐỐI KHÔNG lặp lại caption** (không dùng dòng `Bảng... (tiếp theo)`), chỉ lặp lại header các cột giữa `\toprule` và `\midrule` trước `\endhead`.
+- **Chân bảng các trang giữa**: BẮT BUỘC dùng `\midrule \endfoot` (đóng bằng đường kẻ ngang mảnh để báo hiệu bảng còn tiếp tục ở trang sau).
+- **Chân bảng trang cuối cùng**: BẮT BUỘC dùng `\bottomrule \endlastfoot` (đóng bằng đường kẻ ngang đậm kết thúc bảng).
+- Cột co giãn: ưu tiên dùng cột `X` hoặc `*N{>{\centering\arraybackslash}X}` để độ rộng bảng luôn chuẩn xác 100% `\textwidth`.
 ---
 
 ## 7. Citations & Bibliography

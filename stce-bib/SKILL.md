@@ -30,7 +30,11 @@ Create a new file named `[ID].bib` in the `Bib` directory. Apply ONLY the follow
   - Change `@techreport` to `@manual`. Keep `author`, `title`, `year`, and `url` (if present) unchanged. Put all other remaining information into the `address` field.
   - Change `@incollection` to `@inproceeding`.
   - Change `@misc` to `@manual`.
-  - **Standards in Civil Engineering**: Convert standard documents to `@manual`. Put the series code (e.g., `BS EN 1052-1:1999`) into the `note` field. Keep `title`, `year`, and `url` (if present) unchanged. Put all other remaining information into the `address` field.
+  - **Standards in Civil Engineering**: Convert standard documents to `@manual`. Put the series code (e.g., `BS EN 1052-1:1999`, `EN 1992-1-2:2004`, `TCVN 7570:2006`) into the `note` field.
+    - **Quy tắc trường `year` đối với tiêu chuẩn (`@manual`):**
+      - **CHỈ KHI** mã hiệu tiêu chuẩn ở trường `note` đã chứa **năm ban hành đầy đủ** (ví dụ 4 chữ số năm như `:1999`, `:2004`, `:2006`, `:2018`), thì **MỚI ĐƯỢC BỎ** trường `year` riêng biệt để tránh lặp lại năm trong danh mục tham khảo.
+      - **NẾU** mã hiệu tiêu chuẩn ở trường `note` **KHÔNG** chứa năm đầy đủ (hoặc chỉ có tên/mã hiệu số mà không kèm năm), thì **BẮT BUỘC PHẢI GIỮ** trường `year = {YYYY}` (nếu có thông tin năm xuất bản) để không làm mất năm xuất bản của tài liệu.
+    - Keep `title` and `url` (if present) unchanged. Put all other remaining information into the `address` field.
 
 **CRITICAL: Self-Correction Check**
 Before finishing, you MUST double-check your generated `[ID].bib` file against ALL the formatting rules above. Agents often skip rules (e.g., forgetting to convert title to normal case, missing spaces in author initials, or forgetting to convert DOI to URL for books/proceedings). Verify every single rule one more time to ensure strict adherence.
