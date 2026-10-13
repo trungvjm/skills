@@ -465,7 +465,7 @@ Dòng 3 & giá trị & giá trị \\
 - Dòng dữ liệu cuối kết thúc bằng `\\`; dòng kế tiếp viết `\bottomrule\end{tabularx}`. KHÔNG thêm `\\` trước `\bottomrule`, vì sẽ tạo một hàng trống.
 - Placement: `[ht!]`
 - **KHÔNG** thêm space/padding thừa để căn cột. Giữ code bảng **compact**, dễ đọc
-- **Cột số**: dùng column type `S` (package `siunitx`) nếu cần **dóng hàng theo dấu**. Header của cột `S` phải wrap trong `{...}`
+- **Cột số**: dùng column type `S` (package `siunitx`) thay vì `c` để **dóng hàng theo dấu** (dấu `,` cho bài tiếng Việt hoặc dấu `.` cho bài tiếng Anh). Cú pháp: `S[table-format=M.N]`. Header của cột `S` phải bọc trong `\multicolumn{1}{c}{...}` hoặc `{...}`. Bất kỳ ký tự không phải số nào (như dấu gạch ngang) trong cột `S` bắt buộc phải bọc trong ngoặc nhọn (ví dụ `{-}`).
 - **LUÔN** giữ các dòng comment sẵn (`%\tabcolsep`, `%\fontsize`, `%\renewcommand*\arraystretch`, `%\vspace`) trong mỗi table — để có thể bỏ comment khi cần tùy chỉnh
 - **Caption KHÔNG kết thúc bằng dấu `.`**
 

@@ -354,7 +354,7 @@ Dòng 2 & giá trị & giá trị
 - Dòng cuối KHÔNG có `\\` mà viết `\\\bottomrule\end{tabularx}`
 - Placement: `[ht!]`
 - **KHÔNG** thêm space/padding thừa để căn cột (ví dụ `SS & 5 & Present & 3.1654` — viết liền, KHÔNG thêm khoảng trắng dài giữa các `&` để canh hàng). Giữ code bảng **compact**, dễ đọc
-- **Cột số**: dùng column type `S` (package `siunitx`) thay vì `c` để **dóng hàng theo dấu `.`**. Header của cột `S` phải wrap trong `{...}` (ví dụ `{0} & {2} & {5}`). Ví dụ: `\begin{tabularx}{\textwidth}{XSSSS}` thay vì `\begin{tabularx}{\textwidth}{Xcccc}`
+- **Cột số**: dùng column type `S` (package `siunitx`) thay vì `c` để **dóng hàng theo dấu `.`**. Cú pháp: `S[table-format=M.N]` (với M chữ số phần nguyên, N chữ số phần thập phân). Header của cột `S` phải wrap trong `\multicolumn{1}{c}{...}` hoặc `{...}`. Bất kỳ ký tự không phải số nào (như dấu gạch ngang) trong cột `S` bắt buộc phải bọc trong ngoặc nhọn (ví dụ `{-}`).
 - **Caption KHÔNG kết thúc bằng dấu `.`**
 
 
