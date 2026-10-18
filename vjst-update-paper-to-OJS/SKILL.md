@@ -1,9 +1,9 @@
 ---
-name: vjst-update-aff
+name: vjst-update-paper-to-OJS
 description: Đọc dữ liệu từ file Word (.docx) bài báo khoa học VJST (chế độ chỉ đọc, đối chiếu bằng AI Vision) hoặc từ văn bản người dùng cung cấp để chuẩn hóa và tự động cập nhật toàn bộ metadata (Tiêu đề, Tác giả, Email, Affiliation, Tóm tắt, Từ khóa, Tài liệu tham khảo, Số trang, Số Volume/Issue) lên hệ thống OJS VJST qua browser subagent.
 ---
 
-# vjst-update-aff: Trích xuất File Word & Cập nhật Toàn diện Metadata Bài báo trên OJS VJST
+# vjst-update-paper-to-OJS: Trích xuất File Word & Cập nhật Toàn diện Metadata Bài báo trên OJS VJST
 
 Skill này hướng dẫn agent trích xuất thông tin từ file Word (`.docx`) của bài báo khoa học thuộc tạp chí Vietnam Journal of Science and Technology (VJST), hoặc từ văn bản rời do người dùng cung cấp, sau đó đối chiếu bằng AI Vision, chuẩn hóa theo quy chuẩn VJST và cập nhật lên hệ thống quản trị OJS thông qua `browser` subagent.
 
