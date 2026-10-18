@@ -191,8 +191,10 @@ Sau khi người dùng xác nhận, sử dụng công cụ `invoke_subagent` đ�
 4. **Cập nhật Số trang (Pages)**:
    - Điền số trang vào ô **Pages**. **BẮT BUỘC** phải dùng dấu gạch dài en-dash (`–`, Unicode U+2013) đúng như trong file Word (ví dụ: `848–854`), tuyệt đối không dùng dấu gạch nối ngắn (`-`).
 5. Nhấn nút **Save** và xác nhận thông báo lưu thành công.
-6. **Lên lịch xuất bản (Schedule For Publication)**:
-   - Sau khi chọn xong Issue và lưu thành công, **BẮT BUỘC nhấn nút "Schedule For Publication"** (nằm ở thanh tác vụ phía trên bên phải của trang Publication) để chính thức đưa bài báo vào danh sách lên lịch xuất bản của Issue đã chọn.
+6. **Lên lịch hoặc Xuất bản (Schedule For Publication / Publish)**:
+   - Sau khi chọn xong Issue, Section, Pages và lưu thành công:
+     - **Nếu bài báo thông thường (chưa có ngày xuất bản)**: Nhấn nút **"Schedule For Publication"** ở góc trên bên phải trang Publication để đưa bài báo vào lịch xuất bản của số đã chọn.
+     - **Nếu bài báo đã được xuất bản online trước đó (đã có sẵn ngày xuất bản / Date Published)**: Khi chọn số xong, chọn nút **"Publish"** (thay vì Schedule For Publication) để chính thức xuất bản bài báo vào số đã chọn.
 
 ---
 
