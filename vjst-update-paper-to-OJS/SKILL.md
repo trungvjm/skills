@@ -85,9 +85,9 @@ Skill hỗ trợ cả 2 chế độ:
 3. **Ngắt dòng bằng `<br>`**:
    - Nếu một tác giả có từ 2 địa chỉ trở lên (hoặc khi ghép các địa chỉ thuộc về tác giả đó), phân tách các địa chỉ bằng thẻ `<br>`. Tuyệt đối không dùng ký tự xuống dòng `\n`.
    - *Ví dụ*: `\(^1\) Graduate University of Science and Technology, Vietnam Academy of Science and Technology (VAST), 18 Hoang Quoc Viet, Nghia Do Ward, Ha Noi, Viet Nam<br>\(^2\) Institute of Chemistry, VAST, 18 Hoang Quoc Viet, Nghia Do Ward, Ha Noi, Viet Nam`
-4. **Giữ nguyên nội dung theo Word & Kiểm tra địa giới hành chính 2 cấp**:
-   - Mặc định giữ nguyên nội dung địa chỉ như trong file Word.
-   - Đồng thời kiểm tra theo quy tắc địa giới hành chính Việt Nam sau sáp nhập (01/07/2025, chỉ còn 2 cấp: xã/phường và tỉnh/thành phố) của `/vjst-ojs-metadata`. Nếu phát hiện địa chỉ trong file Word chưa chuẩn 2 cấp hành chính mới, **cảnh báo rõ và đưa ra phương án gợi ý** ở bước chờ phê duyệt để người dùng quyết định.
+4. **Giữ nguyên nội dung theo Word & Kiểm tra lỗi chính tả**:
+   - Đảm bảo giữ nguyên nội dung địa chỉ giống như trong file Word (không kiểm tra hay yêu cầu đổi theo địa giới hành chính 2 cấp).
+   - Nếu phát hiện có lỗi sai chính tả trong địa chỉ, báo rõ ở bước chờ phê duyệt để người dùng xem xét quyết định.
 
 ### E. Tóm tắt (Abstract)
 1. **Loại bỏ nhãn đầu đoạn**: Bỏ chữ `"Abstract."` (hoặc `"Abstract:"`, `"Abstract"`) ở đầu phần tóm tắt.
@@ -124,7 +124,7 @@ Trước khi thao tác trên OJS, main agent phải trình bày bản tổng h�
 2. **Tiêu đề (Title)** đã chuẩn hóa HTML (đặt trong code block để dễ kiểm tra thẻ `<i>`, `<sub>`, `<sup>`).
 3. **Danh sách Tác giả, Email & Affiliation**:
    - Bảng hoặc danh sách rõ từng tác giả: STT, Given Name, Family Name, Email, Vai trò (Author / Principal Contact `*`), và chuỗi Affiliation (`\(^1\)...<br>\(^2\)...`).
-   - Ghi chú cảnh báo nếu phát hiện địa chỉ chưa chuẩn địa giới hành chính 2 cấp hoặc thiếu thông tin.
+   - Ghi chú báo người dùng xem xét nếu phát hiện lỗi sai chính tả hoặc thiếu thông tin trong địa chỉ.
 4. **Tóm tắt (Abstract)** dạng HTML đã đối chiếu AI Vision (đặt trong code block).
 5. **Danh sách Từ khóa (Keywords)** theo đúng thứ tự.
 6. **Danh sách Tài liệu tham khảo (References)**: Nêu tổng số lượng tài liệu tham khảo trích xuất được (ví dụ: `11 tài liệu tham khảo` hoặc `103 tài liệu tham khảo`) và hiển thị đầy đủ (hoặc hiển thị các mục đầu/cuối nếu danh sách quá dài) để người dùng xác nhận.
