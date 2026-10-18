@@ -75,7 +75,7 @@ Skill hỗ trợ cả 2 chế độ:
    - Nhận diện tác giả có dấu sao `*` trên chỉ số mũ trong bài báo để thiết lập làm **Principal Contact** trên OJS.
 3. **Email**:
    - Trích xuất địa chỉ email từ dòng `*Email:` trong bài báo và gắn cho tác giả liên hệ (nếu bài báo liệt kê nhiều email cho nhiều tác giả thì ánh xạ tương ứng).
-   - Quy tắc bảo vệ email trên OJS: Nếu tác giả đã có sẵn email trên OJS thì **TUYỆT ĐỐI KHÔNG XÓA**. Nếu email trên OJS khác với email trong file Word, giữ nguyên email hiện có trên OJS và báo cáo lại để hỏi ý kiến người dùng.
+   - **Ưu tiên lấy email chính xác từ bài báo**: Nếu bài báo có cung cấp email cho tác giả (đặc biệt là tác giả liên hệ `*Email:`), luôn cập nhật ô Email trên OJS theo đúng địa chỉ email chính xác từ bài báo. Đối với các tác giả khác không cung cấp email trong bài báo, nếu trên OJS đã có sẵn email thì giữ nguyên không xóa (để trống nếu OJS chưa có).
 
 ### D. Địa chỉ tác giả (Affiliation)
 1. **Nhận diện và gộp dòng**: Nhận diện từng đơn vị theo chỉ số đầu dòng (`1`, `2`, `3`...), gộp các dòng bị ngắt thành một dòng liên tục cho mỗi đơn vị.
@@ -155,8 +155,8 @@ Sau khi người dùng xác nhận, sử dụng công cụ `invoke_subagent` đ�
    - **Given Name** & **Family Name**: Điền chính xác theo dữ liệu đã tách.
    - **Preferred Public Name**: Nếu ô này có dữ liệu, **xóa sạch toàn bộ** (để trống).
    - **Email**:
-     - Điền email nếu tác giả chưa có email trên hệ thống và bài báo có cung cấp.
-     - **QUAN TRỌNG**: Nếu tác giả đã có sẵn email trên hệ thống OJS thì **TUYỆT ĐỐI KHÔNG ĐƯỢC XÓA**. Nếu email trên hệ thống khác với email trích xuất từ bài báo, giữ nguyên email hiện có trên hệ thống và báo cáo lại sau.
+     - **Ưu tiên lấy email chính xác từ bài báo**: Nếu bài báo có cung cấp email cho tác giả (đặc biệt là tác giả liên hệ `*Email:`), luôn điền/cập nhật ô Email theo đúng email từ bài báo.
+     - Đối với tác giả không có email trong bài báo: Nếu trên hệ thống OJS đã có sẵn email thì **giữ nguyên không xóa**; nếu chưa có thì để trống.
    - **Country**: Chọn quốc gia tương ứng (mặc định là `Viet Nam`).
    - **Affiliation**:
      - Dán chuỗi Affiliation chuẩn hóa (`\(^1\) ...<br>\(^2\) ...`) vào **ô text đơn dòng nằm ở trên cùng** có nhãn **"Affiliation"**.
