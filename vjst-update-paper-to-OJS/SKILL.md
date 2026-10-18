@@ -75,7 +75,7 @@ Skill hỗ trợ cả 2 chế độ:
    - Nhận diện tác giả có dấu sao `*` trên chỉ số mũ trong bài báo để thiết lập làm **Principal Contact** trên OJS.
 3. **Email**:
    - Trích xuất địa chỉ email từ dòng `*Email:` trong bài báo và gắn cho tác giả liên hệ (nếu bài báo liệt kê nhiều email cho nhiều tác giả thì ánh xạ tương ứng).
-   - **Ưu tiên lấy email chính xác từ bài báo**: Nếu bài báo có cung cấp email cho tác giả (đặc biệt là tác giả liên hệ `*Email:`), luôn cập nhật ô Email trên OJS theo đúng địa chỉ email chính xác từ bài báo. Đối với các tác giả khác không cung cấp email trong bài báo, nếu trên OJS đã có sẵn email thì giữ nguyên không xóa (để trống nếu OJS chưa có).
+   - **Ưu tiên lấy email chính xác từ bài báo**: Nếu bài báo có cung cấp email cho tác giả (đặc biệt là tác giả liên hệ `*Email:`), luôn cập nhật ô Email trên OJS theo đúng địa chỉ email chính xác từ bài báo. Đối với các tác giả khác không cung cấp email trong bài báo: nếu trên OJS đã có sẵn email thì giữ nguyên không xóa; nếu là tác giả mới chưa có email trên OJS, khai tạm email của tác giả liên hệ (để hệ thống cho phép lưu, người dùng sẽ cập nhật lại sau).
 
 ### D. Địa chỉ tác giả (Affiliation)
 1. **Nhận diện và gộp dòng**: Nhận diện từng đơn vị theo chỉ số đầu dòng (`1`, `2`, `3`...), gộp các dòng bị ngắt thành một dòng liên tục cho mỗi đơn vị.
@@ -85,9 +85,10 @@ Skill hỗ trợ cả 2 chế độ:
 3. **Ngắt dòng bằng `<br>`**:
    - Nếu một tác giả có từ 2 địa chỉ trở lên (hoặc khi ghép các địa chỉ thuộc về tác giả đó), phân tách các địa chỉ bằng thẻ `<br>`. Tuyệt đối không dùng ký tự xuống dòng `\n`.
    - *Ví dụ*: `\(^1\) Graduate University of Science and Technology, Vietnam Academy of Science and Technology (VAST), 18 Hoang Quoc Viet, Nghia Do Ward, Ha Noi, Viet Nam<br>\(^2\) Institute of Chemistry, VAST, 18 Hoang Quoc Viet, Nghia Do Ward, Ha Noi, Viet Nam`
-4. **Giữ nguyên nội dung theo Word & Kiểm tra lỗi chính tả**:
-   - Đảm bảo giữ nguyên nội dung địa chỉ giống như trong file Word (không kiểm tra hay yêu cầu đổi theo địa giới hành chính 2 cấp).
-   - Nếu phát hiện có lỗi sai chính tả trong địa chỉ, báo rõ ở bước chờ phê duyệt để người dùng xem xét quyết định.
+4. **Chuẩn hóa địa danh và kiểm tra lỗi chính tả**:
+   - **Bắt buộc chuẩn hóa địa danh**: Viết `Viet Nam` (tách 2 từ, không viết liền `Vietnam`), `Ha Noi` (tách 2 từ, không viết liền `Hanoi`) trong địa chỉ.
+   - Giữ nguyên các nội dung còn lại theo file Word (không yêu cầu sáp nhập địa giới 2 cấp).
+   - Nếu phát hiện có lỗi sai chính tả khác trong địa chỉ, báo rõ ở bước chờ phê duyệt để người dùng xem xét quyết định.
 
 ### E. Tóm tắt (Abstract)
 1. **Loại bỏ nhãn đầu đoạn**: Bỏ chữ `"Abstract."` (hoặc `"Abstract:"`, `"Abstract"`) ở đầu phần tóm tắt.
@@ -156,7 +157,7 @@ Sau khi người dùng xác nhận, sử dụng công cụ `invoke_subagent` đ�
    - **Preferred Public Name**: Nếu ô này có dữ liệu, **xóa sạch toàn bộ** (để trống).
    - **Email**:
      - **Ưu tiên lấy email chính xác từ bài báo**: Nếu bài báo có cung cấp email cho tác giả (đặc biệt là tác giả liên hệ `*Email:`), luôn điền/cập nhật ô Email theo đúng email từ bài báo.
-     - Đối với tác giả không có email trong bài báo: Nếu trên hệ thống OJS đã có sẵn email thì **giữ nguyên không xóa**; nếu chưa có thì để trống.
+     - Đối với tác giả không có email trong bài báo: Nếu trên hệ thống OJS đã có sẵn email thì **giữ nguyên không xóa**; nếu là tác giả mới chưa có email, khai tạm email của tác giả liên hệ để hệ thống cho phép lưu (người dùng sẽ cập nhật lại sau).
    - **Country**: Chọn quốc gia tương ứng (mặc định là `Viet Nam`).
    - **Affiliation**:
      - Dán chuỗi Affiliation chuẩn hóa (`\(^1\) ...<br>\(^2\) ...`) vào **ô text đơn dòng nằm ở trên cùng** có nhãn **"Affiliation"**.
