@@ -49,7 +49,7 @@ Skill hỗ trợ cả 2 chế độ:
 - **ID bài báo**: Lấy từ đuôi dòng DOI trên trang 1 (`https://doi.org/10.15625/2525-2518/{ID}`), từ tên file (ví dụ: `VJST-1-NAT-18497.docx` -> `18497`), hoặc từ yêu cầu của người dùng.
 - **Volume, Issue (Number) & Year**: Lấy từ dòng Header trang 1: `Vietnam Journal of Science and Technology {Vol}({No}) ({Year}) {StartPage}–{EndPage}` (ví dụ: `64(5) (2026)` -> Volume `64`, Number `5`, Year `2026`).
 - **Số trang (Pages)**:
-  - Lấy từ Header trang 1 (ví dụ: `848–854` hoặc `848-854`).
+  - Lấy từ Header trang 1. **LƯU Ý BẮT BUỘC**: Dấu gạch giữa các số trang phải là dấu gạch dài en-dash (`–`, Unicode U+2013) đúng như trong file Word (ví dụ: `848–854`), tuyệt đối không dùng dấu gạch nối ngắn (`-`).
   - Đối chiếu bằng AI Vision với số trang đánh ở chân trang đầu và trang cuối cùng của bài báo. Nếu số trang trên Header trang 1 bị lệch so với số trang thực tế ở trang cuối (hoặc còn để `xxx–xxx`), phải cảnh báo rõ cho người dùng.
 - **Chuyên mục (Section)**: Nhận diện từ dòng tiêu đề chuyên mục trên trang 1 (ví dụ: `REVIEW PAPER`) hoặc từ tiền tố tên file (`0-REV` -> `REVIEW`, `1-NAT` -> `NATURAL PRODUCTS`, `2-MAT` -> `MATERIALS`, `3-ENV` -> `ENVIRONMENT`, `4-ELE` -> `ELECTRONICS - TELECOMMUNICATION`, `5-MEC` -> `MECHANICAL ENGINEERING - MECHATRONICS`).
 
@@ -185,7 +185,7 @@ Sau khi người dùng xác nhận, sử dụng công cụ `invoke_subagent` đ�
 3. **Kiểm tra Chuyên mục (Section)**:
    - Kiểm tra mục **Section** đã chọn đúng chuyên mục của bài báo (`REVIEW`, `NATURAL PRODUCTS`, `MATERIALS`, `ENVIRONMENT`, `ELECTRONICS - TELECOMMUNICATION`, `MECHANICAL ENGINEERING - MECHATRONICS`...) chưa; nếu chưa đúng thì chọn lại.
 4. **Cập nhật Số trang (Pages)**:
-   - Điền số trang (ví dụ: `848-854` hoặc `848–854`) vào ô **Pages**.
+   - Điền số trang vào ô **Pages**. **BẮT BUỘC** phải dùng dấu gạch dài en-dash (`–`, Unicode U+2013) đúng như trong file Word (ví dụ: `848–854`), tuyệt đối không dùng dấu gạch nối ngắn (`-`).
 5. Nhấn nút **Save** và xác nhận thông báo lưu thành công.
 
 ---
