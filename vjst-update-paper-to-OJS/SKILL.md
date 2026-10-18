@@ -64,7 +64,9 @@ Skill hỗ trợ cả 2 chế độ:
    - **Chữ in nghiêng (`<i>...</i>`)**:
      - Tên chi, loài, phân loài sinh vật theo danh pháp Latin (`<i>Saururus</i>`, `<i>Vernonia gratiosa</i>`, `<i>Escherichia coli</i>`). Lưu ý: tên tác giả định danh thực vật đứng sau tên loài như `L.`, `Hance`, `(Lour.) Baill.`, `sp.`, `spp.`, `var.` giữ chữ đứng (không in nghiêng) đúng như trong Word.
      - Tên gene/protein in nghiêng và các từ Latin/ký hiệu hóa học in nghiêng theo quy ước (`<i>in vitro</i>`, `<i>in vivo</i>`, `<i>in situ</i>`, `<i>n</i>-hexane`, `<i>E</i>`, `<i>Z</i>`, `<i>R</i>`, `<i>S</i>`, `<i>O</i>`, `<i>N</i>`...).
-3. **Đầu ra Title**: Trả về trên một dòng duy nhất, không có 2 dấu cách liên tiếp.
+3. **Đầu ra Title & Xóa sạch Prefix/Subtitle**:
+   - Trả về trên một dòng duy nhất, không có 2 dấu cách liên tiếp.
+   - **Xóa sạch Prefix và Subtitle**: Trên giao diện OJS, nếu trường **Prefix** hoặc **Subtitle** có dữ liệu thì **xóa sạch toàn bộ** (để trống hoàn toàn), toàn bộ tiêu đề bài báo chỉ đặt trong ô **Title**.
 
 ### C. Tên tác giả (Authors) và Email
 1. **Tách Given Name và Family Name**:
@@ -142,7 +144,8 @@ Sau khi người dùng xác nhận, sử dụng công cụ `invoke_subagent` đ�
 
 ### BƯỚC 1: Cập nhật Tiêu đề và Tóm tắt (Title & Abstract)
 1. **URL**: Truy cập `https://vjs.ac.vn/jst/workflow/index/{ID}/4#publication/titleAbstract`.
-2. **Cập nhật Title**:
+2. **Cập nhật Title & Xóa sạch Prefix/Subtitle**:
+   - **Xóa sạch Prefix và Subtitle**: Nếu trường **Prefix** hoặc **Subtitle** có dữ liệu, hãy **xóa sạch toàn bộ** (để trống).
    - Điền chuỗi Title đã chuẩn hóa (chứa các thẻ `<i>`, `<sub>`, `<sup>` nếu có) vào ô **Title**.
 3. **Cập nhật Abstract (giữ nguyên định dạng HTML)**:
    - Ô **Abstract** trên OJS sử dụng trình soạn thảo TinyMCE.
