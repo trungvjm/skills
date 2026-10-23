@@ -453,7 +453,8 @@ Dòng cuối & giá trị & giá trị & giá trị & giá trị & giá trị & 
 \cite{1, 2, 3}        % đúng một dấu cách sau mỗi dấu phẩy
 \cite{11}             % citation đơn
 ```
-- Dùng `~` trước `\cite`: `text~\cite{N}`
+- `~` attaches directly to the preceding word: `text~\cite{N}`; never `text ~\cite{N}` or a line break before `~` (`STCE-EN-REF-003`).
+- Adjacent citations must be merged: `\cite{2, 3, 4}`, not `\cite{2}, ~\cite{3}, ~\cite{4}` (`STCE-EN-REF-002`).
 - Số citation là key trong file `.bib`
 
 ### 7.2. Bibliography

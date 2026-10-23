@@ -198,8 +198,8 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 | Mã | Mức | Quy tắc | Nguồn | Kiểm chứng |
 |---|---|---|---|---|
 | STCE-VN-REF-001 | MUST | Chuyển số trích dẫn trong nội dung thành lệnh cite với đúng key, không đổi tài liệu được trích. | §0; §7.1 | SRC, DIFF |
-| STCE-VN-REF-002 | MAY | Gộp nhiều key trong một cite khi không đổi nhóm tài liệu được dẫn. | §7.1 | DIFF |
-| STCE-VN-REF-003 | MUST | Có `~` trước cite/ref/tham chiếu phương trình để tránh ngắt dòng. | §4.3; §7.1 | SRC, PDF |
+| STCE-VN-REF-002 | MUST | Các trích dẫn liền nhau phải gộp vào một lệnh cite, ví dụ `[2], [3], [4]` → `\cite{2, 3, 4}`; không để `\cite{2}, ~\cite{3}`. Giữ nguyên key và thứ tự key. | §7.1; người dùng chốt gộp cite | SRC, DIFF |
+| STCE-VN-REF-003 | MUST | Dấu `~` đứng liền chữ trước cite/ref/tham chiếu phương trình (`text~\cite{N}`), không có dấu cách hoặc xuống dòng trước `~`. | §4.3; §7.1 | SRC, PDF |
 | STCE-VN-REF-004 | MUST | Số key trong cite phải tồn tại trong BibTeX và tương ứng tài liệu nguồn. | §7.1; §9.1 | SRC, DIFF, BUILD |
 | STCE-VN-REF-005 | MUST | Trong lệnh cite nhiều key, đặt đúng một dấu cách sau mỗi dấu phẩy, không có khoảng trắng trước dấu phẩy, ví dụ `\cite{1, 2, 3}`. Chuẩn hóa spacing dù nguồn dùng kiểu khác; giữ nguyên key và thứ tự key. | §0; §7.1; C11 người dùng đã chốt | SRC, DIFF |
 | STCE-VN-REF-006 | MUST | Đặt .bib trong thư mục Bib, tên file trùng id bài, bibliography trỏ đúng file đó. | §1; §7.2 | SRC, BUILD |

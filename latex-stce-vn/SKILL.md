@@ -574,7 +574,8 @@ Dòng cuối & giá trị & giá trị & giá trị & giá trị & giá trị & 
 \cite{1, 2, 3}        % nhiều citations ghép chung; một dấu cách sau mỗi dấu phẩy
 \cite{11}             % citation đơn
 ```
-- Dùng `~` trước `\cite`: `text~\cite{N}`
+- **STCE-VN-REF-002 (đã chốt):** trích dẫn liền nhau phải gộp vào một lệnh, ví dụ `\cite{2, 3, 4}`; không viết `\cite{2}, ~\cite{3}, ~\cite{4}`.
+- **STCE-VN-REF-003:** `~` đứng liền chữ trước: `text~\cite{N}`; không viết `text ~\cite{N}` hoặc xuống dòng trước `~` (tạo khoảng trắng kép).
 - Số citation là key trong file `.bib`
 - **STCE-VN-REF-005 / C11 đã chốt:** đặt đúng một dấu cách sau mỗi dấu phẩy giữa các key cite, ví dụ `\cite{1, 2}` hoặc `\cite{1, 2, 3}`; không có khoảng trắng trước dấu phẩy. Chuẩn hóa khoảng trắng dù nguồn dùng kiểu khác; giữ nguyên key và thứ tự key.
 

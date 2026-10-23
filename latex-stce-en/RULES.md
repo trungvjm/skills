@@ -186,8 +186,8 @@ Mỗi dòng định nghĩa một mã duy nhất theo dạng `STCE-EN-<NHÓM>-<S�
 | Mã | Mức | Quy tắc | Nguồn | Kiểm chứng |
 |---|---|---|---|---|
 | STCE-EN-REF-001 | MUST | Trích dẫn dùng cite đúng key; không đổi tài liệu được dẫn khi chuẩn hóa. | §0; §7.1 | SRC, DIFF |
-| STCE-EN-REF-002 | MAY | Gộp nhiều key trong một cite khi không đổi tập/thứ tự tài liệu nguồn. | §7.1 | DIFF |
-| STCE-EN-REF-003 | MUST | Có khoảng cách không ngắt dòng trước cite/ref/tham chiếu phương trình. | §4.3; §7.1 | SRC, PDF |
+| STCE-EN-REF-002 | MUST | Trích dẫn liền nhau phải gộp vào một lệnh cite, ví dụ `\cite{2, 3, 4}`; không để `\cite{2}, ~\cite{3}`. Giữ nguyên key và thứ tự key. | §7.1; người dùng chốt gộp cite | SRC, DIFF |
+| STCE-EN-REF-003 | MUST | Dấu `~` đứng liền chữ trước cite/ref/tham chiếu phương trình (`text~\cite{N}`), không có dấu cách hoặc xuống dòng trước `~`. | §4.3; §7.1 | SRC, PDF |
 | STCE-EN-REF-004 | MUST | Nhiều key cite có đúng một dấu cách sau dấu phẩy, không có khoảng trắng trước dấu phẩy; không áp {,} của số thập phân Việt vào cite. | Xác nhận khoảng trắng key cite chung | SRC |
 | STCE-EN-REF-005 | MUST | Mọi citation key có trong .bib, mọi label được phân giải sau compile ổn định. | §7.1; §8.1 | SRC, BUILD |
 | STCE-EN-REF-006 | MUST | File .bib nằm trong Bib, tên trùng id, bibliography trỏ đúng file. | §7.2 | SRC, BUILD |
