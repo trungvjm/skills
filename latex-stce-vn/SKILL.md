@@ -12,6 +12,49 @@ Skill chuẩn hóa file LaTeX theo đúng template của tạp chí **STCE — T
 
 Template chuẩn được lấy từ file `01_3330_Dinh Van Thuat.tex`.
 
+## Danh mục mã quy tắc — bắt buộc đọc trước khi thực hiện
+
+1. Đọc [RULES.md](RULES.md): mỗi quy tắc có một mã duy nhất, mức yêu cầu, nguồn và cách kiểm chứng.
+2. Đọc [CONFLICTS.md](CONFLICTS.md): phân biệt mâu thuẫn trực tiếp, ví dụ sai và điều kiện chưa rõ.
+3. Bản chụp nguyên trạng trước khi đánh mã là [SKILL.before-rule-ids.md](SKILL.before-rule-ids.md), chỉ dùng đối chiếu lịch sử.
+
+Các mục bên dưới giữ hướng dẫn và ví dụ chi tiết. Khi một nội dung lặp lại ở phần hướng dẫn, checklist và bảng tổng hợp, dùng **cùng mã** trong RULES.md; không coi đó là ba quy tắc độc lập.
+
+**Quyết định đã chốt:** C01 dùng Sentence case; C02 lấy tác giả đầu tiên; C03 viết tắt cộng sự thành cs. và bỏ dấu chấm cuối caption; C04 báo người dùng nếu abstract có nhiều đoạn, không tự gộp; C07 dùng đơn vị thủ công; C10 dùng `{,}` cho dấu phẩy thập phân trong math mode; C11 có một dấu cách sau mỗi dấu phẩy giữa các key cite (`\cite{1, 2, 3}`); C16 lấy số cột theo bảng thực tế. Không hỏi lại các lựa chọn này. C14 là mô tả kỹ thuật về macro của template, không phải lựa chọn ngôn ngữ Việt/Anh.
+
+### Các quy tắc đã được người dùng xác nhận
+
+- **STCE-VN-TXT-001:** `và cộng sự` / `cùng cộng sự` → `và cs.` trong nội dung.
+- **STCE-VN-FIG-012:** viết hoa chữ cái đầu của từng subcaption; giữ nhãn panel `(a)`, `(b)` ở chữ thường.
+- **STCE-VN-EQ-005:** không có dòng trống ngay trước môi trường `equation`.
+- **STCE-VN-FRONT-003:** tiêu đề tiếng Việt dùng Sentence case.
+- **STCE-VN-FRONT-012:** từ ba tác giả trở lên, headershort lấy tác giả đầu tiên + `và cs.`.
+- **STCE-VN-FIG-013 / STCE-VN-TAB-013:** bỏ dấu chấm cuối caption hình/bảng; đây là ngoại lệ biên tập được phép.
+- **STCE-VN-FRONT-019 / STCE-VN-FRONT-023:** abstract nhiều đoạn phải giữ nguyên và báo người dùng, không tự gộp.
+- **STCE-VN-UNIT-001:** đơn vị thông thường trình bày thủ công; siunitx chỉ là ngoại lệ cho ký hiệu/prefix đặc biệt.
+
+### Tra nhóm mã
+
+| Phần hướng dẫn | Nhóm mã trong RULES.md |
+|---|---|
+| Phạm vi và bảo toàn nội dung | `STCE-VN-CORE-*` |
+| Sao lưu, ghi nhận thay đổi | `STCE-VN-BACKUP-*` |
+| Template và cấu trúc tài liệu | `STCE-VN-TPL-*` |
+| Frontmatter và metadata | `STCE-VN-FRONT-*` |
+| Sections và paragraph | `STCE-VN-SEC-*` |
+| Phương trình và math mode | `STCE-VN-EQ-*` |
+| Đơn vị | `STCE-VN-UNIT-*` |
+| Ký tự, chữ và cách viết | `STCE-VN-TXT-*` |
+| Hình và subcaption | `STCE-VN-FIG-*` |
+| Bảng | `STCE-VN-TAB-*` |
+| Trích dẫn và bibliography | `STCE-VN-REF-*` |
+| Kiểm chứng và bàn giao | `STCE-VN-QA-*` |
+| Cách thực hiện và công cụ | `STCE-VN-WORK-*` |
+
+### Điều kiện ghi nhận kết quả
+
+Với từng quy tắc áp dụng, báo cáo `mã | PASS/FAIL/N/A/BLOCKED | file:dòng hoặc trang PDF | bằng chứng`. `N/A` phải có lý do; chưa kiểm chứng không được ghi `PASS`. Biên dịch thành công không thay thế kiểm tra nội dung hoặc định dạng; nhận xét chung của reviewer cũng không thay thế kiểm tra từng mã. Danh mục này **chưa phải validator/linter tự động**.
+
 ---
 
 > [!CAUTION]
@@ -20,6 +63,8 @@ Template chuẩn được lấy từ file `01_3330_Dinh Van Thuat.tex`.
 > **TUYỆT ĐỐI KHÔNG ĐƯỢC THAY ĐỔI NỘI DUNG GỐC.**
 >
 > Quy tắc này có **hiệu lực cao nhất**, vượt trên mọi quy tắc khác.
+>
+> **Phạm vi ngoại lệ biên tập (C01/C03):** bảo toàn ý nghĩa/nội dung khoa học; vẫn chuẩn hóa Sentence case cho tiêu đề tiếng Việt (`STCE-VN-FRONT-003`), viết tắt cộng sự (`STCE-VN-TXT-001`), viết hoa đầu subcaption (`STCE-VN-FIG-012`) và bỏ dấu chấm cuối caption hình/bảng (`STCE-VN-FIG-013`, `STCE-VN-TAB-013`). Không lấy các ngoại lệ này làm quyền viết lại câu, thay số hoặc đổi ký hiệu.
 >
 > **KHÔNG BAO GIỜ** được thay đổi:
 > - **Giá trị số** trong phương trình, bảng biểu
@@ -54,15 +99,15 @@ Template chuẩn được lấy từ file `01_3330_Dinh Van Thuat.tex`.
 > [!CAUTION]
 > **Chỉ chuẩn hóa FORMAT — KHÔNG thay đổi NỘI DUNG gốc**
 
-**Nguyên tắc cốt lõi:** Nội dung text phải giữ nguyên 100% so với bản gốc. Chỉ được thay đổi cách trình bày LaTeX (formatting, spacing, commands).
+**Nguyên tắc cốt lõi:** giữ nguyên nội dung khoa học, từ ngữ và ý nghĩa của bản gốc; chỉ thay đổi biểu diễn LaTeX và các ngoại lệ biên tập đã được xác nhận ở trên.
 
 **ĐƯỢC PHÉP:**
-- Đổi `[1, 2]` → `~\cite{1,2}` (format citation)
+- Đổi `[1, 2]` → `~\cite{1, 2}` (format citation; C11 đã chốt).
 - Đổi `Hình 1` → `Hình~\ref{f1}` (format reference)
 - Đổi `stress- strain` → `stress-strain` (sửa typo khoảng cách)
 - Đổi raw text heading → `\section{...}` (format heading)
 - Đổi raw table → `\begin{table}...\end{table}` (format table)
-- Đổi `300C` → `30~$^\circ$C` (sửa lỗi ký tự đặc biệt)
+- Chuẩn hóa ký hiệu độ chỉ khi đã xác định được giá trị gốc. Chuỗi `300C` không đủ bằng chứng để tự đổi thành `30~$^\circ$C` (C06; `STCE-VN-CORE-002`, `STCE-VN-CORE-009`).
 - Thêm `~` trước `\cite`, `\ref`, `$^\circ$C` (spacing rules)
 - Đổi `H2SO4` → `\ce{H2SO4}` (format chemical)
 - Đổi raw equation → `\begin{equation}` (format equation)
@@ -137,9 +182,11 @@ Phần `frontmatter` có các thành phần (theo đúng thứ tự):
 
 ### 2.2. Title (Tiếng Việt)
 ```latex
-\title{Tiêu đề bài báo Tiếng Việt}
+\title{Tiêu đề bài báo tiếng Việt}
 ```
 - **Tiêu đề bài tiếng Việt viết thường kiểu Sentence case, chỉ viết Hoa các từ bắt buộc phải viết hoa**
+
+**C01 — đã chốt:** dùng Sentence case (`STCE-VN-FRONT-003`); chỉ viết hoa chữ đầu và tên riêng/từ viết tắt cần giữ hoa. Không chuyển toàn bộ tiêu đề tiếng Việt sang HOA; quy tắc tiêu đề tiếng Anh sau `\TD` không thay đổi.
 
 Ví dụ:
 ```latex
@@ -161,7 +208,7 @@ Ví dụ:
 \cortext[cor1]{Tác giả đại diện. \textit{Địa chỉ e-mail:}}
 \shortauth{Tên, Họ viết tắt.} % tên tác giả liên hệ viết tắt
 \mailauth{email@domain}	% email tác giả liên hệ
-\headershort{Tên, Họ viết tắt., và cs.} % tên tác giả đầu tiên viết tắt, và cs. khi có >2 tác giả
+\headershort{Đạt, N. T., và cs.} % tác giả đầu tiên Nguyễn Thành Đạt, khi có >2 tác giả
 ```
 
 > [!IMPORTANT]
@@ -170,16 +217,15 @@ Ví dụ:
 > - `\headershort`: dùng `và cs.` thay vì `\textit{et al.}`
 > - `\corref{cor1}` thay vì `\corref{cor}`
 
-> [!CAUTION]
-> ## PHÂN BIỆT BẮT BUỘC GIỮA \shortauth VÀ \headershort
-> - `\shortauth`: LUÔN là **TÁC GIẢ LIÊN HỆ** (tác giả có `\corref{cor1}`). Dùng cho thông tin liên hệ ở chân trang đầu.
-> - `\headershort`: LUÔN là **TÁC GIẢ ĐẦU TIÊN** (tác giả thứ nhất trong danh sách). Dùng cho tiêu đề chạy đầu trang (running header).
-> **TUYỆT ĐỐI KHÔNG** nhầm lẫn hai macro này khi tác giả liên hệ không phải là tác giả đầu tiên.
+**Quy tắc `\headershort`:**
+- **1 tác giả**: ghi tên viết tắt tác giả đó, ví dụ: `\headershort{Thuật, Đ. V.}`
+- **2 tác giả**: ghi đủ tên viết tắt cả 2, ví dụ: `\headershort{Thuật, Đ. V., Đức, H. N.}`
+- **Từ 3 tác giả trở lên** (`STCE-VN-FRONT-012`): ghi tên tác giả đầu tiên + `và cs.`, ví dụ với danh sách tác giả ở trên: `\headershort{Đạt, N. T., và cs.}`.
 
-**Quy tắc `\headershort` (LUÔN lấy theo TÁC GIẢ ĐẦU TIÊN):**
-- **1 tác giả**: ghi tên viết tắt của tác giả đầu tiên, ví dụ: `\headershort{Đạt, N. T.}`
-- **2 tác giả**: ghi đủ tên viết tắt cả 2 tác giả, ví dụ: `\headershort{Đạt, N. T., Đức, H. N.}`
-- **Từ 3 tác giả trở lên**: ghi tên TÁC GIẢ ĐẦU TIÊN + `và cs.`, ví dụ: `\headershort{Đạt, N. T., và cs.}`
+**C02 — đã chốt:** headershort lấy tác giả đầu tiên, không lấy tác giả liên hệ thay thế. `\shortauth` và `\mailauth` vẫn thuộc tác giả liên hệ.
+
+> `shortauth` dùng ở footnote trang đầu; `headershort` dùng ở running header và bắt đầu từ tác giả đầu tiên theo số lượng tác giả ở trên. Giữ phân biệt đã có trên GitHub (`STCE-VN-FRONT-009–012`).
+
 **Quy tắc viết tắt tên tác giả Việt Nam:**
 - Format: `Tên, Họ viết tắt. Đệm viết tắt.`
 - Ví dụ:
@@ -207,9 +253,11 @@ Ví dụ:
 ### 2.7. Abstract (Tiếng Việt)
 ```latex
 \begin{abstract}
-... (nội dung tóm tắt tiếng Việt, viết liền 1 paragraph)
+... (giữ nguyên tóm tắt nguồn; nếu có nhiều đoạn thì báo người dùng, không tự gộp)
 \end{abstract}
 ```
+
+**C04 / STCE-VN-FRONT-019:** nếu abstract nguồn có nhiều đoạn, giữ nguyên các đoạn và báo người dùng số đoạn/vị trí để xin quyết định; không tự gộp, cắt hoặc viết lại cho thành một paragraph.
 
 ### 2.8. Keywords block (Song ngữ)
 
@@ -237,7 +285,7 @@ keyword1; keyword2; keyword3; keyword4.
 **Chi tiết:**
 - **Keywords tiếng Việt**: các keyword cách nhau bằng `;`, kết thúc bằng `.`
 - **`\TD`**: tiêu đề tiếng Anh (viết HOA toàn bộ)
-- **`\ABS`**: abstract tiếng Anh (viết liền 1 paragraph)
+- **`\ABS`** (`STCE-VN-FRONT-023`): abstract tiếng Anh thường là một paragraph; nếu nguồn có nhiều đoạn thì giữ nguyên và báo người dùng, không tự gộp.
 - **`\KW`**: keywords tiếng Anh, cách nhau bằng `;`, kết thúc bằng `.`
 - **`\CR`**: đứng riêng 1 dòng trước `\end{keyword}`
 
@@ -296,11 +344,13 @@ keyword1; keyword2; keyword3; keyword4.
 - Label đánh số trực tiếp nếu cần tham chiếu: `\label{1}`, `\label{2}`, `\label{3}`, ...
 - **Nhiều biểu thức trong cùng một dòng** của phương trình: ngăn cách bằng `; \quad` (dấu chấm phẩy + khoảng trắng toán học)
 - **Cuối phương trình KHÔNG có dấu câu** (không `.`, không `,`)
+- **STCE-VN-EQ-005:** không có dòng trống ngay trước `\begin{equation}`.
+- **STCE-VN-EQ-006:** sau equation có đúng một dòng trống nếu đoạn tiếp theo bắt đầu chữ hoa; không có dòng trống nếu phần tiếp theo bắt đầu chữ thường.
 
 Ví dụ:
 ```latex
 \begin{equation}
-	{{H}_{i}}=\phi {{P}_{Ed}} ; \quad \phi ={{\phi }_{0}}{{\alpha }_{h}}{{\alpha }_{m}}; \qaud {{\phi }_{0}}={1}/{200}
+	{{H}_{i}}=\phi {{P}_{Ed}} ; \quad \phi ={{\phi }_{0}}{{\alpha }_{h}}{{\alpha }_{m}}; \quad {{\phi }_{0}}={1}/{200}
 \end{equation}
 ```
 
@@ -315,18 +365,18 @@ Ví dụ:
 ### 4.3. Ký hiệu đặc biệt
 - Dấu ngang dài (en-dash) trong text: `--` (ví dụ: `load--settlement`)
 - Khoảng `~` dùng trước `\cite`, `\ref`, `(\ref{...})`
-- **Đơn vị đo lường**: với đơn vị thông thường, ưu tiên trình bày thủ công đúng bản gốc trong math mode, dùng `\mathrm{}` và dấu `/` gõ tay, ví dụ `55~$\mathrm{mm}$`, `$U=5{,}5~\mathrm{W/m^2/K}$`, `25~$\mathrm{m^3/h}/\text{người}$`, `\mathrm{kWh/m^2}/\text{năm}`. Chỉ dùng `siunitx` khi cần ký hiệu/prefix đặc biệt như `\micro`, ví dụ `$50~\si{\micro\gram}/\mathrm{m^3}$`; không chuyển đơn vị thông thường sang `\si{}`/`\SI{}` chỉ vì template đã nạp package này.
-  - Giữ chuẩn SI nhưng nếu nguồn dùng dấu `/` và cách viết không mơ hồ, ưu tiên giữ dấu này trong output: `400~\si[per-mode=symbol]{\metre\per\second}` → `400~m/s`. Không đặt `per-mode` toàn cục, trừ khi user yêu cầu rõ toàn bộ bài dùng `/` và đã kiểm tra mọi đơn vị ghép. Với mẫu số không phải đơn vị SI, giữ slash thủ công, ví dụ `33,3~\si{\cubic\centi\metre}/vòng`. Với đơn vị có nhiều mẫu số, ưu tiên một `\si{}` chứa nhiều `\per`, ví dụ `\si{\watt\per\metre\squared\per\kelvin}` hoặc `\si{\cubic\metre\per\hour\per\person}`; không trộn `/` sinh bởi `\per` với `/` gõ tay. Chỉ tách thành nhiều slash gõ tay khi user yêu cầu rõ đầu ra phải có nhiều dấu `/`.
+- **Đơn vị đo lường — C07 đã chốt (`STCE-VN-UNIT-001`):** đơn vị thông thường trình bày thủ công đúng bản gốc trong math mode, dùng `\mathrm{}` và dấu `/` gõ tay, ví dụ `55~$\mathrm{mm}$`, `$U=5{,}5~\mathrm{W/m^2/K}$`, `25~$\mathrm{m^3/h}/\text{người}$`, `\mathrm{kWh/m^2}/\text{năm}`. Chỉ dùng `siunitx` khi cần ký hiệu/prefix đặc biệt như `\micro`, ví dụ `$50~\si{\micro\gram}/\mathrm{m^3}$`; không chuyển đơn vị thông thường sang `\si{}`/`\SI{}` chỉ vì template đã nạp package này.
+  - Giữ nguyên cách viết và slash của nguồn nếu rõ nghĩa. Với nhiều mẫu số, vẫn dùng biểu diễn thủ công theo nguồn, ví dụ `\mathrm{W/m^2/K}`; không bắt buộc đổi thành một `\si{}` chứa nhiều `\per`. Với từ tiếng Việt trong mẫu số, dùng text, ví dụ `\mathrm{K}/\text{phút}` hoặc `\mathrm{cm^3}/\text{vòng}`. Khi thực sự dùng siunitx cho trường hợp đặc biệt, không trộn các cách viết làm mơ hồ đơn vị; không đặt `per-mode` toàn cục nếu người dùng chưa yêu cầu và chưa kiểm tra mọi đơn vị ghép.
   - Với `\si` đứng sau một số, dùng `~` trước `\si` để tạo khoảng trắng không ngắt dòng; `\SI` tự xử lý khoảng cách.
-  - Chỉ dùng dạng thủ công có `~` (ví dụ `55~mm`, `37~$^\circ$C`) khi không thể dùng `siunitx` hoặc khi tương thích đặc biệt với macro/template; tuyệt đối không viết dính `55mm` hoặc dùng khoảng trắng thường giữa số và đơn vị.
+  - Cách thủ công là mặc định cho đơn vị thông thường, không chỉ là phương án khi siunitx thất bại. Giữa số và đơn vị có khoảng cách không ngắt dòng theo cách biểu diễn đã chọn, ví dụ `55~$\mathrm{mm}$`, `37~$^\circ$C`; không viết dính `55mm` hoặc chỉ dùng khoảng trắng thường.
   - **Bắt buộc kiểm chứng đầu ra PDF:** quy tắc này áp dụng cho **mọi đơn vị**, đặc biệt đơn vị tùy chỉnh/không phải SI và đơn vị trong mẫu số. Khi chuyển sang `\si{}`/`\SI{}`, chỉ chuẩn hóa cú pháp, phải giữ nguyên cách viết, ký hiệu và ngôn ngữ hiển thị của bản gốc. Với **mọi đơn vị**, phải đối chiếu trực tiếp `_original.tex`: cách viết, ký hiệu, dấu phân cách và ngôn ngữ của tác giả quyết định đầu ra, không theo tên macro của `siunitx`. Nếu bản gốc không rõ hoặc đầu ra dự kiến có bất kỳ sai khác nào, **phải hỏi user quyết định trước khi sửa**; không tự suy diễn hay tự chọn cách biểu diễn. **Tuyệt đối không dịch hoặc đổi đơn vị sang tiếng Anh** (ví dụ `người` → `person`, `giờ` → `hour`, `năm` → `year`, `vòng` → `revolution`) nếu user chưa yêu cầu rõ ràng. Tên macro không tự dịch đơn vị: `\DeclareSIUnit{\person}{person}` làm `\person` in thành `person`, không phải `người`; để in tiếng Việt trong `siunitx`, khai báo dạng text, ví dụ `\DeclareSIUnit{\person}{\text{người}}`. Với từng đơn vị tùy chỉnh, phải kiểm tra `\DeclareSIUnit` và biên dịch/xem PDF trước khi chấp nhận thay đổi.
 - **Công thức hóa học**: LUÔN dùng `\ce{}` (package `mhchem`), KHÔNG dùng subscript/superscript thủ công
   - Ví dụ: `\ce{H2SO4}`, `\ce{CO2}`, `\ce{NaOH}`
   - Sai: `H$_2$SO$_4$`, `CO$_2$`
 - **Tên loài/chi/họ khoa học**: LUÔN in nghiêng bằng `\textit{}` theo quy chuẩn danh pháp khoa học
-- **Dấu phẩy thập phân**: bài tiếng Việt dùng **dấu phẩy** `,` làm dấu thập phân (ví dụ: `0,12`, `1,3`, `9,80`). Dùng `\,!` để bỏ khoảng trắng trong math mode nếu cần: `$0,\!12g$`
-- **Dấu phẩy thập phân trong math mode**: LaTeX mặc định hiểu dấu `,` là dấu phân cách (có khoảng trắng sau). Để viết số thập phân đúng trong `$...$`, **PHẢI** dùng `{,}` thay vì `,`
-  - Đúng: `$1{,}5$`, `$0{,}12$`, `${{\\gamma}_{I}} = 1{,}0$`
+- **Dấu phẩy thập phân**: phần tiếng Việt dùng dấu phẩy, giữ nguyên giá trị số; phần abstract tiếng Anh và chuỗi định danh/DOI theo quy tắc riêng, không đổi dấu máy móc.
+- **STCE-VN-TXT-006 / C10 đã chốt:** dấu phẩy thập phân trong math mode viết bằng `{,}`; không dùng dấu phẩy trần hoặc cách chèn khoảng trắng âm để thay quy tắc này. Không đổi dấu phân cách vector/danh sách hoặc dấu phẩy giữa key cite thành dấu thập phân.
+  - Đúng: `$1{,}5$`, `$0{,}12$`, `$\gamma_I = 1{,}0$`
   - Sai: `$1,5$` (sẽ có khoảng trắng thừa giữa `1` và `5`)
 - **Tỷ lệ phần trăm**: viết `\%` sau số, ví dụ: `60\%`, `100\%`
 - **Dấu ngoặc kép trong văn bản**: KHÔNG giữ dấu ngoặc kép ASCII `"` hoặc Unicode `“` / `”` trong source. Phải dùng hai dấu grave accent để mở và hai apostrophe để đóng, theo ví dụ bắt buộc bên dưới.
@@ -389,6 +439,7 @@ Hiện tượng "giật khi dừng xe" xuất hiện khi xe dừng hẳn.
 ```
 - Mặc định dùng `height` để đồng đều chiều cao cho subfigure
 - Dùng `\hfill` để tự căn 2 hình đều 2 bên; thay bằng `\qquad` (đã comment sẵn) nếu muốn khoảng cách cố định
+- **STCE-VN-FIG-012:** viết hoa chữ cái đầu nội dung mỗi subcaption (ví dụ `Phân bố nhiệt độ`); không viết hoa nhãn panel `(a)`, `(b)`.
 
 ### 5.3. Hai hình cùng hàng (minipage)
 Khi cần 2 hình **cùng hàng** nhưng **mỗi hình** có caption và label riêng (khác với subfigure dùng chung 1 caption tổng):
@@ -425,19 +476,22 @@ Khi cần 2 hình **cùng hàng** nhưng **mỗi hình** có caption và label r
 - Placement: luôn dùng `[ht!]`
 - Width phổ biến: `.7\textwidth` (đơn), `0.38\textwidth` height (đôi)
 - **LUÔN** giữ dòng `%\qquad` comment sẵn trong subfigure để có thể bỏ comment khi cần thay `\hfill`
-- **Caption KHÔNG kết thúc bằng dấu `.`**
+- **STCE-VN-FIG-013 / C03 đã chốt:** bỏ dấu chấm kết thúc caption hình và subcaption; giữ nguyên nội dung còn lại.
 
 ---
 
 ## 6. Tables
 
 ### 6.1. Cấu trúc table chuẩn
+
+**STCE-VN-TAB-014 / C16 đã chốt:** số cột và kiểu cột phải theo từng bảng thực tế của bài, không cố định theo template. Ví dụ dưới minh họa bảng ba cột bằng `{Xcc}`; khi đổi cấu trúc phải sửa cả khai báo cột, header và các hàng dữ liệu, có tính các ô gộp multicolumn.
+
 ```latex
 \begin{table}[ht!]\caption{Mô tả bảng}\label{tN}
 	%\tabcolsep = 4.65mm
 	%\fontsize{9}{11} \selectfont
 	%\renewcommand*\arraystretch{1.2}
-	\begin{tabularx}{\textwidth}{ccccccccccccccccccc}\toprule
+	\begin{tabularx}{\textwidth}{Xcc}\toprule
 \lll{1}{Cột 1} & \lll{1}{Cột 2} & \lll{1}{Cột 3} \\\midrule
 Dòng 1 & giá trị & giá trị \\
 Dòng 2 & giá trị & giá trị \\
@@ -449,83 +503,80 @@ Dòng 3 & giá trị & giá trị \\
 
 ### 6.2. Table macros đặc biệt
 
-> [!IMPORTANT]
-> **Bài tiếng Việt sử dụng thêm các macro viết tắt cho table:**
-> - `\lll{1}{text}` cho hàng đầu tiên trong bảng
+**STCE-VN-TAB-002 / STCE-VN-TAB-003 — C14:** macro là lệnh viết tắt phụ thuộc template, không phân loại theo bài Việt/Anh. Phải đọc định nghĩa trước khi dùng. Trong mẫu tháng 10 đã đối chiếu:
+
+| Lệnh | Vai trò |
+|---|---|
+| `\lll{n}{text}` | Gộp ngang n cột, căn giữa, cho phép xuống dòng trong ô; thường dùng header với n = 1. |
+| `\rrr{n}{c}{text}` | Gộp dọc n hàng, căn nội dung giữa theo định nghĩa multirow/makecell của mẫu. |
+| `\p{text}` | Giữ khoảng trống có kích thước của text nhưng không in text (phantom). |
+| `\toprule`, `\midrule`, `\bottomrule` | Đường kẻ trên/giữa/dưới theo booktabs. |
+| `\ML` | Không mặc định có sẵn; chỉ dùng khi template thực sự định nghĩa và đã kiểm tra đúng chức năng. |
 
 
 
 ### 6.3. Quy tắc
-- **LUÔN** dùng `tabularx` với `\textwidth`
-- Dùng `\toprule`, `\midrule` (hoặc `\ML`), `\bottomrule` (booktabs style) — **KHÔNG** dùng `\hline`
+- Bảng một trang dùng `tabularx` với `\textwidth`; bảng dài nhiều trang dùng `xltabular` theo §6.4 (`STCE-VN-TAB-001`).
+- Dùng `\toprule`, `\midrule`, `\bottomrule` (booktabs style), không dùng `\hline`. Chỉ dùng `\ML` khi đã đọc định nghĩa trong template và xác nhận đúng vai trò đường kẻ thay thế; không tự giả định macro này tồn tại.
 - Label: `t1`, `t2`, ...
 - **Tham chiếu (tiếng Việt)**: `Bảng~\ref{tN}` (KHÔNG dùng `Table~\ref{tN}`)
-- `\caption` đặt **TRƯỚC** `tabularx`
+- Với bảng một trang, `\caption` đặt **TRƯỚC** `tabularx`; bảng dài có caption đầu môi trường `xltabular` theo §6.4.
 - `\tabcolsep` tùy chỉnh khoảng cách cột
-- Dòng dữ liệu cuối kết thúc bằng `\\`; dòng kế tiếp viết `\bottomrule\end{tabularx}`. KHÔNG thêm `\\` trước `\bottomrule`, vì sẽ tạo một hàng trống.
-- Placement: `[ht!]`
+- Với bảng một trang, hàng dữ liệu cuối kết thúc bằng `\\`; dòng kế tiếp viết `\bottomrule\end{tabularx}`, không thêm hàng trắng. Bảng dài dùng footer ở §6.4.
+- Float bảng một trang dùng `[ht!]`; `xltabular` không bọc float.
 - **KHÔNG** thêm space/padding thừa để căn cột. Giữ code bảng **compact**, dễ đọc
-- **Cột số**: dùng column type `S` (package `siunitx`) thay vì `c` để **dóng hàng theo dấu** (dấu `,` cho bài tiếng Việt hoặc dấu `.` cho bài tiếng Anh). Cú pháp: `S[table-format=M.N]`. Header của cột `S` phải bọc trong `\multicolumn{1}{c}{...}` hoặc `{...}`. Bất kỳ ký tự không phải số nào (như dấu gạch ngang) trong cột `S` bắt buộc phải bọc trong ngoặc nhọn (ví dụ `{-}`).
+- Khi cần căn số theo dấu thập phân, dùng cột `S`; có thể khai báo `S[table-format=M.N]`. Header bọc trong `{...}` hoặc `\multicolumn{1}{c}{...}`; ô không phải số như `-` phải viết `{-}` (`STCE-VN-TAB-011/015/016`). `M.N` là cú pháp cấu hình, không phải số thập phân trong nội dung; dữ liệu tiếng Việt vẫn theo quy tắc dấu phẩy.
 - **LUÔN** giữ các dòng comment sẵn (`%\tabcolsep`, `%\fontsize`, `%\renewcommand*\arraystretch`, `%\vspace`) trong mỗi table — để có thể bỏ comment khi cần tùy chỉnh
-- **Caption KHÔNG kết thúc bằng dấu `.`**
+- **STCE-VN-TAB-013 / C03 đã chốt:** bỏ dấu chấm kết thúc caption bảng; giữ nguyên nội dung còn lại.
 
-### 6.4. Bảng dài nhiều trang chuẩn (xltabular)
-Khi bảng có quá nhiều dòng cần ngắt qua nhiều trang, **bắt buộc sử dụng package `xltabular`** để kết hợp hoàn hảo tính chất co giãn theo `\textwidth` của `tabularx` và khả năng ngắt trang tự động của `longtable`:
+### 6.4. Bảng dài nhiều trang — giữ hướng dẫn đã có trên GitHub
 
-**1. Khai báo Preamble:**
+Nguồn: `trungvjm/skills` tại `c00d465`, §6.4. Mã mới `STCE-VN-TAB-017–023`; thêm `\usepackage{xltabular}` ở preamble khi dùng bảng dài, đặt `xltabular` trực tiếp, **không bọc `table`**.
+
+Ví dụ tám cột chỉ minh họa: số cột, header và mọi hàng phải theo dữ liệu thực tế (`STCE-VN-TAB-014`).
+
 ```latex
-\usepackage{xltabular}
-```
-
-**2. Template chuẩn cho bảng dài (`xltabular`):**
-```latex
+%\tabcolsep = 3.5mm
+%\fontsize{9}{11} \selectfont
+%\renewcommand*\arraystretch{1.2}
 \begin{xltabular}{\textwidth}{*8{>{\centering\arraybackslash}X}}
 \caption{Mô tả bảng dài}\label{tN} \\
 \toprule
 \lll{1}{Cột 1} & \lll{1}{Cột 2} & \lll{1}{Cột 3} & \lll{1}{Cột 4} & \lll{1}{Cột 5} & \lll{1}{Cột 6} & \lll{1}{Cột 7} & \lll{1}{Cột 8} \\
 \midrule
 \endfirsthead
-
-% Header trang sau: BẮT BUỘC KHÔNG lặp lại caption, bắt đầu ngay bằng \toprule
 \toprule
 \lll{1}{Cột 1} & \lll{1}{Cột 2} & \lll{1}{Cột 3} & \lll{1}{Cột 4} & \lll{1}{Cột 5} & \lll{1}{Cột 6} & \lll{1}{Cột 7} & \lll{1}{Cột 8} \\
 \midrule
 \endhead
-
-% Chân bảng các trang đầu / trang giữa: dùng \midrule
 \midrule
 \endfoot
-
-% Chân bảng trang cuối cùng: dùng \bottomrule
 \bottomrule
 \endlastfoot
-
 Dòng 1 & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị \\
-Dòng 2 & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị \\
-...
 Dòng cuối & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị & giá trị \\
 \end{xltabular}
+%\vspace*{1mm}\fontsize{10}{12} \selectfont
 ```
 
-**Quy tắc cốt lõi cho bảng dài:**
-- Dùng trực tiếp `\begin{xltabular}{\textwidth}{...}` (TUYỆT ĐỐI KHÔNG bọc trong môi trường float `table`).
-- `\caption` và `\label` đặt ngay đầu `\begin{xltabular}` và kết thúc bằng `\\`.
-- **Trang sau: TUYỆT ĐỐI KHÔNG lặp lại caption** (không dùng dòng `Bảng... (tiếp theo)`), chỉ lặp lại header các cột giữa `\toprule` và `\midrule` trước `\endhead`.
-- **Chân bảng các trang giữa**: BẮT BUỘC dùng `\midrule \endfoot` (đóng bằng đường kẻ ngang mảnh để báo hiệu bảng còn tiếp tục ở trang sau).
-- **Chân bảng trang cuối cùng**: BẮT BUỘC dùng `\bottomrule \endlastfoot` (đóng bằng đường kẻ ngang đậm kết thúc bảng).
-- Cột co giãn: ưu tiên dùng cột `X` hoặc `*N{>{\centering\arraybackslash}X}` để độ rộng bảng luôn chuẩn xác 100% `\textwidth`.
+- `STCE-VN-TAB-019`: caption/label ở đầu bảng, hàng caption kết thúc bằng `\\`.
+- `STCE-VN-TAB-020`: trang sau không lặp caption hay thêm “Bảng... (tiếp theo)”; chỉ lặp header cột giữa `\toprule`/`\midrule` trước `\endhead`.
+- `STCE-VN-TAB-021–022`: chân trang giữa dùng `\midrule\endfoot`; chân trang cuối dùng `\bottomrule\endlastfoot`.
+- `STCE-VN-TAB-023`: ưu tiên `X` hoặc `*N{>{\centering\arraybackslash}X}` để tổng rộng theo `\textwidth`; N là số cột thực tế.
+
+
 ---
 
 ## 7. Citations & Bibliography
 
 ### 7.1. In-text citations
 ```latex
-\cite{1,2,3}          % nhiều citations ghép chung
+\cite{1, 2, 3}        % nhiều citations ghép chung; một dấu cách sau mỗi dấu phẩy
 \cite{11}             % citation đơn
 ```
 - Dùng `~` trước `\cite`: `text~\cite{N}`
 - Số citation là key trong file `.bib`
-- Dùng khoảng trắng sau dấu phẩy trong text gốc: `\cite{1, 2}` (giữ nguyên spacing của gốc)
+- **STCE-VN-REF-005 / C11 đã chốt:** đặt đúng một dấu cách sau mỗi dấu phẩy giữa các key cite, ví dụ `\cite{1, 2}` hoặc `\cite{1, 2, 3}`; không có khoảng trắng trước dấu phẩy. Chuẩn hóa khoảng trắng dù nguồn dùng kiểu khác; giữ nguyên key và thứ tự key.
 
 ### 7.2. Bibliography
 ```latex
@@ -555,8 +606,8 @@ Dòng cuối & giá trị & giá trị & giá trị & giá trị & giá trị & 
 
 Khi được yêu cầu chuẩn hóa file LaTeX theo STCE tiếng Việt, thực hiện theo các bước:
 
-1. **Kiểm tra preamble**: đúng documentclass, packages (`\usepackage{STCE/stce}`), `\id`
-2. **Kiểm tra frontmatter**: đủ và đúng thứ tự các thành phần (doi, title VIẾT HOA, author, cortext tiếng Việt, shortauth, mailauth, headershort với "và cs.", address tiếng Việt, received, abstract tiếng Việt, keyword block song ngữ với TD/ABS/KW/CR)
+1. **Kiểm tra preamble** (`STCE-VN-TPL-002`–`010`): documentclass `STCE/stce`, package `STCE/stce_proof`, input `STCE/stce_package`, proof status và `\id`; không tự bật dòng package đang comment trong mẫu (C05).
+2. **Kiểm tra frontmatter** (`STCE-VN-FRONT-*` đang áp dụng): đúng metadata và thứ tự; tiêu đề tiếng Việt Sentence case; headershort lấy tác giả đầu tiên; abstract nhiều đoạn được báo người dùng và không tự gộp; keyword block song ngữ đủ TD/ABS/KW/CR.
 3. **Chuẩn hóa sections**: đúng hierarchy, spacing, tên section tiếng Việt
 4. **Chuẩn hóa equations**: format label, tham chiếu
 5. **Chuẩn hóa figures**: đường dẫn, label, placement, width, tham chiếu `Hình~\ref{}`
@@ -573,12 +624,12 @@ Chỉ báo hoàn tất khi đã kiểm tra và ghi nhận kết quả cho toàn 
 - [ ] **Preamble/template**: documentclass, package, proof status, `\id`, volume, DOI và bibliography đúng chuẩn.
 - [ ] **Math mode**: không còn biến, chỉ số, số mũ, ký hiệu Hy Lạp, dấu toán học hoặc dấu trừ viết ngoài math mode.
 - [ ] **Đồng nhất ký hiệu**: đối chiếu mọi lần xuất hiện của từng ký hiệu trong văn bản, phương trình, bảng, caption và tham chiếu; kiểm tra chính xác chữ hoa/thường, ký tự Hy Lạp, chỉ số dưới/trên, dấu mũ, gạch trên và đơn vị. Ghi rõ mọi khác biệt; chỉ sửa khi bản gốc hoặc user xác nhận ý nghĩa, không tự đoán ký hiệu thiếu.
-- [ ] **Đơn vị và số**: đơn vị dùng `siunitx`; số thập phân tiếng Việt dùng dấu phẩy đúng cú pháp math mode (`{,}`); không còn đơn vị viết dính hoặc Unicode đặc biệt chưa xử lý.
+- [ ] **Đơn vị và số** (`STCE-VN-UNIT-*` đang áp dụng, `STCE-VN-TXT-005`–`010`): đơn vị thông thường dùng math mode và `\mathrm{}` thủ công; giữ nguyên slash, cách viết/ngôn ngữ nguồn và kiểm tra PDF; chỉ dùng siunitx cho ký hiệu/prefix đặc biệt. Số thập phân tiếng Việt trong math dùng `{,}`; không còn đơn vị viết dính hoặc Unicode toán chưa xử lý.
 - [ ] **Paragraph**: giữa các paragraph có đúng một dòng trống; heading có spacing đúng quy định; không gộp hoặc tách sai paragraph.
-- [ ] **Cách viết tác giả**: thay thống nhất `và cộng sự`/`cùng cộng sự` bằng `và cs.` theo quy định của bài tiếng Việt.
-- [ ] **Khoảng cách quanh phương trình**: không có dòng trống ngay trước phương trình; sau phương trình có đúng một dòng trống nếu đoạn tiếp theo bắt đầu bằng chữ hoa, và không có dòng trống nếu đoạn tiếp theo bắt đầu bằng chữ thường.
+- [ ] **Cách viết tác giả** (`STCE-VN-TXT-001`): thay thống nhất `và cộng sự`/`cùng cộng sự` bằng `và cs.` trong nội dung.
+- [ ] **Khoảng cách quanh phương trình** (`STCE-VN-EQ-005`–`006`): không có dòng trống ngay trước phương trình; sau phương trình có đúng một dòng trống nếu đoạn tiếp theo bắt đầu bằng chữ hoa, và không có dòng trống nếu đoạn tiếp theo bắt đầu bằng chữ thường.
 - [ ] **Nhiều biểu thức trong một phương trình**: các biểu thức cùng dòng được ngăn cách bằng `;\quad`, không dùng dấu phẩy thay thế khi không phải dấu phân cách nội bộ của vector/bảng trường hợp.
-- [ ] **Figures/tables**: mọi file hình tồn tại và mở được; đường dẫn, placement, caption, label và tham chiếu `Hình~\ref{}`/`Bảng~\ref{}` đúng; bảng dùng `tabularx` và booktabs.
+- [ ] **Figures/tables** (`STCE-VN-FIG-*`, `STCE-VN-TAB-*`): mọi hình tồn tại và mở được; subcaption hoa đầu, caption bỏ dấu chấm cuối theo C03; đường dẫn, placement, label/tham chiếu đúng. Bảng dùng số cột thực tế, booktabs và ô S hợp lệ; bảng nhiều trang dùng xltabular với header lặp và footer đúng trang.
 - [ ] **Citations/references**: mọi citation có key trong `.bib`, mọi label được tham chiếu đúng; không còn cảnh báo undefined sau khi biên dịch lại.
 - [ ] **Biên dịch**: chạy chu trình LaTeX/BibTeX phù hợp, sau đó chạy LaTeX đủ số lần để ổn định cross-reference; PDF được tạo thành công.
 - [ ] **Kiểm tra chéo AGY**: nếu AGY khả dụng hoặc được yêu cầu, chạy kiểm tra chéo sau cùng và đối chiếu các cảnh báo về nội dung, citation, hình, bảng, phương trình và bố cục với file đã chuẩn hóa.
@@ -587,10 +638,10 @@ Chỉ báo hoàn tất khi đã kiểm tra và ghi nhận kết quả cho toàn 
 
 ### Lưu ý quan trọng
 - **LUÔN backup** file trước khi chỉnh sửa
-- Thực hiện **từng bước**, commit sau mỗi nhóm thay đổi
+- Thực hiện từng bước (`STCE-VN-WORK-001`); chỉ commit khi môi trường có Git và người dùng/quy trình cho phép (`STCE-VN-WORK-002`; C15).
 - Kiểm tra **compile** sau mỗi lần chỉnh sửa lớn
 - Với file lớn (>500 dòng), làm **incremental** để tránh memory error
-- **LUÔN đọc trực tiếp file** (`view_file`) để kiểm tra nội dung — **KHÔNG** dùng `grep`, `findstr`, `Select-String` hay bất kỳ lệnh tìm kiếm nào
+- **Đọc trực tiếp nội dung để đối chiếu** bằng công cụ đọc file hiện có (`STCE-VN-WORK-005`). Tìm kiếm chỉ hỗ trợ định vị, không thay việc đọc đầy đủ; không yêu cầu một tool tên `view_file` khi môi trường không có tool đó (C12).
 - **KHÔNG** tạo script sửa nhanh (sed, PowerShell replace, python script...) — luôn dùng tool chỉnh sửa file trực tiếp
 
 ---
@@ -600,7 +651,7 @@ Chỉ báo hoàn tất khi đã kiểm tra và ghi nhận kết quả cho toàn 
 | Đặc điểm | latex-stce-vn (Tiếng Việt) | latex-stce-en (Tiếng Anh) |
 |---|---|---|
 | Package / Proof status | Giống nhau | Giống nhau |
-| Title | **VIẾT HOA** toàn bộ | Title case |
+| Title | Sentence case (`STCE-VN-FRONT-003`) | Giữ case source; class mẫu tháng 12 in HOA trên PDF (`STCE-EN-FRONT-003`), không áp cho tiêu đề dịch sau `\TD` của bài Việt |
 | Cortext | `Tác giả đại diện. \textit{Địa chỉ e-mail:}` | `Corresponding author.~\textit{E-mail address:}` |
 | Corref key | `\corref{cor1}` | `\corref{cor}` |
 | Headershort | `và cs.` | `\textit{et al.}` |
@@ -609,6 +660,10 @@ Chỉ báo hoàn tất khi đã kiểm tra và ghi nhận kết quả cho toàn 
 | Tham chiếu hình | `Hình~\ref{}` | `Fig.~\ref{}` |
 | Tham chiếu bảng | `Bảng~\ref{}` | `Table~\ref{}` |
 | Section names | Tiếng Việt | Tiếng Anh |
-| Acknowledgment | `\section*{Lời cảm ơn}` (nếu có) | `\section*{Acknowledgment}` |
-| Equation `%` | Không bắt buộc | Bắt buộc `%` trước/sau |
-| Table macro | `\ML`, `\p{}`, `\rrr{}` | `\midrule`, `\lll{}` |
+| Acknowledgment | `\section*{Lời cảm ơn}` (nếu có) | `\section*{Acknowledgment}` (nếu nguồn có) |
+| Equation `%` | Không bắt buộc | Không bắt buộc (`STCE-EN-EQ-010`); vẫn không dòng trống trước equation |
+| Table macro | booktabs; macro bổ trợ theo template thực tế | booktabs; macro bổ trợ theo template thực tế |
+| Article history | Theo class của số tiếng Việt | Class tháng 12: 5 trường; Available online / Version of Record chưa có thì để đối số rỗng |
+| Đơn vị thông thường | Thủ công, math mode + `\mathrm{}`, giữ slash nguồn | Thủ công như tiếng Việt (`STCE-EN-UNIT-001`); thập phân vẫn dùng dấu chấm |
+
+**C14 đã đồng bộ:** không chia macro theo ngôn ngữ. Áp dụng TAB-002/003 theo đúng chức năng và định nghĩa thực tế của template; không thêm lệnh chưa được mẫu nạp. C01 vẫn thống nhất Sentence case cho tiêu đề tiếng Việt.
