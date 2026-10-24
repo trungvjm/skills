@@ -1,6 +1,6 @@
 ---
 name: vjst-setup-newvol
-description: Tự động hóa việc tạo thư mục con cho Volume mới của VJST và sao chép/đổi tên file mẫu VJST.docx.
+description: Tự động hóa việc tạo thư mục con cho Volume mới của VJST, sao chép/đổi tên file mẫu VJST.docx và cập nhật đường link DOI theo mã ID bài báo.
 ---
 
 # Kỹ năng `vjst-setup-newvol`
@@ -39,6 +39,36 @@ SRC="../../VJST.docx" # Điều chỉnh đường dẫn tương đối hoặc tu
 for dir in 0-REV-23683 1-NAT-21761 2-MAT-19390; do
   cp "$SRC" "$dir/VJST-$dir.docx"
 done
+```
+
+### 4. Cập nhật Đường link DOI theo Mã ID Bài báo
+*   Trong mỗi file `VJST-[Tên thư mục].docx` vừa tạo, cập nhật đường link DOI mẫu ở phần header (`word/header3.xml` và `word/_rels/header3.xml.rels`).
+*   Thay thế chuỗi `https://doi.org/10.15625/2525-2518/xx` bằng `https://doi.org/10.15625/2525-2518/[ID]` (trong đó `[ID]` là mã số bài báo tương ứng, ví dụ `https://doi.org/10.15625/2525-2518/23683`).
+*   Thực hiện trực tiếp trên bộ nhớ bằng lệnh `python3 -c` (tránh tạo file `.py` tạm trên ổ đĩa) và kiểm tra lại cả `word/header3.xml` lẫn `word/_rels/header3.xml.rels` sau khi ghi.
+
+**Mẫu lệnh cập nhật DOI tham khảo:**
+```bash
+python3 -c '
+import io, zipfile
+
+base = "/path/to/VOL64N6"
+dirs = ["0-REV-23683", "1-NAT-21761", "2-MAT-19390"]
+
+for d in dirs:
+    pid = d.split("-")[-1]
+    path = f"{base}/{d}/VJST-{d}.docx"
+    old_doi = b"https://doi.org/10.15625/2525-2518/xx"
+    new_doi = f"https://doi.org/10.15625/2525-2518/{pid}".encode("utf-8")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(path, "r") as zin, zipfile.ZipFile(buf, "w") as zout:
+        for item in zin.infolist():
+            data = zin.read(item.filename)
+            if item.filename in ("word/header3.xml", "word/_rels/header3.xml.rels"):
+                data = data.replace(old_doi, new_doi)
+            zout.writestr(item, data)
+    with open(path, "wb") as f:
+        f.write(buf.getvalue())
+'
 ```
 
 ## Lưu ý khi thực thi
