@@ -20,7 +20,7 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 | STCE-VN-CORE-003 | MUST | Giữ nguyên ý nghĩa và nhận dạng ký hiệu toán học, gồm hoa/thường, chỉ số dưới/trên, dấu mũ, gạch trên và biến. | Tối thượng; §9.1 | DIFF, PDF |
 | STCE-VN-CORE-004 | MUST | Không rút gọn, đơn giản hóa hoặc thay biến của công thức/phương trình. | Tối thượng | DIFF, PDF |
 | STCE-VN-CORE-005 | MUST | Không viết lại câu, thay từ hoặc thêm/bớt ý; chỉ chuẩn hóa cách viết hoa/viết tắt/dấu câu đã được xác nhận tại FRONT-003, TXT-001, FIG-012, FIG-013 và TAB-013. | Tối thượng; §0; C01/C03 đã chốt | DIFF |
-| STCE-VN-CORE-006 | MUST | Giữ nguyên thứ tự nội dung, thứ tự đoạn và ranh giới các đoạn; không tự gộp/tách đoạn. | Tối thượng; §0; §3.4 | DIFF |
+| STCE-VN-CORE-006 | MUST | Giữ nguyên thứ tự nội dung, thứ tự đoạn và ranh giới các đoạn; không tự gộp/tách đoạn, trừ chuẩn hóa tiêu đề và vị trí mục tuyên bố AI ngay trước Tài liệu tham khảo theo SEC-011. | Tối thượng; §0; §3.1; §3.4 | DIFF, SRC |
 | STCE-VN-CORE-007 | MUST | Giữ nguyên nội dung caption; viết hoa đầu subcaption và bỏ dấu chấm cuối caption theo FIG-012, FIG-013, TAB-013 là ngoại lệ biên tập đã được người dùng duyệt. | Tối thượng; §5.5; §6.3; C03 đã chốt | DIFF |
 | STCE-VN-CORE-008 | MUST | Chỉ thay đổi cách biểu diễn LaTeX, template, citation, spacing và các chuẩn hóa biên tập được phép. | Tối thượng; §0 | DIFF |
 | STCE-VN-CORE-009 | MUST | Không đoán ký hiệu thiếu, số khác thường, công thức hỏng hay lỗi copy-paste; báo người dùng và hỏi khi chưa xác định được nội dung đúng. | Tối thượng; §0; §9.1 | DIFF, MANUAL |
@@ -97,6 +97,7 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 | STCE-VN-SEC-008 | SHOULD | Trước subsection và subsubsection có một dòng trống. | §3.4 | SRC |
 | STCE-VN-SEC-009 | MUST | Không có dòng trống thừa giữa heading và paragraph đầu tiên. | §3.4 | SRC |
 | STCE-VN-SEC-010 | MUST | Rà paragraph spacing trên toàn bộ nội dung sau frontmatter, trước bibliography; báo cáo riêng kết quả. | §3.4 | SRC |
+| STCE-VN-SEC-011 | MUST | Khi bài có phần tuyên bố sử dụng AI, trình bày bằng `\section*{Tuyên bố về việc sử dụng trí tuệ nhân tạo tạo sinh và các công nghệ hỗ trợ bởi AI}` (không đánh số) và luôn đặt ngay trước phần Tài liệu tham khảo (sau `\section*{Lời cảm ơn}` nếu có), kể cả khi bản gốc đặt trước Lời cảm ơn hoặc viết gộp tiêu đề trong đoạn văn. | §1; §3.1; người dùng xác nhận | SRC, DIFF |
 
 ## EQ — Phương trình
 
@@ -243,7 +244,7 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 | Math mode | EQ-008–010 |
 | Đồng nhất ký hiệu | CORE-003; QA-003 |
 | Đơn vị và số | UNIT-001–013; TXT-005–010 |
-| Paragraph | CORE-006; SEC-006–010 |
+| Paragraph | CORE-006; SEC-006–011 |
 | Cách viết tác giả | TXT-001; FRONT-009–014 |
 | Khoảng cách quanh phương trình | EQ-005–007 |
 | Nhiều biểu thức trong một phương trình | EQ-003 |

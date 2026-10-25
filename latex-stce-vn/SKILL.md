@@ -32,6 +32,7 @@ Các mục bên dưới giữ hướng dẫn và ví dụ chi tiết. Khi một 
 - **STCE-VN-FIG-013 / STCE-VN-TAB-013:** bỏ dấu chấm cuối caption hình/bảng; đây là ngoại lệ biên tập được phép.
 - **STCE-VN-FRONT-019 / STCE-VN-FRONT-023:** abstract nhiều đoạn phải giữ nguyên và báo người dùng, không tự gộp.
 - **STCE-VN-UNIT-001:** đơn vị thông thường trình bày thủ công; siunitx chỉ là ngoại lệ cho ký hiệu/prefix đặc biệt.
+- **STCE-VN-SEC-011:** phần `\section*{Tuyên bố về việc sử dụng trí tuệ nhân tạo tạo sinh và các công nghệ hỗ trợ bởi AI}` (nếu bài gốc có) luôn đặt ngay trước phần Tài liệu tham khảo (sau `\section*{Lời cảm ơn}` nếu có).
 
 ### Tra nhóm mã
 
@@ -64,7 +65,7 @@ Với từng quy tắc áp dụng, báo cáo `mã | PASS/FAIL/N/A/BLOCKED | file
 >
 > Quy tắc này có **hiệu lực cao nhất**, vượt trên mọi quy tắc khác.
 >
-> **Phạm vi ngoại lệ biên tập (C01/C03):** bảo toàn ý nghĩa/nội dung khoa học; vẫn chuẩn hóa Sentence case cho tiêu đề tiếng Việt (`STCE-VN-FRONT-003`), viết tắt cộng sự (`STCE-VN-TXT-001`), viết hoa đầu subcaption (`STCE-VN-FIG-012`) và bỏ dấu chấm cuối caption hình/bảng (`STCE-VN-FIG-013`, `STCE-VN-TAB-013`). Không lấy các ngoại lệ này làm quyền viết lại câu, thay số hoặc đổi ký hiệu.
+> **Phạm vi ngoại lệ biên tập (C01/C03):** bảo toàn ý nghĩa/nội dung khoa học; vẫn chuẩn hóa Sentence case cho tiêu đề tiếng Việt (`STCE-VN-FRONT-003`), viết tắt cộng sự (`STCE-VN-TXT-001`), viết hoa đầu subcaption (`STCE-VN-FIG-012`), bỏ dấu chấm cuối caption hình/bảng (`STCE-VN-FIG-013`, `STCE-VN-TAB-013`) và chuẩn hóa tiêu đề/vị trí mục tuyên bố sử dụng AI ngay trước Tài liệu tham khảo (`STCE-VN-SEC-011`). Không lấy các ngoại lệ này làm quyền viết lại câu, thay số hoặc đổi ký hiệu.
 >
 > **KHÔNG BAO GIỜ** được thay đổi:
 > - **Giá trị số** trong phương trình, bảng biểu
@@ -158,6 +159,9 @@ Một file `.tex` đúng chuẩn STCE tiếng Việt phải có cấu trúc sau 
 \end{frontmatter}
 
   ... (nội dung bài báo)
+
+% \section*{Lời cảm ơn}                 % chỉ thêm nếu bài gốc có
+% \section*{Tuyên bố về việc sử dụng trí tuệ nhân tạo tạo sinh và các công nghệ hỗ trợ bởi AI} % luôn đặt ngay trước Tài liệu tham khảo (STCE-VN-SEC-011)
 
 \bibliographystyle{STCE/stce}
 \bibliography{Bib/XXXX}              % file .bib theo mã bài
@@ -303,6 +307,7 @@ keyword1; keyword2; keyword3; keyword4.
 - Section đầu tiên thường là `Giới thiệu`
 - Section cuối cùng thường là `Kết luận`
 - Không có section `Acknowledgment` mặc định; nếu bài gốc có phần lời cảm ơn, dùng `\section*{Lời cảm ơn}` (không đánh số)
+- Nếu bài gốc có phần tuyên bố về việc sử dụng AI, chuẩn hóa thành `\section*{Tuyên bố về việc sử dụng trí tuệ nhân tạo tạo sinh và các công nghệ hỗ trợ bởi AI}` (không đánh số) và **luôn đặt ngay trước phần Tài liệu tham khảo** (sau `\section*{Lời cảm ơn}` nếu có) (`STCE-VN-SEC-011`), kể cả khi bản gốc đặt trước Lời cảm ơn hoặc viết gộp nhãn tiêu đề ở đầu đoạn văn.
 
 ### 3.2. Tên section tiếng Việt phổ biến
 
@@ -662,6 +667,7 @@ Chỉ báo hoàn tất khi đã kiểm tra và ghi nhận kết quả cho toàn 
 | Tham chiếu bảng | `Bảng~\ref{}` | `Table~\ref{}` |
 | Section names | Tiếng Việt | Tiếng Anh |
 | Acknowledgment | `\section*{Lời cảm ơn}` (nếu có) | `\section*{Acknowledgment}` (nếu nguồn có) |
+| Tuyên bố sử dụng AI | `\section*{Tuyên bố về việc sử dụng trí tuệ nhân tạo tạo sinh và các công nghệ hỗ trợ bởi AI}` luôn đặt ngay trước Tài liệu tham khảo (`STCE-VN-SEC-011`) | `\section*{Declaration of generative AI and AI-assisted technologies}` đặt trước References (nếu nguồn có) |
 | Equation `%` | Không bắt buộc | Không bắt buộc (`STCE-EN-EQ-010`); vẫn không dòng trống trước equation |
 | Table macro | booktabs; macro bổ trợ theo template thực tế | booktabs; macro bổ trợ theo template thực tế |
 | Article history | Theo class của số tiếng Việt | Class tháng 12: 5 trường; Available online / Version of Record chưa có thì để đối số rỗng |

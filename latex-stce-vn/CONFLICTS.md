@@ -62,7 +62,7 @@ Trong 17 điểm đã đối chiếu (gồm C17 khi xuất bản), không còn l
 ## Đồng bộ khi xuất bản lên GitHub
 
 - Giữ hướng dẫn đã có tại [c00d465](https://github.com/trungvjm/skills/commit/c00d4657ee9d6f0c470443b86d595a41323f2bce): vị trí sử dụng shortauth/headershort, table-format và ô S không phải số, xltabular với caption/header/footer đúng trang.
-- Thêm TAB-015–023; không đổi/tái sử dụng mã cũ. Danh mục hiện có **160 mã đã cấp, 157 đang áp dụng / 13 nhóm**; ba mã FRONT-004, FRONT-013, UNIT-002 vẫn ngừng áp dụng.
+- Thêm TAB-015–023 và SEC-011; không đổi/tái sử dụng mã cũ. Danh mục hiện có **161 mã đã cấp, 158 đang áp dụng / 13 nhóm**; ba mã FRONT-004, FRONT-013, UNIT-002 vẫn ngừng áp dụng.
 - Đã kiểm tra mã trùng, dải số, tham chiếu và liên kết của cả hai skill. Smoke bằng template Việt đang dùng và template Anh tháng 12: bảng tám cột/80 hàng trải bốn trang, caption một lần, header lặp đủ, không mất/lặp hàng; chân giữa mảnh và chân cuối đậm.
 - Mỗi fixture có thêm trang kiểm tra cột S với số âm, {-} và N/A, tổng năm trang; chạy pdflatex ba lần, không lỗi compile/undefined reference/overfull/ký tự thiếu. Đã xem PDF: ở cột S, dấu thập phân tiếng Việt hiển thị phẩy, tiếng Anh hiển thị chấm.
 - Không sửa bài thật hoặc template nguồn; fixture được dọn sau kiểm tra, không đưa vào commit. Bản before-rule-ids chỉ giữ lịch sử, không phải nhánh quy tắc đang áp dụng.
