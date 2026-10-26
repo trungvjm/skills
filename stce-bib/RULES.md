@@ -12,6 +12,7 @@ Mỗi dòng dưới đây định nghĩa một mã quy tắc duy nhất cho `stc
 | STCE-BIB-KEY-001 | MUST | Tách từng tài liệu tham khảo riêng biệt, giữ nguyên thứ tự gốc và đánh key số tăng dần từ `1`, `2`, `3`, ... | SRC, DIFF |
 | STCE-BIB-TXT-001 | MUST | Trường `title` định dạng theo sentence case ("normal case"): chỉ viết hoa chữ cái đầu tiên, chữ cái đầu sau dấu hai chấm `:`, và danh từ riêng/từ viết tắt; thuật ngữ in nghiêng (như tên loài) dùng `\textit{}`. | SRC, PDF |
 | STCE-BIB-TXT-002 | MUST | Giữ nguyên Unicode tiếng Việt cho mọi trường ngoài `author`. | SRC, PDF |
+| STCE-BIB-JRN-001 | MUST | Khi bài báo có DOI, tên tạp chí trong trường `journal` phải khớp với dữ liệu chính thức (`container-title`) từ DOI Crossref hoặc DOI của nhà cung cấp khác. | SRC, DIFF |
 | STCE-BIB-AUTH-001 | MUST | Chữ viết tắt tên tác giả có đúng một khoảng trắng sau mỗi dấu chấm (ví dụ: `Asmone, A.S.` → `Asmone, A. S.`). | SRC |
 | STCE-BIB-AUTH-002 | MUST | Chữ `Đ` hoặc `đ` trong trường `author` chuyển thành `{\DJ}` hoặc `{\dj}` (chỉ áp dụng trong trường `author`). | SRC, PDF |
 | STCE-BIB-TYPE-001 | MUST | `@article` giữ nguyên kiểu mục; ưu tiên trường `doi` nếu có. | SRC |

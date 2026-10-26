@@ -26,6 +26,7 @@ Create a new file named `[ID].bib` in the `Bib` directory. Apply ONLY the follow
 - **Author Spacing (`STCE-BIB-AUTH-001`)**: Ensure author initials have a space after each period. For example, change `Asmone, A.S.` to `Asmone, A. S.`
 - **Vietnamese "Đ" (`STCE-BIB-AUTH-002`)**: If an author's name contains the symbol `Đ` or `đ`, convert it to `{\DJ}` or `{\dj}` ONLY in the `author` field.
 - **Vietnamese Unicode (`STCE-BIB-TXT-002`)**: For documents in Vietnamese, preserve the original Vietnamese Unicode font and formatting for all other fields.
+- **Journal Name (`STCE-BIB-JRN-001`)**: When an article has a DOI, the `journal` field MUST match the official journal title (`container-title`) from Crossref or the corresponding DOI registration agency/provider (do not keep arbitrary abbreviations when Crossref/DOI metadata provides the full official journal name).
 
 - **Entry Type Conversions**:
   - `@article` (`STCE-BIB-TYPE-001`): remains unchanged. Prioritize the `doi` field if available.
