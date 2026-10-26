@@ -13,6 +13,7 @@ Mỗi dòng dưới đây định nghĩa một mã quy tắc duy nhất cho `stc
 | STCE-BIB-TXT-001 | MUST | Trường `title` định dạng theo sentence case ("normal case"): chỉ viết hoa chữ cái đầu tiên, chữ cái đầu sau dấu hai chấm `:`, và danh từ riêng/từ viết tắt; thuật ngữ in nghiêng (như tên loài) dùng `\textit{}`. | SRC, PDF |
 | STCE-BIB-TXT-002 | MUST | Giữ nguyên Unicode tiếng Việt cho mọi trường ngoài `author`. | SRC, PDF |
 | STCE-BIB-JRN-001 | MUST | Khi bài báo có DOI, tên tạp chí trong trường `journal` phải khớp với dữ liệu chính thức (`container-title`) từ DOI Crossref hoặc DOI của nhà cung cấp khác. | SRC, DIFF |
+| STCE-BIB-DOI-001 | MUST | Kiểm tra mọi `doi` trên hệ thống `doi.org`; nếu DOI bị sai hoặc không tồn tại (`DOI Not Found` / `responseCode=100`) thì **PHẢI gỡ bỏ** (hoặc thay bằng DOI chính thức đúng của bài sau khi xác minh). | SRC, DIFF |
 | STCE-BIB-AUTH-001 | MUST | Chữ viết tắt tên tác giả có đúng một khoảng trắng sau mỗi dấu chấm (ví dụ: `Asmone, A.S.` → `Asmone, A. S.`). | SRC |
 | STCE-BIB-AUTH-002 | MUST | Chữ `Đ` hoặc `đ` trong trường `author` chuyển thành `{\DJ}` hoặc `{\dj}` (chỉ áp dụng trong trường `author`). | SRC, PDF |
 | STCE-BIB-TYPE-001 | MUST | `@article` giữ nguyên kiểu mục; ưu tiên trường `doi` nếu có. | SRC |
@@ -22,3 +23,4 @@ Mỗi dòng dưới đây định nghĩa một mã quy tắc duy nhất cho `stc
 | STCE-BIB-TYPE-005 | MUST | `@misc` chuyển thành `@manual`. | SRC |
 | STCE-BIB-STD-001 | MUST | Tài liệu tiêu chuẩn chuyển thành `@manual`; đặt mã hiệu tiêu chuẩn (ví dụ: `BS EN 1052-1:1999`, `TCVN 14334:2025`, `ASTM C618-12`) vào trường `note`; giữ `title` và `url` (nếu có); đưa các thông tin còn lại (cơ quan ban hành, nơi xuất bản) vào `address`. | SRC, PDF |
 | STCE-BIB-STD-002 | MUST | Với tài liệu tiêu chuẩn (`@manual`), nếu mã hiệu trong trường `note` **đã có năm ban hành** (ví dụ `TCVN 14334:2025`, `BS EN 1052-1:1999`, `ASTM C618-12`, `ASTM C39/C39M-21`), **PHẢI bỏ trường `year`** để không bị in lặp năm trên PDF (như `TCVN 14334:2025 (2025).`). Chỉ giữ `year` khi trong `note` chưa có năm. | SRC, PDF |
+| STCE-BIB-REP-001 | MUST | Sau khi tạo `Bib/[ID].bib`, phải kiểm tra chéo theo `check-ref` và xuất file báo cáo `Bib/[ID].md` cùng thư mục (danh sách đánh số theo thứ tự `[1]`, `[2]`, ...) để báo cáo các mục thiếu/sai lệch metadata cho người dùng duyệt. | SRC, DIFF |

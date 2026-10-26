@@ -27,6 +27,7 @@ Create a new file named `[ID].bib` in the `Bib` directory. Apply ONLY the follow
 - **Vietnamese "Đ" (`STCE-BIB-AUTH-002`)**: If an author's name contains the symbol `Đ` or `đ`, convert it to `{\DJ}` or `{\dj}` ONLY in the `author` field.
 - **Vietnamese Unicode (`STCE-BIB-TXT-002`)**: For documents in Vietnamese, preserve the original Vietnamese Unicode font and formatting for all other fields.
 - **Journal Name (`STCE-BIB-JRN-001`)**: When an article has a DOI, the `journal` field MUST match the official journal title (`container-title`) from Crossref or the corresponding DOI registration agency/provider (do not keep arbitrary abbreviations when Crossref/DOI metadata provides the full official journal name).
+- **Invalid DOI Removal (`STCE-BIB-DOI-001`)**: Verify every `doi` against `https://doi.org`. Any invalid, fabricated, or non-existent DOI (`DOI Not Found` / `responseCode=100` or pointing to a completely unrelated article) MUST be removed (or replaced with the verified official DOI after user approval).
 
 - **Entry Type Conversions**:
   - `@article` (`STCE-BIB-TYPE-001`): remains unchanged. Prioritize the `doi` field if available.
@@ -41,3 +42,9 @@ Create a new file named `[ID].bib` in the `Bib` directory. Apply ONLY the follow
 
 **CRITICAL: Self-Correction Check**
 Before finishing, you MUST double-check your generated `[ID].bib` file against ALL `STCE-BIB-*` rules above (especially `STCE-BIB-TXT-001` sentence case, `STCE-BIB-AUTH-001` initial spacing, `STCE-BIB-TYPE-002` DOI-to-URL conversion for books/proceedings, and `STCE-BIB-STD-002` omitting `year` when `note` already contains the year).
+
+### Step 2: Reference Verification and `Bib/[ID].md` Report (`STCE-BIB-REP-001`, via `check-ref`)
+After generating `Bib/[ID].bib`, cross-check all references against Crossref/DOI resolvers and scholarly sources following the `check-ref` skill, and create `Bib/[ID].md` in the same `Bib/` directory:
+- Write a single ordered list (`1. [1] ...`, `2. [2] ...`, etc.) covering **every** reference in `Bib/[ID].bib`.
+- Flag any missing fields (`volume`, `number`, `pages`, `year`, `publisher`, missing authors/`et al.`), metadata discrepancies, journal name mismatches (`STCE-BIB-JRN-001`), or invalid DOIs (`STCE-BIB-DOI-001`).
+- Present discrepancies to the user for approval before modifying original bibliographic metadata (`STCE-BIB-CORE-001`).
