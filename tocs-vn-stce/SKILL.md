@@ -34,7 +34,7 @@ Từ mỗi file `.tex` trong `04-Papers`, trích xuất các thông tin sau:
 |-----------|------------|-------|
 | **Title (VN)** | Từ lệnh `\title{...}`. | Loại bỏ `\\`, **BẮT BUỘC** viết dạng Normal Case / Sentence Case: Chỉ viết hoa chữ cái đầu tiên của câu và chữ cái đầu tiên sau dấu hai chấm (`:`). Giữ nguyên in hoa đối với các từ viết tắt hoặc tên riêng. **LƯU Ý:** Phải giữ nguyên cả từ viết tắt chứa chữ số (VD: A3, B2B), cẩn thận khi dùng regex lược bỏ ký tự đặc biệt. Nếu in hoa toàn bộ thì phải chuyển về chữ thường và tự phục hồi từ viết tắt. |
 | **Title (EN)** | Từ sau lệnh `\TD` trong block `\begin{keyword}`. | Loại bỏ `\\`, **BẮT BUỘC** chuyển về dạng Normal Case / Sentence Case (áp dụng quy tắc y hệt như Title (VN): xử lý dấu hai chấm, từ viết tắt có chứa số, in hoa toàn bộ). |
-| **Authors** | Tất cả các lệnh `\author[x]{Tên}` | Loại bỏ `\orcidlink`, `\corref`, `\\`. Nối các tên bằng dấu `, `. Dùng chung danh sách này cho cả bản Việt và Anh. |
+| **Authors** | Tất cả các lệnh `\author[x]{Tên}` | Loại bỏ `\orcidlink`, `\corref`, `\\`. Nối các tên bằng dấu `, `. **Lưu ý:** Bản tiếng Việt (`_1_vi.tex`) giữ nguyên dấu tiếng Việt; bản tiếng Anh (`_2_en.tex`) **BẮT BUỘC bỏ toàn bộ dấu tiếng Việt** (kể cả `Đ`/`đ` $\to$ `D`/`d`, ví dụ: `Chu Thanh Bình` $\to$ `Chu Thanh Binh`). |
 | **First page** | Từ lệnh `\firstpage{N}` | |
 
 **Thứ tự bài:** Sắp xếp theo prefix số ở tên file (ví dụ: `01_`, `02_`, ...).
@@ -120,7 +120,7 @@ Từ mỗi file `.tex` trong `04-Papers`, trích xuất các thông tin sau:
 \newcommand\oddfoot[1]{\gdef\@oddfoot{\reset@font#1}}
 \newcommand\evenfoot[1]{\gdef\@evenfoot{\reset@font#1}}
 \makeatother
-\setcounter{page}{2}
+\setcounter{page}{2} % Nếu mục lục tiếng Việt dài N trang thì đặt {N+1} (ví dụ 2 trang i-ii -> đặt {3} cho iii)
 
 \usepackage{ifluatex}
 \ifluatex 
@@ -152,7 +152,7 @@ Từ mỗi file `.tex` trong `04-Papers`, trích xuất các thông tin sau:
 
 \item Tiêu đề bài 1 (tiếng Anh)
 
-{\small\textit{Tác giả 1, Tác giả 2, Tác giả 3}} \dotfill TRANG
+{\small\textit{Tac gia 1, Tac gia 2, Tac gia 3}} \dotfill TRANG
 
 % ... tiếp tục cho các bài còn lại
 
@@ -175,7 +175,7 @@ Mỗi bài báo trong TOC có format:
 ### Chi tiết:
 - **`\item`** + tiêu đề trên 1 dòng.
 - **Có dòng trống** giữa tiêu đề và danh sách tác giả.
-- **Authors**: bọc trong `{\small\textit{...}}`, nối bằng `, `. Nếu danh sách tác giả dài, dùng `\\` ngắt dòng bên trong.
+- **Authors**: bọc trong `{\small\textit{...}}`, nối bằng `, ` (giữ nguyên dấu tiếng Việt ở file `_1_vi.tex`; **bỏ toàn bộ dấu tiếng Việt** ở file `_2_en.tex`). Nếu danh sách tác giả dài, dùng `\\` ngắt dòng bên trong.
 - **`\dotfill`** + số trang đầu (lấy từ `\firstpage`).
 - **Dòng trống** sau mỗi entry.
 
@@ -194,6 +194,6 @@ Cần cập nhật các tham số `YYYY` (năm) và `VV (N)` (tập/số) trong 
 1. **Liệt kê** tất cả file `.tex` bài báo trong thư mục `04-Papers` (sắp xếp theo prefix `01_`, `02_`, ...).
 2. **Trích xuất** dữ liệu từ mỗi bài: Tiêu đề tiếng Việt, Tiêu đề tiếng Anh, Danh sách tác giả, và Trang đầu (`\firstpage`).
 3. **Xác định** volume, số báo, và năm xuất bản.
-4. **Tạo/ghi đè** file `02-TOCs/00_Table of contents_1_vi.tex` theo template tiếng Việt. Đảm bảo dùng `\setcounter{page}{1}` và `\oddhead` tiếng Việt. Thay thế các entries bằng danh sách tiêu đề tiếng Việt.
-5. **Tạo/ghi đè** file `02-TOCs/00_Table of contents_2_en.tex` theo template tiếng Anh. Đảm bảo dùng `\setcounter{page}{2}` và `\oddhead` tiếng Anh. Thay thế các entries bằng danh sách tiêu đề tiếng Anh.
+4. **Tạo/ghi đè** file `02-TOCs/00_Table of contents_1_vi.tex` theo template tiếng Việt. Đảm bảo dùng `\setcounter{page}{1}`, `\oddhead` tiếng Việt, tiêu đề tiếng Việt và tên tác giả **có dấu tiếng Việt**. Biên dịch để kiểm tra số trang $N$ của mục lục tiếng Việt.
+5. **Tạo/ghi đè** file `02-TOCs/00_Table of contents_2_en.tex` theo template tiếng Anh. Đảm bảo dùng `\setcounter{page}{N+1}` (ví dụ: `{2}` nếu mục lục tiếng Việt có 1 trang `i`; `{3}` nếu mục lục tiếng Việt có 2 trang `i`–`ii`), `\oddhead` tiếng Anh, tiêu đề tiếng Anh và tên tác giả **không dấu tiếng Việt**.
 6. **Kiểm tra** lại cả 2 file xem đã tuân thủ định dạng ngắt dòng, `\dotfill`, và ngoặc móc `{}` chưa.
