@@ -135,10 +135,11 @@ Mỗi dòng định nghĩa một mã duy nhất theo dạng `STCE-EN-<NHÓM>-<S�
 | Mã | Mức | Quy tắc | Nguồn | Kiểm chứng |
 |---|---|---|---|---|
 | STCE-EN-TXT-001 | MUST | Dùng et al. đúng chuẩn template tiếng Anh; không đổi thành cs. và không bỏ initials có trong nguồn. | §0; §8.1; DEC | SRC, DIFF, PDF |
-| STCE-EN-TXT-002 | MUST | En-dash trong text biểu diễn bằng hai dấu gạch nối LaTeX. | §4.3 | SRC, PDF |
+| STCE-EN-TXT-002 | MUST | En-dash nối khoảng giá trị hoặc từ ghép trong câu biểu diễn bằng `--`; không áp dụng cho gạch đầu dòng. | §4.3 | SRC, PDF |
 | STCE-EN-TXT-003 | MUST | Công thức hóa học dùng ce/mhchem, không subscript/superscript thủ công. | §0; §4.3 | SRC, DIFF |
 | STCE-EN-TXT-004 | MUST | Tên khoa học loài/chi/họ dùng textit. | §4.3 | SRC, PDF |
 | STCE-EN-TXT-005 | MAY | Sửa khoảng cách typo như stress- strain → stress-strain khi không đổi nội dung. | §0 | DIFF |
+| STCE-EN-TXT-006 | MUST | Gạch đầu dòng (bullet/list item ở đầu dòng) phải dùng dấu gạch đơn `-`, **không dùng `--`**. | §4.3; người dùng xác nhận | SRC, PDF |
 
 ## FIG — Hình và subcaption
 

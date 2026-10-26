@@ -61,7 +61,7 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 |---|---|---|---|---|
 | STCE-VN-FRONT-001 | MUST | Kiểm tra thứ tự: DOI → title → authors → cortext/shortauth/mailauth/headershort → addresses → dates → abstract → keyword block. | §2 | SRC |
 | STCE-VN-FRONT-002 | MUST | Khi DOI đã có, biểu diễn bằng `\doi{https://doi.org/10.31814/stce.huceYYYY-VV(NV)-xx}` với thông tin kỳ đúng, kể cả hậu tố V. | §2.1; CORE-012 | DIFF, SRC |
-| STCE-VN-FRONT-003 | MUST | Tiêu đề tiếng Việt dùng Sentence case: viết hoa chữ đầu, giữ hoa đúng tên riêng/từ viết tắt; không HOA toàn bộ. | §2.2; C01 người dùng đã chốt | SRC, PDF |
+| STCE-VN-FRONT-003 | MUST | Tiêu đề tiếng Việt trong `\title{...}` dùng Sentence case (normal case): chỉ viết hoa chữ đầu và tên riêng/từ viết tắt; không viết HOA toàn bộ trong source và **không bọc lệnh `\NoCaseChange`**. | §2.2; C01 người dùng đã chốt | SRC |
 | STCE-VN-FRONT-005 | MUST | Gán label tác giả [a], [b]... khớp label address tương ứng. | §2.3 | SRC, DIFF |
 | STCE-VN-FRONT-006 | MUST | Tác giả liên hệ có `\corref{cor1}`. | §2.3–2.4 | SRC, DIFF |
 | STCE-VN-FRONT-007 | MUST | Giữ thứ tự tên Việt Nam Họ Đệm Tên. | §2.3 | DIFF |
@@ -78,7 +78,7 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 | STCE-VN-FRONT-019 | MUST | Abstract tiếng Việt thường là một paragraph; nếu nguồn có nhiều đoạn, giữ nguyên, báo số đoạn/vị trí cho người dùng và chờ quyết định, không tự gộp/cắt/viết lại. | §2.7; C04 người dùng đã chốt | SRC, DIFF, MANUAL |
 | STCE-VN-FRONT-020 | MUST | Keywords tiếng Việt ngăn bằng `;`, kết thúc bằng `.`. | §2.8 | SRC |
 | STCE-VN-FRONT-021 | MUST | Keyword block song ngữ giữ thứ tự keywords Việt → TD → ABS → KW → CR. | §2.8 | SRC |
-| STCE-VN-FRONT-022 | MUST | Tiêu đề tiếng Anh sau `\TD` viết HOA. | §2.8 | SRC, PDF |
+| STCE-VN-FRONT-022 | MUST | Tiêu đề tiếng Anh sau `\TD` dán nguyên văn (viết HOA), **không thêm lệnh căn chỉnh/ngắt dòng thủ công** (như `\raggedright`, `\hyphenpenalty`). | §2.8; người dùng xác nhận | SRC |
 | STCE-VN-FRONT-023 | MUST | Abstract tiếng Anh đặt trong otherlanguage{english}; nếu nguồn có nhiều đoạn, giữ nguyên, báo số đoạn/vị trí cho người dùng và chờ quyết định, không tự gộp/cắt/viết lại. | §2.8; C04 người dùng đã chốt | SRC, DIFF, MANUAL |
 | STCE-VN-FRONT-024 | MUST | Keywords tiếng Anh ngăn bằng `;`, kết thúc bằng `.`. | §2.8 | SRC |
 | STCE-VN-FRONT-025 | MUST | `\CR` đứng riêng một dòng trước `\end{keyword}`. | §2.8 | SRC |
@@ -136,7 +136,7 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 | Mã | Mức | Quy tắc | Nguồn | Kiểm chứng |
 |---|---|---|---|---|
 | STCE-VN-TXT-001 | MUST | Chuẩn hóa `và cộng sự`/`cùng cộng sự` thành `và cs.` trong phần nội dung; không sửa tên riêng hay nhan đề được trích nguyên văn chỉ vì có cùng chuỗi chữ. | §9.1; người dùng xác nhận; C03 | SRC, DIFF |
-| STCE-VN-TXT-002 | MUST | En-dash trong text dùng `--`. | §4.3–4.4 | SRC, PDF |
+| STCE-VN-TXT-002 | MUST | En-dash nối khoảng giá trị hoặc từ ghép trong câu dùng `--`; không áp dụng cho gạch đầu dòng. | §4.3–4.4 | SRC, PDF |
 | STCE-VN-TXT-003 | MUST | Biểu diễn công thức hóa học bằng ce, không dùng subscript/superscript thủ công. | §0; §4.3 | SRC, DIFF, PDF |
 | STCE-VN-TXT-004 | MUST | Tên khoa học loài/chi/họ in nghiêng bằng textit. | §4.3 | SRC, PDF |
 | STCE-VN-TXT-005 | MUST | Số thập phân trong phần tiếng Việt dùng dấu phẩy; giữ giá trị, không áp dụng đổi dấu cho abstract tiếng Anh hoặc chuỗi định danh/DOI. | §4.3; phạm vi C10 đã làm rõ | SRC, DIFF |
@@ -146,6 +146,7 @@ Mỗi dòng dưới đây định nghĩa một mã duy nhất. Đây là danh m�
 | STCE-VN-TXT-009 | MUST | Smart single quote chuyển sang grave accent/apostrophe tương ứng; phân biệt dấu prime toán học với dấu nháy văn bản. | §4.4; CORE-003 | SRC, DIFF |
 | STCE-VN-TXT-010 | MUST | Thay Unicode toán/ký hiệu được liệt kê bằng lệnh LaTeX tương ứng: nhân, độ, trừ, dash, bất đẳng thức, cộng trừ, xấp xỉ, vô cùng, mũi tên, Hy Lạp, mũ/chỉ số. Không xóa Unicode tiếng Việt; xem C09. | §4.4; C09 | SRC, DIFF, PDF |
 | STCE-VN-TXT-011 | MAY | Chuẩn hóa khoảng cách typo như `stress- strain` thành `stress-strain` khi không đổi từ hay ý nghĩa. | §0 | DIFF |
+| STCE-VN-TXT-012 | MUST | Gạch đầu dòng (bullet/list item ở đầu dòng) phải dùng dấu gạch đơn `-`, **không dùng `--`**. | §4.3; người dùng xác nhận | SRC, PDF |
 
 ## FIG — Hình và chú thích
 

@@ -283,7 +283,8 @@ Nội dung paragraph...
 - Mô tả biến ngay sau equation: `where $X$ is ...; $Y$ is ...; and $Z$ is ...`
 
 ### 4.3. Ký hiệu đặc biệt
-- Dấu ngang dài (en-dash) trong text: `--` (ví dụ: `load--settlement`)
+- **Gạch đầu dòng (bullet/list item đầu dòng, `STCE-EN-TXT-006`)**: dùng dấu gạch đơn `-`, **KHÔNG dùng `--`**.
+- **Dấu ngang dài (en-dash) trong câu (`STCE-EN-TXT-002`)**: dùng `--` cho khoảng giá trị hoặc từ ghép trong câu (ví dụ: `10--20`, `load--settlement`), không dùng cho gạch đầu dòng.
 - Khoảng `~` dùng trước `\cite`, `\ref`, `(\ref{...})`
 - **Đơn vị nhiệt độ** có khoảng trắng không ngắt dòng giữa số và đơn vị: `37~$^\circ\mathrm{C}$`, không viết `37$^\circ\mathrm{C}$`.
 - **Công thức hóa học**: LUÔN dùng `\ce{}` (package `mhchem`), KHÔNG dùng subscript/superscript thủ công

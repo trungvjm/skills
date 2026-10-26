@@ -190,7 +190,7 @@ Phần `frontmatter` có các thành phần (theo đúng thứ tự):
 ```
 - **Tiêu đề bài tiếng Việt viết thường kiểu Sentence case, chỉ viết Hoa các từ bắt buộc phải viết hoa**
 
-**C01 — đã chốt:** dùng Sentence case (`STCE-VN-FRONT-003`); chỉ viết hoa chữ đầu và tên riêng/từ viết tắt cần giữ hoa. Không chuyển toàn bộ tiêu đề tiếng Việt sang HOA; quy tắc tiêu đề tiếng Anh sau `\TD` không thay đổi.
+**C01 — đã chốt:** dùng Sentence case (`STCE-VN-FRONT-003`) trực tiếp trong `\title{...}` (chỉ viết hoa chữ đầu và tên riêng/từ viết tắt cần giữ hoa); **KHÔNG dùng lệnh `\NoCaseChange`** bọc quanh tiêu đề (để template tự xử lý hiển thị). Không chuyển toàn bộ tiêu đề tiếng Việt sang HOA trong source.
 
 Ví dụ:
 ```latex
@@ -288,7 +288,7 @@ keyword1; keyword2; keyword3; keyword4.
 
 **Chi tiết:**
 - **Keywords tiếng Việt**: các keyword cách nhau bằng `;`, kết thúc bằng `.`
-- **`\TD`**: tiêu đề tiếng Anh (viết HOA toàn bộ)
+- **`\TD`**: dán nguyên văn tiêu đề tiếng Anh (viết HOA toàn bộ theo nguồn), **KHÔNG cần thêm lệnh căn chỉnh hay ngắt từ** (như `\raggedright`, `\hyphenpenalty`)
 - **`\ABS`** (`STCE-VN-FRONT-023`): abstract tiếng Anh thường là một paragraph; nếu nguồn có nhiều đoạn thì giữ nguyên và báo người dùng, không tự gộp.
 - **`\KW`**: keywords tiếng Anh, cách nhau bằng `;`, kết thúc bằng `.`
 - **`\CR`**: đứng riêng 1 dòng trước `\end{keyword}`
@@ -368,7 +368,8 @@ Ví dụ:
 - Mô tả biến ngay sau equation: `trong đó $X$ là ...; $Y$ là ...; $Z$ là ...`
 
 ### 4.3. Ký hiệu đặc biệt
-- Dấu ngang dài (en-dash) trong text: `--` (ví dụ: `load--settlement`)
+- **Gạch đầu dòng (bullet/list item đầu dòng, `STCE-VN-TXT-012`)**: dùng dấu gạch đơn `-` (ví dụ: `- Nội dung...`), **KHÔNG dùng `--`**.
+- **Dấu ngang dài (en-dash) trong câu (`STCE-VN-TXT-002`)**: dùng `--` khi nối khoảng giá trị hoặc từ ghép trong câu (ví dụ: `10--20`, `load--settlement`), không áp dụng cho gạch đầu dòng.
 - Khoảng `~` dùng trước `\cite`, `\ref`, `(\ref{...})`
 - **Đơn vị đo lường — C07 đã chốt (`STCE-VN-UNIT-001`):** đơn vị thông thường trình bày thủ công đúng bản gốc trong math mode, dùng `\mathrm{}` và dấu `/` gõ tay, ví dụ `55~$\mathrm{mm}$`, `$U=5{,}5~\mathrm{W/m^2/K}$`, `25~$\mathrm{m^3/h}/\text{người}$`, `\mathrm{kWh/m^2}/\text{năm}`. Chỉ dùng `siunitx` khi cần ký hiệu/prefix đặc biệt như `\micro`, ví dụ `$50~\si{\micro\gram}/\mathrm{m^3}$`; không chuyển đơn vị thông thường sang `\si{}`/`\SI{}` chỉ vì template đã nạp package này.
   - Giữ nguyên cách viết và slash của nguồn nếu rõ nghĩa. Với nhiều mẫu số, vẫn dùng biểu diễn thủ công theo nguồn, ví dụ `\mathrm{W/m^2/K}`; không bắt buộc đổi thành một `\si{}` chứa nhiều `\per`. Với từ tiếng Việt trong mẫu số, dùng text, ví dụ `\mathrm{K}/\text{phút}` hoặc `\mathrm{cm^3}/\text{vòng}`. Khi thực sự dùng siunitx cho trường hợp đặc biệt, không trộn các cách viết làm mơ hồ đơn vị; không đặt `per-mode` toàn cục nếu người dùng chưa yêu cầu và chưa kiểm tra mọi đơn vị ghép.
@@ -404,7 +405,7 @@ Hiện tượng "giật khi dừng xe" xuất hiện khi xe dừng hẳn.
 | `×` (dấu nhân) | `$\times$` |
 | `°` (độ) | `$^\circ$` |
 | `−` (dấu trừ dài) | `$-$` hoặc `-` |
-| `–` (en-dash) | `--` |
+| `–` (en-dash trong câu/khoảng số) | `--` (riêng gạch đầu dòng phải dùng `-`, không dùng `--`) |
 | `—` (em-dash) | `---` |
 | `≤` | `$\le$` hoặc `$\leq$` |
 | `≥` | `$\ge$` hoặc `$\geq$` |
