@@ -35,13 +35,13 @@ Create a new file named `[ID].bib` in the `Bib` directory. Apply ONLY the follow
   - `@techreport` (`STCE-BIB-TYPE-003`): change to `@manual`. Keep `author`, `title`, `year`, and `url` (if present) unchanged. Put all other remaining information into the `address` field.
   - `@incollection` (`STCE-BIB-TYPE-004`): change to `@inproceedings` (`@inproceeding`).
   - `@misc` (`STCE-BIB-TYPE-005`): change to `@manual`.
-  - **Standards in Civil Engineering (`STCE-BIB-STD-001`, `STCE-BIB-STD-002`)**:
-    - Convert standard documents to `@manual`. Put the series code (e.g., `BS EN 1052-1:1999`, `TCVN 14334:2025`, `ASTM C618-12`) into the `note` field (`STCE-BIB-STD-001`).
+  - **Standards in Civil Engineering (`STCE-BIB-STD-001`, `STCE-BIB-STD-002`, `STCE-BIB-STD-003`)**:
+    - Convert standard/regulation documents (tiêu chuẩn, quy chuẩn) to `@manual`. Put the series code (e.g., `BS EN 1052-1:1999`, `TCVN 14334:2025`, `QCVN 41:2024/BGTVT`, `ASTM C618-12`) into the `note` field (`STCE-BIB-STD-001`).
     - **Year removal when `note` contains the year (`STCE-BIB-STD-002`)**: If the standard code in `note` already includes the publication year (e.g., `:2025`, `:1999`, `-12`, `-21`), **MUST omit the `year` field** so `STCE/stce.bst` does not print the year twice (e.g., avoiding `TCVN 14334:2025 (2025).`). Only keep `year` if `note` does not contain a year.
-    - Keep `title` and `url` (if present) unchanged; put all other remaining information (issuing organization, location) into the `address` field.
+    - **No `author` field (`STCE-BIB-STD-003`)**: Standards and technical regulations MUST NOT have an `author` field (remove it if present, including issuing bodies/organizations written as author). Put the document's name into `title`; keep `url` (if present) unchanged; put ALL other remaining information (issuing organization, publisher, location) into the `address` field.
 
 **CRITICAL: Self-Correction Check**
-Before finishing, you MUST double-check your generated `[ID].bib` file against ALL `STCE-BIB-*` rules above (especially `STCE-BIB-TXT-001` sentence case, `STCE-BIB-AUTH-001` initial spacing, `STCE-BIB-TYPE-002` DOI-to-URL conversion for books/proceedings, and `STCE-BIB-STD-002` omitting `year` when `note` already contains the year).
+Before finishing, you MUST double-check your generated `[ID].bib` file against ALL `STCE-BIB-*` rules above (especially `STCE-BIB-TXT-001` sentence case, `STCE-BIB-AUTH-001` initial spacing, `STCE-BIB-TYPE-002` DOI-to-URL conversion for books/proceedings, `STCE-BIB-STD-002` omitting `year` when `note` already contains the year, and `STCE-BIB-STD-003` no `author` field for standards/regulations).
 
 ### Step 2: Reference Verification and `Bib/[ID].md` Report (`STCE-BIB-REP-001`, via `check-ref`)
 After generating `Bib/[ID].bib`, cross-check all references against Crossref/DOI resolvers and scholarly sources following the `check-ref` skill, and create `Bib/[ID].md` in the same `Bib/` directory:
